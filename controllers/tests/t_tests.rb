@@ -1,33 +1,34 @@
-# TODO: USE VALUE OBJECTS TO CLEAN THINGS UP
 # Class for t_test calculators
 class CohenDCalc < Sinatra::Base
   cohen_dz = lambda do
-    result = CohenDz.new(
-      params['sample_mean'], params['pop_mean'], params['sample_sd']
-    )
+    one_sample = OneSample.new(params)
+    halt 400 unless one_sample.valid?
+    result = CohenDz.new(one_sample)
     result.call
   end
 
   cohen_ds = lambda do
-    result = CohenDs.new(
-      [params['mean_1'], params['mean_2']],
-      [params['sd_1'], params['sd_2']],
-      [params['n_1'], params['n_2']]
-    )
-    result.call
+    independent_samples = IndependentSamples.new(params)
+    halt 400 unless independent_samples.valid?
+    CohenDs.new(independent_samples).call
   end
 
   cohen_dav = lambda do
-    CohenDav.new(params).call
+    average_samples = AverageSamples.new(params)
+    halt 400 unless average_samples.valid?
+    CohenDav.new(average_samples).call
   end
 
   cohen_drm = lambda do
-    CohenDrm.new(params).call
+    repeated_samples = RepeatedSamples.new(params)
+    halt 400 unless repeated_samples.valid?
+    CohenDrm.new(repeated_samples).call
   end
 
   d_to_r = lambda do
-    result = DsToR.new(params['ds'], params['n1'], params['n2'])
-    result.call
+    data = ConvertDsToR.new(params)
+    result = DsToR.new(data)
+    Oj.dump result.call
   end
 
   get '/one_sample_t/?', &cohen_dz

@@ -25,10 +25,7 @@ GEM
     minitest (5.9.1)
     minitest-rg (5.2.0)
       minitest (~> 5.0)
-<<<<<<< HEAD
     oj (2.18.0)
-=======
->>>>>>> 30cc6235c4be4a5e5278922f55af3d0a64174284
     puma (3.6.0)
     rack (1.6.4)
     rack-protection (1.5.3)
@@ -64,10 +61,7 @@ DEPENDENCIES
   kramdown
   minitest
   minitest-rg
-<<<<<<< HEAD
   oj
-=======
->>>>>>> 30cc6235c4be4a5e5278922f55af3d0a64174284
   puma
   rack-ssl-enforcer
   rack-test
@@ -80,8 +74,4 @@ RUBY VERSION
    ruby 2.3.0p0
 
 BUNDLED WITH
-<<<<<<< HEAD
    1.13.5
-=======
-   1.13.0
->>>>>>> 30cc6235c4be4a5e5278922f55af3d0a64174284

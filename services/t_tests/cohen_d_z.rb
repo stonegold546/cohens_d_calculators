@@ -1,13 +1,15 @@
 # Cohen's d calculator for One-sample t test
 class CohenDz
-  def initialize(sample_mean, pop_mean, sample_sd)
-    @sample_mean = sample_mean.to_f
-    @pop_mean = pop_mean.to_f
-    @sample_sd = sample_sd.to_f
+  def initialize(one_sample)
+    @inputs = one_sample.attributes
+    @sample_mean = one_sample.sample_mean
+    @pop_mean = one_sample.pop_mean
+    @sample_sd = one_sample.sample_sd
   end
 
   def call
     cohen_dz = (@sample_mean - @pop_mean) / @sample_sd
-    Oj.dump(cohen_dz: cohen_dz)
+    result = { cohen_dz: cohen_dz, inputs: @inputs }
+    Oj.dump result
   end
 end

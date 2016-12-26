@@ -1,23 +1,24 @@
 # Cohen's d_av calculator for paired t-test (averaging)
 class CohenDav
   # def initialize(params, _means, _sds, _ns)
-  def initialize(params)
-    @means = [params['mean_1'], params['mean_2']].map(&:to_f)
-    @sds = [params['sd_1'], params['sd_2']].map(&:to_f)
-    return unless params['n_1'] && params['n_2']
-    @n1 = params['n_1'].to_f
-    @n2 = params['n_2'].to_f
+  def initialize(average_samples)
+    @inputs = average_samples.attributes
+    @mean_d = average_samples.mean_d
+    @avg_sd = average_samples.avg_sd
+    @n1 = average_samples.n_1
+    @n2 = average_samples.n_2
   end
 
   def call
     d_av = cohen_d
-    return Oj.dump(cohen_dav: d_av) unless @n1 && @n2
+    result = { cohen_dav: d_av, inputs: @inputs }
+    return Oj.dump(result) unless @n1 && @n2
     g_av = HedgesCorrection.new(d_av, @n1, @n2).call
-    Oj.dump(cohen_dav: d_av, hedges_gav: g_av)
+    result = { cohen_dav: d_av, hedges_gav: g_av, inputs: @inputs }
+    Oj.dump result
   end
 
   def cohen_d
-    base = @sds.reduce(:+) / @sds.size
-    @means.reduce(:-) / base
+    @mean_d / @avg_sd
   end
 end
