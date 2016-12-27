@@ -19,8 +19,8 @@ class RepeatedSamples
   validates_numericality_of :sd_1, greater_than: 0
   validates_numericality_of :sd_2, greater_than: 0
   validates_numericality_of :r
-  validates_numericality_of :n_1, greater_than: 0, allow_nil: true
-  validates_numericality_of :n_2, greater_than: 0, allow_nil: true
+  validates_numericality_of :n_1, greater_than: 1, allow_nil: true
+  validates_numericality_of :n_2, greater_than: 1, allow_nil: true
 
   def mean_d
     mean1 - mean2

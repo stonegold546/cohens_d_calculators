@@ -11,6 +11,6 @@ class ConvertDsToR
   attribute :n2, Float
 
   validates_numericality_of :d_s
-  validates_numericality_of :n1, greater_than: 0
-  validates_numericality_of :n2, greater_than: 0
+  validates_numericality_of :n1, greater_than: 1
+  validates_numericality_of :n2, greater_than: 1
 end

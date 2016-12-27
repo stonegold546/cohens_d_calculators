@@ -17,8 +17,8 @@ class IndependentSamples
   validates_numericality_of :mean2
   validates_numericality_of :sd_1, greater_than: 0
   validates_numericality_of :sd_2, greater_than: 0
-  validates_numericality_of :n_1, greater_than: 0
-  validates_numericality_of :n_2, greater_than: 0
+  validates_numericality_of :n_1, greater_than: 1
+  validates_numericality_of :n_2, greater_than: 1
 
   def mean_d
     mean1 - mean2
