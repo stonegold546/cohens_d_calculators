@@ -1,9 +1,9 @@
 # Convert d_s to r
 class DsToR
   def initialize(data)
-    @d_s = data.d_s
-    @n1 = data.n1
-    @n2 = data.n2
+    @d_s = data.d_s.to_f
+    @n1 = data.n1.to_f
+    @n2 = data.n2.to_f
     @big_n = @n1 + @n2
   end
 

@@ -21,6 +21,6 @@ class IndependentSamples
   validates_numericality_of :n_2, greater_than: 1
 
   def mean_d
-    mean1 - mean2
+    mean1.to_f - mean2.to_f
   end
 end

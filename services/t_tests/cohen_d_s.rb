@@ -3,10 +3,10 @@ class CohenDs
   def initialize(independent_samples)
     @inputs = independent_samples.attributes
     @mean_d = independent_samples.mean_d
-    @sd1 = independent_samples.sd_1
-    @sd2 = independent_samples.sd_2
-    @n1 = independent_samples.n_1
-    @n2 = independent_samples.n_2
+    @sd1 = independent_samples.sd_1.to_f
+    @sd2 = independent_samples.sd_2.to_f
+    @n1 = independent_samples.n_1.to_f
+    @n2 = independent_samples.n_2.to_f
   end
 
   def call

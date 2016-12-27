@@ -95,28 +95,28 @@ table cellpadding='10' align='center'
   tr align='right'
     td
       | Mean: 
-      input type='number' class='data-dep-sample' name='mean1' required='true' tabindex=3 step='any'
+      input type='number' class='data-rm-sample data-av-sample' name='mean1' required='true' tabindex=3 step='any'
     td
       | Mean: 
-      input type='number' class='data-dep-sample' name='mean2' required='true' tabindex=3 step='any'
+      input type='number' class='data-rm-sample data-av-sample' name='mean2' required='true' tabindex=3 step='any'
   tr align='right'
     td
       | Standard deviation: 
-      input type='number' class='data-dep-sample' name='sd_1' required='true' tabindex=3 min=0 placeholder='Greater than 0' step='any'
+      input type='number' class='data-rm-sample data-av-sample' name='sd_1' required='true' tabindex=3 min=0 placeholder='Greater than 0' step='any'
     td
       | Standard deviation: 
-      input type='number' class='data-dep-sample' name='sd_2' required='true' tabindex=3 min=0 placeholder='Greater than 0' step='any'
+      input type='number' class='data-rm-sample data-av-sample' name='sd_2' required='true' tabindex=3 min=0 placeholder='Greater than 0' step='any'
   tr align='center'
     td colspan='2'
       | <i>r</i>: 
-      input type='number' class='data-dep-sample' name='r' required='false' tabindex=3 min='-1' max='1' placeholder='Between -1 and 1' step='any'
+      input type='number' class='data-rm-sample' name='r' required='false' tabindex=3 min='-1' max='1' placeholder='For repeated measures; -1 < 1' step='any' style="width: 200px"
   tr align='right'
     td
       | Sample size: 
-      input type='number' class='data-dep-sample' name='n_1' required='false' tabindex=3 min=2 placeholder='Greater than 1; not required' step='1'
+      input type='number' class='data-rm-sample data-av-sample' name='n_1' required='false' tabindex=3 min=2 placeholder='For Hedges g only; > 1' step='1'
     td
       | Sample size: 
-      input type='number' class='data-dep-sample' name='n_2' required='false' tabindex=3 min=2 placeholder='Greater than 1; not required' step='1'
+      input type='number' class='data-rm-sample data-av-sample' name='n_2' required='false' tabindex=3 min=2 placeholder='For Hedges g only; > 1' step='1'
 
 markdown:
 
@@ -129,18 +129,19 @@ table cellpadding='10' align='center'
   tr align='right'
     td
       | Cohen's <i>d</i>: 
-      input type='number' class='result-av-sample' name=':cohen_drm' readonly='true' tabindex=-1
+      input type='number' class='result-av-sample' name=':cohen_dav' readonly='true' tabindex=-1
     td
-    | Cohen's <i>d</i>: 
-      input type='number' class='result-rm-sample' name=':cohen_dav' readonly='true' tabindex=-1
+      | Cohen's <i>d</i>: 
+      input type='number' class='result-rm-sample' name=':cohen_drm' readonly='true' tabindex=-1
   tr align='right'
     td
       | Hedges's <i>g</i>: 
-      input type='number' class='result-av-sample' name=':hedges_grm' readonly='true' tabindex=-1
+      input type='number' class='result-av-sample' name=':hedges_gav' readonly='true' tabindex=-1
     td
-    | Hedges's <i>g</i>: 
-      input type='number' class='result-rm-sample' name=':hedges_gav' readonly='true' tabindex=-1
+      | Hedges's <i>g</i>: 
+      input type='number' class='result-rm-sample' name=':hedges_grm' readonly='true' tabindex=-1
 
+markdown:
   ___
 
 script src='index.js'

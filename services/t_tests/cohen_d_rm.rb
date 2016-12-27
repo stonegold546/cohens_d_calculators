@@ -3,17 +3,17 @@ class CohenDrm
   def initialize(repeated_samples)
     @inputs = repeated_samples.attributes
     @mean_d = repeated_samples.mean_d
-    @sd1 = repeated_samples.sd_1
-    @sd2 = repeated_samples.sd_2
-    @r = repeated_samples.r
-    @n1 = repeated_samples.n_1
-    @n2 = repeated_samples.n_2
+    @sd1 = repeated_samples.sd_1.to_f
+    @sd2 = repeated_samples.sd_2.to_f
+    @r = repeated_samples.r.to_f
+    @n1 = repeated_samples.n_1.to_f
+    @n2 = repeated_samples.n_2.to_f
   end
 
   def call
     d_rm = cohen_d
     result = { cohen_drm: d_rm, inputs: @inputs }
-    return Oj.dump(result) unless @n1 && @n2
+    return Oj.dump(result) if @n1.zero? || @n2.zero?
     g_rm = d_rm * HedgesCorrection.new(@n1, @n2).call
     result = { cohen_drm: d_rm, hedges_grm: g_rm, inputs: @inputs }
     Oj.dump result

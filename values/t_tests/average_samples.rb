@@ -1,7 +1,7 @@
 require 'virtus'
 require 'active_model'
 
-NUM_SDs = 2
+NUM_SDS = 2
 
 # Value object for two-samples t-tests (paired, averages)
 class AverageSamples
@@ -23,10 +23,10 @@ class AverageSamples
   validates_numericality_of :n_2, greater_than: 1, allow_nil: true
 
   def mean_d
-    mean1 - mean2
+    mean1.to_f - mean2.to_f
   end
 
   def avg_sd
-    (sd_1 + sd_2) / NUM_SDs
+    (sd_1.to_f + sd_2.to_f) / NUM_SDS
   end
 end
