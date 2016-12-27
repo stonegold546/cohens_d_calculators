@@ -11,12 +11,15 @@ class CohenDs
 
   def call
     d_s = cohen_d
-    g_s = HedgesCorrection.new(d_s, @n1, @n2).call
+    se_d_s = se_d(d_s)
+    g_s = d_s * j
+    se_g_s = se_d_s * j
     data = convert_data(d_s)
     data = ConvertDsToR.new(data)
-    r = DsToR.new(data).internal_call
-    result = { cohen_ds: d_s, hedges_gs: g_s, r: r, inputs: @inputs }
-    Oj.dump result
+    Oj.dump(
+      cohen_ds: d_s, se_d: se_d_s, hedges_gs: g_s, se_g: se_g_s,
+      r: DsToR.new(data).internal_call, inputs: @inputs
+    )
   end
 
   def cohen_d
@@ -25,6 +28,15 @@ class CohenDs
     pooled_sd = Math.sqrt(pooled_sd_num / pooled_sd_denum)
     @mean_d / pooled_sd
   end
+
+  def se_d(d_s)
+    a = (@n1 + @n2) / (@n1 * @n2)
+    b = (d_s * d_s) / (2 * (@n1 + @n2))
+    v_d = a + b
+    Math.sqrt(v_d)
+  end
+
+  define_method('j') { HedgesCorrection.new(@n1, @n2).call }
 
   def convert_data(d_s)
     { d_s: d_s, n1: @n1, n2: @n2 }

@@ -13,7 +13,7 @@ class CohenDav
     d_av = cohen_d
     result = { cohen_dav: d_av, inputs: @inputs }
     return Oj.dump(result) unless @n1 && @n2
-    g_av = HedgesCorrection.new(d_av, @n1, @n2).call
+    g_av = d_av * HedgesCorrection.new(@n1, @n2).call
     result = { cohen_dav: d_av, hedges_gav: g_av, inputs: @inputs }
     Oj.dump result
   end

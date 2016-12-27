@@ -14,7 +14,7 @@ class CohenDrm
     d_rm = cohen_d
     result = { cohen_drm: d_rm, inputs: @inputs }
     return Oj.dump(result) unless @n1 && @n2
-    g_rm = HedgesCorrection.new(d_rm, @n1, @n2).call
+    g_rm = d_rm * HedgesCorrection.new(@n1, @n2).call
     result = { cohen_drm: d_rm, hedges_grm: g_rm, inputs: @inputs }
     Oj.dump result
   end
