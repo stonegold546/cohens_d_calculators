@@ -11,6 +11,7 @@ gem 'kramdown'
 gem 'activemodel'
 gem 'virtus'
 gem 'oj'
+gem 'rinruby'
 
 # gem 'httparty'
 
