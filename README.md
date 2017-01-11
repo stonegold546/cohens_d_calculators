@@ -2,9 +2,9 @@
 
 Cohen's d calculator for ESQREM 6641 class
 
-## Formula
+## Formulae
 
-One-sample Cohen's _d_:
+### One-sample Cohen's _d_:
 
 ![equation](http://latex.codecogs.com/gif.latex?%5Cfrac%7BM%20-%20%20%5Cmu%7D%7Bs%7D%20%5C%20%20%5C%20(1))
 
