@@ -12,4 +12,4 @@ where _M_ is the sample mean, ![equation](http://latex.codecogs.com/gif.latex?%5
 
 #### Independent-samples Cohen's _d_:
 
-![equation](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%20%5Coverline%7Bx%7D_%7B1%7D%20%20-%20%20%20%5Coverline%7Bx%7D_%7B2%7D%20%7D%7B%20%5Csqrt%7B%5Cfrac%20%7B%7D%7B%7D%7D%7D%20%5C%20%20%5C%20%5Cbig(1%5Cbig))
+![equation](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%20%5Coverline%7Bx%7D_%7B1%7D%20%20-%20%20%20%5Coverline%7Bx%7D_%7B2%7D%20%7D%7B%20%5Csqrt%7B%5Cfrac%20%7Bns.sd%7D%7Bns%7D%7D%7D%20%5C%20%20%5C%20%5Cbig(1%5Cbig))
