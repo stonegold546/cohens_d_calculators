@@ -5,6 +5,7 @@ require 'kramdown'
 require 'rack-ssl-enforcer'
 require 'config_env'
 require 'oj'
+require 'rinruby'
 
 configure :development, :test do
   ConfigEnv.path_to_config("#{__dir__}/config/config_env.rb")
