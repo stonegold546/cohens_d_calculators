@@ -11,3 +11,5 @@ Cohen's d calculator for ESQREM 6641 class
 where _M_ is the sample mean, ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) is the population mean, and _s_ is the sample standard deviation.
 
 #### Independent-samples Cohen's _d_:
+
+![equation](http://latex.codecogs.com/gif.latex?%0Crac%7B%20overline%7Bx%7D_%7B1%7D%20%20-%20%20%20overline%7Bx%7D_%7B2%7D%20%7D%7B%20%20qrt%7B%0Crac%20%7B%7D%7B%7D%7D%7D%20%20%20%20%08ig(1%08ig))
