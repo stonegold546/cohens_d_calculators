@@ -1,16 +1,16 @@
-DF = 1
-CONFINT = 0.95
-TNCP_MAX = 37.62
-EMPTY_MESSAGE = ''.freeze
-URL = 'https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json'.freeze
-LL = 'Lower.Limit'.freeze
-UL = 'Upper.Limit'.freeze
-WARNING = 'The observed noncentrality parameter of the '\
-  'noncentral t-distribution (t-statistic) has exceeded 37.62 in '\
-  "magnitude (R's limitation foraccurate probabilities from the "\
-  "noncentral t-distribution) in the function's iterative search "\
-  'for the appropriate value(s). The confidence intervals may '\
-  'be fine, but might be inaccurate; use caution.'.freeze
+# DF = 1
+# CONFINT = 0.95
+# TNCP_MAX = 37.62
+# EMPTY_MESSAGE = ''.freeze
+# URL = 'https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json'.freeze
+# LL = 'Lower.Limit'.freeze
+# UL = 'Upper.Limit'.freeze
+# WARNING = 'The observed noncentrality parameter of the '\
+#   'noncentral t-distribution (t-statistic) has exceeded 37.62 in '\
+#   "magnitude (R's limitation foraccurate probabilities from the "\
+#   "noncentral t-distribution) in the function's iterative search "\
+#   'for the appropriate value(s). The confidence intervals may '\
+#   'be fine, but might be inaccurate; use caution.'.freeze
 
 # Cohen's d calculator for One-sample t test
 class CohenDz

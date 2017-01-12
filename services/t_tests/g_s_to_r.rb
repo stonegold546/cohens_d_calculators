@@ -1,7 +1,7 @@
-# Convert d_s to r
-class DsToR
+# Convert g_s to r
+class GsToR
   def initialize(data)
-    @d_s = data.d_s.to_f
+    @g_s = data.g_s.to_f
     @n1 = data.n1.to_f
     @n2 = data.n2.to_f
     @big_n = @n1 + @n2
@@ -10,7 +10,7 @@ class DsToR
   def call
     result = {
       r: internal_call, inputs: {
-        'Cohen\'s d' => @d_s, 'n1' => @n1, 'n2' => @n2
+        'Hedges\' g' => @g_s, 'n1' => @n1, 'n2' => @n2
       }
     }
     Oj.dump result
@@ -18,7 +18,7 @@ class DsToR
 
   def internal_call
     second_part_denum = (@big_n * @big_n - 2 * @big_n) / (@n1 * @n2)
-    denum = Math.sqrt(@d_s * @d_s + second_part_denum)
-    @d_s / denum
+    denum = Math.sqrt(@g_s * @g_s + second_part_denum)
+    @g_s / denum
   end
 end
