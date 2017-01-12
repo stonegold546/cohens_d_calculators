@@ -1,0 +1,2 @@
+heroku/ruby
+http://github.com/virtualstaticvoid/heroku-buildpack-r.git#cedar-14-chroot
