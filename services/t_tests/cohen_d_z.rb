@@ -1,21 +1,23 @@
 DF = 1
 CONFINT = 0.95
-WARNING = { warning: 'The observed noncentrality parameter of the noncentral '\
-  "t-distribution has exceeded 37.62 in magnitude (R's limitation for "\
-  'accurate probabilities from the noncentral t-distribution) in the '\
-  "function's iterative search for the appropriate value(s). The confidence "\
-  'intervals may be fine, but might be inaccurate; use caution.' }.freeze
+TNCP_MAX = 37.62
+EMPTY_MESSAGE = ''.freeze
+WARNING = 'The observed noncentrality parameter of the '\
+  'noncentral t-distribution (t-statistic) has exceeded 37.62 in '\
+  "magnitude (R's limitation foraccurate probabilities from the "\
+  "noncentral t-distribution) in the function's iterative search "\
+  'for the appropriate value(s). The confidence intervals may '\
+  'be fine, but might be inaccurate; use caution.'.freeze
 
 # Cohen's d calculator for One-sample t test
 class CohenDz
   def initialize(one_sample)
+    @inputs = one_sample.attributes
     @sample_mean = one_sample.sample_mean.to_f
     @pop_mean = one_sample.pop_mean.to_f
     @sample_sd = one_sample.sample_sd.to_f
     @n = one_sample.n.to_f
     @t = calc_t
-    @inputs =
-      @t > 37.62 ? one_sample.attributes.merge(WARNING) : one_sample.attributes
   end
 
   def call
@@ -25,6 +27,7 @@ class CohenDz
     npci = non_par_conf_int
     result = { cohen_dz: cohen_dz, lower_limit: npci[:lower],
                upper_limit: npci[:upper], inputs: @inputs }
+    result = warning(result)
     Oj.dump result
   end
 
@@ -45,5 +48,10 @@ class CohenDz
     mean_d = @sample_mean - @pop_mean
     standard_error = @sample_sd / Math.sqrt(@n)
     mean_d / standard_error
+  end
+
+  def warning(result)
+    warning_message = @t > TNCP_MAX ? WARNING : EMPTY_MESSAGE
+    result.merge(warning: warning_message)
   end
 end

@@ -14,5 +14,5 @@ class OneSample
   validates_numericality_of :sample_mean
   validates_numericality_of :pop_mean
   validates_numericality_of :sample_sd, greater_than: 0
-  validates_numericality_of :n, greater_than: 1
+  validates_numericality_of :n, greater_than: 1, allow_nil: true
 end

@@ -24,17 +24,23 @@ function getOneSample () {
       var data = JSON.parse(myResult.responseText)
       var names = Object.keys(data)
       for (var i = 0; i < names.length; i++) {
-        if (names[i] !== ':inputs') {
+        if (names[i] === ':inputs') {
+          result[names[i]].innerText = 'Inputs: '.concat(JSON.stringify(data[names[i]]))
+        } else if (names[i] === ':warning') {
+          result[names[i]].innerText = data[names[i]]
+        } else {
           result[names[i]].value = data[names[i]]
         }
       }
     } else if (myResult.readyState === 4 && myResult.status === 400) {
       for (i = 0; i < result.length; i++) {
         result[i].value = ''
+        result[i].innerText = ''
       }
     } else {
       for (i = 0; i < result.length; i++) {
         result[i].value = ''
+        result[i].innerText = ''
       }
     }
   }
