@@ -20,15 +20,22 @@ function getOneSample () {
   myResult.send()
   myResult.onreadystatechange = function () {
     var result = document.getElementsByClassName('result-one-sample')
-    var innerIdx = 0
     if (myResult.readyState === 4 && myResult.status === 200) {
       var data = JSON.parse(myResult.responseText)
-      var cohenDz = ':cohen_dz'
-      result[innerIdx].value = data[cohenDz]
+      var names = Object.keys(data)
+      for (var i = 0; i < names.length; i++) {
+        if (names[i] !== ':inputs') {
+          result[names[i]].value = data[names[i]]
+        }
+      }
     } else if (myResult.readyState === 4 && myResult.status === 400) {
-      result[innerIdx].value = ''
+      for (i = 0; i < result.length; i++) {
+        result[i].value = ''
+      }
     } else {
-      result[innerIdx].value = ''
+      for (i = 0; i < result.length; i++) {
+        result[i].value = ''
+      }
     }
   }
 }
