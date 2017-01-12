@@ -24,11 +24,12 @@ class CohenDz
     cohen_dz = (@sample_mean - @pop_mean) / @sample_sd
     result = { cohen_dz: cohen_dz, inputs: @inputs }
     return Oj.dump result if @t.zero? || @n.zero?
-    npci = non_par_conf_int
-    result = { cohen_dz: cohen_dz, lower_limit: npci[:lower],
-               upper_limit: npci[:upper], inputs: @inputs }
-    result = warning(result)
     Oj.dump result
+    # npci = non_par_conf_int
+    # result = { cohen_dz: cohen_dz, lower_limit: npci[:lower],
+    #            upper_limit: npci[:upper], inputs: @inputs }
+    # result = warning(result)
+    # Oj.dump result
   end
 
   def non_par_conf_int
