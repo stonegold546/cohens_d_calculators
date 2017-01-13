@@ -1,7 +1,7 @@
 /* jslint browser:true */
 /* jslint forin:true */
 /* global XMLHttpRequest */
-/* exported oneSampleBtnClick */
+/* eslint no-unused-vars: */
 
 var inputsOneSample = document.getElementsByClassName('data-one-sample')
 var inputsIndSample = document.getElementsByClassName('data-ind-sample')
@@ -26,7 +26,7 @@ function getOneSample () {
       var names = Object.keys(data)
       for (var i = 0; i < names.length; i++) {
         if (names[i] === ':inputs') {
-          result[names[i]].innerText = 'Inputs: '.concat(JSON.stringify(data[names[i]]))
+          result[names[i]].innerText = 'You entered: '.concat(JSON.stringify(data[names[i]], null, 1))
         } else if (names[i] === ':warning') {
           result[names[i]].innerText = data[names[i]]
         } else {
@@ -65,7 +65,7 @@ function getIndSample () {
       var names = Object.keys(data)
       for (var i = 0; i < names.length; i++) {
         if (names[i] === ':inputs') {
-          result[names[i]].innerText = 'Inputs: '.concat(JSON.stringify(data[names[i]]))
+          result[names[i]].innerText = 'You entered: '.concat(JSON.stringify(data[names[i]], null, 1))
         } else if (names[i] === ':warning') {
           result[names[i]].innerText = data[names[i]]
         } else {
@@ -164,8 +164,8 @@ function oneSampleBtnClick () {
       var result = document.getElementsByClassName('result-one-sample')
       inputs.innerHTML = ''
       warning.innerHTML = 'For '.concat(inputOne.name, ': ', inputOne.validationMessage)
-      for (var j = 0; j < result.length; j++) {
-        result[j].value = ''
+      for (var i = 0; i < result.length; i++) {
+        result[i].value = ''
       }
       return
     }
@@ -173,9 +173,22 @@ function oneSampleBtnClick () {
   getOneSample()
 }
 
-for (idx = 0; idx < inputsIndSample.length; idx += 1) {
-  var inputInd = inputsIndSample[idx]
-  inputInd.addEventListener('input', getIndSample)
+function indSampleBtnClick () {
+  for (idx = 0; idx < inputsIndSample.length; idx += 1) {
+    var inputInd = inputsIndSample[idx]
+    if (inputInd.checkValidity() === false) {
+      var inputs = document.getElementById('ind_sample_inputs')
+      var warning = document.getElementById('ind_sample_warning')
+      var result = document.getElementsByClassName('result-ind-sample')
+      inputs.innerHTML = ''
+      warning.innerHTML = 'For '.concat(inputInd.name, ': ', inputInd.validationMessage)
+      for (var i = 0; i < result.length; i++) {
+        result[i].value = ''
+      }
+      return
+    }
+  }
+  getIndSample()
 }
 
 for (idx = 0; idx < inputsRmSample.length; idx += 1) {
