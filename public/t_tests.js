@@ -1,6 +1,7 @@
 /* jslint browser:true */
 /* jslint forin:true */
 /* global XMLHttpRequest */
+/* exported oneSampleBtnClick */
 
 var inputsOneSample = document.getElementsByClassName('data-one-sample')
 var inputsIndSample = document.getElementsByClassName('data-ind-sample')
@@ -153,9 +154,23 @@ function getAvSample () {
 
 var idx
 
-for (idx = 0; idx < inputsOneSample.length; idx += 1) {
-  var inputOne = inputsOneSample[idx]
-  inputOne.addEventListener('input', getOneSample)
+function oneSampleBtnClick () {
+  for (idx = 0; idx < inputsOneSample.length; idx += 1) {
+    var inputOne = inputsOneSample[idx]
+    if (inputOne.name === 'n' && inputOne.value === '') {
+    } else if (inputOne.checkValidity() === false) {
+      var inputs = document.getElementById('one_sample_inputs')
+      var warning = document.getElementById('one_sample_warning')
+      var result = document.getElementsByClassName('result-one-sample')
+      inputs.innerHTML = ''
+      warning.innerHTML = 'For '.concat(inputOne.name, ': ', inputOne.validationMessage)
+      for (var j = 0; j < result.length; j++) {
+        result[j].value = ''
+      }
+      return
+    }
+  }
+  getOneSample()
 }
 
 for (idx = 0; idx < inputsIndSample.length; idx += 1) {
