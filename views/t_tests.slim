@@ -6,7 +6,7 @@ markdown:
 table cellpadding='10' align='center'
   tr align='center'
     th Inputs
-    th valign='bottom' rowspan='2' Results
+    th valign='bottom' rowspan='2' Results (95% CI)
   tr
     td align='right'
       | Sample mean: 
@@ -83,7 +83,7 @@ div
 
 markdown:
 
-  ### Results
+  ### Results (95% CI)
 
 table cellpadding='10' align='center'
   tr align='right'
@@ -100,14 +100,6 @@ table cellpadding='10' align='center'
     td
       | Upper limit on <i>g</i>: 
       input type='number' class='result-ind-sample' name=':upper_limit_g' readonly='true' tabindex=-1
-
-/ tr align='right'
-/   td
-/     | Hedges's <i>g</i>: 
-/     input type='number' class='result-ind-sample' name=':hedges_gs' readonly='true' tabindex=-1
-/   td
-/     | Standard error of <i>g</i>: 
-/     input type='number' class='result-ind-sample' name=':se_g' readonly='true' tabindex=-1
 
 markdown:
   ---
@@ -145,6 +137,21 @@ table cellpadding='10' align='center'
     td
       | Sample size: 
       input type='number' class='data-rm-sample data-av-sample' name='n_2' required='false' tabindex=3 min=2 placeholder='For Hedges g only; > 1' step='1'
+  tr
+    td align='center' colspan=2
+      button type='submit' id='dep_sample_btn' name='dep_sample_btn' tabindex=3 onClick='depSampleBtnClick()' Calculate
+
+table style="border:1px solid black"
+  tr
+    th style="border:1px solid black" Average
+    th style="border:1px solid black" Repeated measures
+  tr
+    td style="border:1px solid black"
+      p  align='center' class='result-av-sample' id='av_sample_inputs' name=':inputs'
+      p  align='center' class='result-av-sample' id='av_sample_warning' name=':warning'
+    td style="border:1px solid black"
+      p  align='center' class='result-rm-sample' id='rm_sample_inputs' name=':inputs'
+      p  align='center' class='result-rm-sample' id='rm_sample_warning' name=':warning'
 
 markdown:
 

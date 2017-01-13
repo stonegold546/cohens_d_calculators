@@ -103,17 +103,23 @@ function getRmSample () {
       var data = JSON.parse(myResult.responseText)
       var names = Object.keys(data)
       for (var i = 0; i < names.length; i++) {
-        if (names[i] !== ':inputs') {
+        if (names[i] === ':inputs') {
+          result[names[i]].innerText = 'You entered: '.concat(JSON.stringify(data[names[i]], null, 1))
+        } else if (names[i] === ':warning') {
+          result[names[i]].innerText = data[names[i]]
+        } else {
           result[names[i]].value = data[names[i]]
         }
       }
     } else if (myResult.readyState === 4 && myResult.status === 400) {
       for (i = 0; i < result.length; i++) {
         result[i].value = ''
+        result[i].innerText = ''
       }
     } else {
       for (i = 0; i < result.length; i++) {
         result[i].value = ''
+        result[i].innerText = ''
       }
     }
   }
@@ -136,17 +142,23 @@ function getAvSample () {
       var data = JSON.parse(myResult.responseText)
       var names = Object.keys(data)
       for (var i = 0; i < names.length; i++) {
-        if (names[i] !== ':inputs') {
+        if (names[i] === ':inputs') {
+          result[names[i]].innerText = 'You entered: '.concat(JSON.stringify(data[names[i]], null, 1))
+        } else if (names[i] === ':warning') {
+          result[names[i]].innerText = data[names[i]]
+        } else {
           result[names[i]].value = data[names[i]]
         }
       }
     } else if (myResult.readyState === 4 && myResult.status === 400) {
       for (i = 0; i < result.length; i++) {
         result[i].value = ''
+        result[i].innerText = ''
       }
     } else {
       for (i = 0; i < result.length; i++) {
         result[i].value = ''
+        result[i].innerText = ''
       }
     }
   }
@@ -191,12 +203,45 @@ function indSampleBtnClick () {
   getIndSample()
 }
 
-for (idx = 0; idx < inputsRmSample.length; idx += 1) {
-  var inputRm = inputsRmSample[idx]
-  inputRm.addEventListener('input', getRmSample)
+function depSampleBtnClick () {
+  doAv()
+  doRm()
 }
 
-for (idx = 0; idx < inputsAvSample.length; idx += 1) {
-  var inputAv = inputsAvSample[idx]
-  inputAv.addEventListener('input', getAvSample)
+function doAv () {
+  for (idx = 0; idx < inputsAvSample.length; idx += 1) {
+    var inputOne = inputsAvSample[idx]
+    if ((inputOne.name === 'n_1' || inputOne.name === 'n_2') && inputOne.value === '') {
+    } else if (inputOne.checkValidity() === false) {
+      var inputs = document.getElementById('av_sample_inputs')
+      var warning = document.getElementById('av_sample_warning')
+      var result = document.getElementsByClassName('result-av-sample')
+      inputs.innerHTML = ''
+      warning.innerHTML = 'For '.concat(inputOne.name, ': ', inputOne.validationMessage)
+      for (var i = 0; i < result.length; i++) {
+        result[i].value = ''
+      }
+      return
+    }
+  }
+  getAvSample()
+}
+
+function doRm () {
+  for (idx = 0; idx < inputsRmSample.length; idx += 1) {
+    var inputOne = inputsRmSample[idx]
+    if ((inputOne.name === 'n_1' || inputOne.name === 'n_2') && inputOne.value === '') {
+    } else if (inputOne.checkValidity() === false) {
+      var inputs = document.getElementById('rm_sample_inputs')
+      var warning = document.getElementById('rm_sample_warning')
+      var result = document.getElementsByClassName('result-rm-sample')
+      inputs.innerHTML = ''
+      warning.innerHTML = 'For '.concat(inputOne.name, ': ', inputOne.validationMessage)
+      for (var i = 0; i < result.length; i++) {
+        result[i].value = ''
+      }
+      return
+    }
+  }
+  getRmSample()
 }
