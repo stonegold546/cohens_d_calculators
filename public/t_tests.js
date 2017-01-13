@@ -26,7 +26,7 @@ function getOneSample () {
       var names = Object.keys(data)
       for (var i = 0; i < names.length; i++) {
         if (names[i] === ':inputs') {
-          result[names[i]].innerText = 'You entered: '.concat(JSON.stringify(data[names[i]], null, 1))
+          result[names[i]].innerText = 'Entered values: '.concat(JSON.stringify(data[names[i]], null, 1))
         } else if (names[i] === ':warning') {
           result[names[i]].innerText = data[names[i]]
         } else {
@@ -65,7 +65,7 @@ function getIndSample () {
       var names = Object.keys(data)
       for (var i = 0; i < names.length; i++) {
         if (names[i] === ':inputs') {
-          result[names[i]].innerText = 'You entered: '.concat(JSON.stringify(data[names[i]], null, 1))
+          result[names[i]].innerText = 'Entered values: '.concat(JSON.stringify(data[names[i]], null, 1))
         } else if (names[i] === ':warning') {
           result[names[i]].innerText = data[names[i]]
         } else {
@@ -104,7 +104,7 @@ function getRmSample () {
       var names = Object.keys(data)
       for (var i = 0; i < names.length; i++) {
         if (names[i] === ':inputs') {
-          result[names[i]].innerText = 'You entered: '.concat(JSON.stringify(data[names[i]], null, 1))
+          result[names[i]].innerText = 'Entered values: '.concat(JSON.stringify(data[names[i]], null, 1))
         } else if (names[i] === ':warning') {
           result[names[i]].innerText = data[names[i]]
         } else {
@@ -143,7 +143,7 @@ function getAvSample () {
       var names = Object.keys(data)
       for (var i = 0; i < names.length; i++) {
         if (names[i] === ':inputs') {
-          result[names[i]].innerText = 'You entered: '.concat(JSON.stringify(data[names[i]], null, 1))
+          result[names[i]].innerText = 'Entered values: '.concat(JSON.stringify(data[names[i]], null, 1))
         } else if (names[i] === ':warning') {
           result[names[i]].innerText = data[names[i]]
         } else {
