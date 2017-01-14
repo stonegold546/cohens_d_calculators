@@ -245,3 +245,12 @@ function doRm () {
   }
   getRmSample()
 }
+
+function clearInputs (className) {
+  var inputs = document.getElementsByClassName(className)
+  for (var i = 0; i < inputs.length; i++) {
+    var input = inputs[i]
+    if (i === 0) input.focus()
+    input.value = ''
+  }
+}
