@@ -4,7 +4,7 @@ Cohen's d calculator for ESQREM 6641 class
 
 ## Formulae
 
-The formulae for estimates for the Cohen's _d_ family of effect sizes were obtained from Lakens (2013). The R package MBESS (Kelley, 2013) is used to compute confidence intervals via the [Open CPU API](https://www.opencpu.org/api.html).
+The formulae for estimates for the Cohen's _d_ family of effect sizes were obtained from Lakens (2013). The R package MBESS (Kelley, 2007) is used to compute confidence intervals via the [Open CPU API](https://www.opencpu.org/api.html).
 
 #### One-sample t-test
 
