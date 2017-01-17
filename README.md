@@ -24,7 +24,7 @@ where _M_ is the sample mean, ![equation](http://latex.codecogs.com/gif.latex?%5
 
 <!-- g to r -->
 
-![equation](http://latex.codecogs.com/gif.latex?r=%20%5Cfrac%7Bd%7D%7B%20%5Csqrt%7B%20d%5E%7B2%7D%20+%20%20%5Cfrac%7BN%5E%7B2%7D-2N%7D%7Bn_%7B1%7Dn_%7B2%7D%7D%20%7D%20%7D)
+![equation](http://latex.codecogs.com/gif.latex?r=%20%5Cfrac%7Bg%7D%7B%20%5Csqrt%7B%20g%5E%7B2%7D%20+%20%20%5Cfrac%7BN%5E%7B2%7D-2N%7D%7Bn_%7B1%7Dn_%7B2%7D%7D%20%7D%20%7D)
 
 ## References
 
