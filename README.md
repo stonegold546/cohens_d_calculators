@@ -22,9 +22,13 @@ where _M_ is the sample mean, ![equation](http://latex.codecogs.com/gif.latex?%5
 
 ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BHedges'%7D%5C%20g%20=%20%5Ctextrm%7BCohen's%7D%5C%20d%20%5Ctimes%20%20%5Cbig(1%20-%20%20%5Cfrac%7B3%7D%7B4(%20n_%7B1%7D%20+%20n_%7B2%7D%20)%20-%209%20%7D%20%5Cbig))
 
-<!-- %20%5C%20%20%5C%20%5Cbig(2%5Cbig) -->
+<!-- Conversion from g to r -->
+
+![equation](http://latex.codecogs.com/gif.latex?r=%20%5Cfrac%7Bd%7D%7B%20%5Csqrt%7B%20d%5E%7B2%7D%20+%20%20%5Cfrac%7BN%5E%7B2%7D-2N%7D%7Bn_%7B1%7Dn_%7B2%7D%7D%20%7D%20%7D)
 
 ## References
 
 - Kelley, K. (2007). Methods for the Behavioral, Educational, and Social Sciences: An R package. Behavior Research Methods, 39(4), 979–984. https://doi.org/10.3758/BF03192993
 - Lakens, D. (2013). Calculating and reporting effect sizes to facilitate cumulative science: a practical primer for t-tests and ANOVAs. Frontiers in Psychology, 4, 863. https://doi.org/10.3389/fpsyg.2013.00863
+
+<!-- %20%5C%20%20%5C%20%5Cbig(2%5Cbig) -->
