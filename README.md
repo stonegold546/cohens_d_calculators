@@ -4,7 +4,7 @@ Cohen's d calculator for ESQREM 6641 class
 
 ## Formulae
 
-The formulae for estimates for the Cohen's _d_ family of effect sizes were obtained from Lakens (2013). The R package MBESS (Kelley, 2013) is used to compute confidence intervals via the [Open CPU API](https://www.opencpu.org/).
+The formulae for estimates for the Cohen's _d_ family of effect sizes were obtained from Lakens (2013). The R package MBESS (Kelley, 2013) is used to compute confidence intervals via the [Open CPU API](https://www.opencpu.org/api.html).
 
 #### One-sample t-test
 
@@ -16,7 +16,7 @@ where _M_ is the sample mean, ![equation](http://latex.codecogs.com/gif.latex?%5
 
 <!-- Cohen's d -->
 
-![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d%20=%20%5Cfrac%7B%20%5Coverline%7Bx%7D_%7B1%7D%20%20-%20%20%20%5Coverline%7Bx%7D_%7B2%7D%20%7D%7B%20%5Csqrt%7B%5Cfrac%20%7Bns.sd%7D%7Bns%7D%7D%7D)
+![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d%20=%20%5Cfrac%7B%20%5Coverline%7Bx%7D_%7B1%7D%20-%20%5Coverline%7Bx%7D_%7B2%7D%20%7D%7B%20%5Csqrt%7B%5Cfrac%20%7B(n_%7B1%7D%20-%201)%20SD%5E%7B2%7D_%7B1%7D%20+%20(n_%7B2%7D%20-%201)%20SD%5E%7B2%7D_%7B2%7D%20%7D%7Bn_%7B1%7D%20+%20n_%7B2%7D%20-%202%7D%7D%7D)
 
 <!-- Hedges' g -->
 
