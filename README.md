@@ -28,7 +28,7 @@ where _M_ is the sample mean, ![equation](http://latex.codecogs.com/gif.latex?%5
 
 ## References
 
-- Kelley, K. (2007). Methods for the Behavioral, Educational, and Social Sciences: An R package. Behavior Research Methods, 39(4), 979–984. https://doi.org/10.3758/BF03192993
-- Lakens, D. (2013). Calculating and reporting effect sizes to facilitate cumulative science: a practical primer for t-tests and ANOVAs. Frontiers in Psychology, 4, 863. https://doi.org/10.3389/fpsyg.2013.00863
+- Kelley, K. (2007). Methods for the Behavioral, Educational, and Social Sciences: An R package. _Behavior Research Methods, 39_(4), 979–984. https://doi.org/10.3758/BF03192993
+- Lakens, D. (2013). Calculating and reporting effect sizes to facilitate cumulative science: a practical primer for t-tests and ANOVAs. _Frontiers in Psychology, 4_(863). https://doi.org/10.3389/fpsyg.2013.00863
 
 <!-- %20%5C%20%20%5C%20%5Cbig(2%5Cbig) -->
