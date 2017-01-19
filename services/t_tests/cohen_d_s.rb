@@ -52,7 +52,7 @@ class CohenDs
     t * Math.sqrt(denum)
   end
 
-  define_method('j') { HedgesCorrection.new(@n1, @n2).call }
+  define_method('j') { HedgesCorrection.new(@n1 + @n2, DF + DF).call }
 
   def convert_data(g_s)
     { g_s: g_s, n1: @n1, n2: @n2 }

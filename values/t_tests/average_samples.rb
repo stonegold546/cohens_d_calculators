@@ -1,8 +1,6 @@
 require 'virtus'
 require 'active_model'
 
-NUM_SDS = 2
-
 # Value object for two-samples t-tests (paired, averages)
 class AverageSamples
   include Virtus.model
@@ -24,9 +22,5 @@ class AverageSamples
 
   def mean_d
     mean1.to_f - mean2.to_f
-  end
-
-  def avg_sd
-    (sd_1.to_f + sd_2.to_f) / NUM_SDS
   end
 end

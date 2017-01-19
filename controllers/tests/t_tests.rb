@@ -1,3 +1,4 @@
+MIN = 0
 DF = 1
 CONFINT = 0.95
 TNCP_MAX = 37.62
