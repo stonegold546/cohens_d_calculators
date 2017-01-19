@@ -12,10 +12,10 @@ class CohenDav
 
   def call
     d_av = cohen_d
-    result = { cohen_dav: d_av, inputs: @inputs }
-    return Oj.dump(result) if @n_pairs.zero?
+    # result = { cohen_dav: d_av, inputs: @inputs }
+    # return Oj.dump(result) if @n_pairs.zero?
     g_av = d_av * HedgesCorrection.new(@n_pairs, DF).call
-    result = { cohen_dav: d_av, hedges_gav: g_av, inputs: @inputs }
+    result = { hedges_gav: g_av, inputs: @inputs }
     Oj.dump result
   end
 

@@ -211,8 +211,7 @@ function depSampleBtnClick () {
 function doAv () {
   for (idx = 0; idx < inputsAvSample.length; idx += 1) {
     var inputOne = inputsAvSample[idx]
-    if (inputOne.name === 'n_pairs' && inputOne.value === '') {
-    } else if (inputOne.checkValidity() === false) {
+    if (inputOne.checkValidity() === false) {
       var inputs = document.getElementById('av_sample_inputs')
       var warning = document.getElementById('av_sample_warning')
       var result = document.getElementsByClassName('result-av-sample')
@@ -230,8 +229,7 @@ function doAv () {
 function doRm () {
   for (idx = 0; idx < inputsRmSample.length; idx += 1) {
     var inputOne = inputsRmSample[idx]
-    if (inputOne.name === 'n_pairs' && inputOne.value === '') {
-    } else if (inputOne.checkValidity() === false) {
+    if (inputOne.checkValidity() === false) {
       var inputs = document.getElementById('rm_sample_inputs')
       var warning = document.getElementById('rm_sample_warning')
       var result = document.getElementsByClassName('result-rm-sample')
@@ -254,3 +252,5 @@ function clearInputs (className) {
     input.value = ''
   }
 }
+
+// if (inputOne.name === 'n_pairs' && inputOne.value === '') {

@@ -30,8 +30,8 @@ class CohenDs
   def non_par_conf_int
     response = HTTParty.post URL, body: { ncp: @t, df: @n1 + @n2 - DF - DF }
     result = Oj.load response.body
-    lower = calc_g(result[LL][0])
-    upper = calc_g(result[UL][0])
+    lower = calc_d(result[LL][0])
+    upper = calc_d(result[UL][0])
     { lower: lower, upper: upper }
   end
 
@@ -47,7 +47,7 @@ class CohenDs
     d / Math.sqrt(denum)
   end
 
-  def calc_g(t)
+  def calc_d(t)
     denum = (1 / @n1) + (1 / @n2)
     t * Math.sqrt(denum)
   end

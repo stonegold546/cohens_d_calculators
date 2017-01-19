@@ -145,7 +145,7 @@ table cellpadding='10' align='center'
   tr align='right'
     td
       | Number of pairs: 
-      input type='number' class='data-rm-sample data-av-sample' name='n_pairs' required='false' tabindex=3 min=2 placeholder='For Hedges g only; > 1' step='1'
+      input type='number' class='data-rm-sample data-av-sample' name='n_pairs' required='true' tabindex=3 min=2 placeholder='Must be > 1' step='1'
     td
       | <i>r</i>: 
       input type='number' class='data-rm-sample' name='r' required='false' tabindex=3 min='-1' max='1' placeholder='For repeated measures; -1 < 1' step='any' style="width: 200px"
@@ -169,26 +169,23 @@ table style="border:1px solid black"
 
 markdown:
 
-  ### Results
+  ### Results (95% CI)
 
 table cellpadding='10' align='center'
-  tr
-    th Using <i>average</i> of standard deviations
-    th As <i>repeated measures</i>
   tr align='right'
     td
-      | Cohen's <i>d</i>: 
-      input type='number' class='result-av-sample' name=':cohen_dav' readonly='true' tabindex=-1
-    td
-      | Cohen's <i>d</i>: 
-      input type='number' class='result-rm-sample' name=':cohen_drm' readonly='true' tabindex=-1
-  tr align='right'
-    td
-      | Hedges's <i>g</i>: 
+      | Hedges's <i>g</i> (<i>average</i>): 
       input type='number' class='result-av-sample' name=':hedges_gav' readonly='true' tabindex=-1
     td
-      | Hedges's <i>g</i>: 
+      | Lower limit on <i>d</i>: 
+      input type='number' class='result-rm-sample' name=':lower_limit_d' readonly='true' tabindex=-1
+  tr align='right'
+    td
+      | Hedges's <i>g</i> (<i>repeated measures</i>): 
       input type='number' class='result-rm-sample' name=':hedges_grm' readonly='true' tabindex=-1
+    td
+      | Upper limit on <i>d</i>: 
+      input type='number' class='result-rm-sample' name=':upper_limit_d' readonly='true' tabindex=-1
   tr
     td align='center' colspan=2
       button type='reset' tabindex=3 onClick="clearInputs('result-av-sample');clearInputs('result-rm-sample')" Clear
@@ -197,3 +194,14 @@ markdown:
   ___
 
 script src='t_tests.js'
+
+/ tr
+/   th Using <i>average</i> of standard deviations
+/   th As <i>repeated measures</i>
+/ tr align='right'
+/   td
+/     | Cohen's <i>d</i>: 
+/     input type='number' class='result-av-sample' name=':cohen_dav' readonly='true' tabindex=-1
+/   td
+/     | Cohen's <i>d</i>: 
+/     input type='number' class='result-rm-sample' name=':cohen_drm' readonly='true' tabindex=-1
