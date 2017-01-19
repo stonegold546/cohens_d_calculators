@@ -12,17 +12,16 @@ class CohenDs
   end
 
   def call
-    # d_s = cohen_d
     # se_d_s = se_d(d_s)
     # se_g_s = se_d_s * j
     # cohen_ds: d_s, se_d: se_d_s, se_g: se_g_s
-    g_s = cohen_d * j
-    @t = calc_t(g_s)
-    data = convert_data(g_s)
-    data = ConvertGsToR.new(data)
+    d_s = cohen_d
+    g_s = d_s * j
+    @t = calc_t(d_s) # Calculate interval on d not g
+    data = ConvertGsToR.new convert_data(g_s)
     npci = non_par_conf_int
     result = warning(
-      hedges_gs: g_s, lower_limit_g: npci[:lower], upper_limit_g: npci[:upper],
+      hedges_gs: g_s, lower_limit_d: npci[:lower], upper_limit_d: npci[:upper],
       r: GsToR.new(data).internal_call, inputs: @inputs
     )
     Oj.dump result
@@ -43,9 +42,9 @@ class CohenDs
     (@mean1 - @mean2) / pooled_sd
   end
 
-  def calc_t(g)
+  def calc_t(d)
     denum = (1 / @n1) + (1 / @n2)
-    g / Math.sqrt(denum)
+    d / Math.sqrt(denum)
   end
 
   def calc_g(t)
