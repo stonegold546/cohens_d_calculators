@@ -7,21 +7,16 @@ class CohenDav
     @mean_d = average_samples.mean_d.to_f
     @sd1 = average_samples.sd_1.to_f
     @sd2 = average_samples.sd_2.to_f
-    @n1 = average_samples.n_1.to_f
-    @n2 = average_samples.n_2.to_f
+    @n_pairs = average_samples.n_pairs.to_f
   end
 
   def call
     d_av = cohen_d
     result = { cohen_dav: d_av, inputs: @inputs }
-    return Oj.dump(result) if @n1.zero? || @n2.zero?
-    g_av = d_av * HedgesCorrection.new(min(@n1, @n2), DF).call
+    return Oj.dump(result) if @n_pairs.zero?
+    g_av = d_av * HedgesCorrection.new(@n_pairs, DF).call
     result = { cohen_dav: d_av, hedges_gav: g_av, inputs: @inputs }
     Oj.dump result
-  end
-
-  def min(a, b)
-    [a, b].minmax[MIN]
   end
 
   def cohen_d
