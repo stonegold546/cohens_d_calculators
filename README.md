@@ -52,13 +52,13 @@ _d_ is converted to _t_ using the formula:
 
 The following Open URI API call is made to get the confidence intervals around _t_ using the noncentral method:
 
-> <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json>, body: { ncp: _t_, df: ![equation](http://latex.codecogs.com/gif.latex?n_%7B1%7D) + ![equation](http://latex.codecogs.com/gif.latex?n_%7B2%7D) - 2 }
+> <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json>, body: { ncp: _t_, df: ![equation](http://latex.codecogs.com/gif.latex?n_%7B1%7D+n_%7B2%7D-2) }
 
 It uses the `conf.limits.nct` function within the R `MBESS` package
 
 The lower and upper limits of _t_ obtained from the `conf.limits.nct` function are converted back to _d_ using the formula:
 
-![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d%20=%5Cfrac%7Bt%7D%7B%20%5Csqrt%7Bn%7D%7D)
+![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d%20=t%5Ctimes%5Csqrt%7B%20%5Cfrac%7B1%7D%7Bn_%7B1%7D%7D+%5Cfrac%7B1%7D%7Bn_%7B2%7D%7D%7D)
 
 ## References
 
