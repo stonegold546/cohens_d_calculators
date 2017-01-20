@@ -32,13 +32,23 @@ _d_ is converted to _t_. An Open URI API call is made using _t_ as an estimate o
 
 #### Independent-samples t-test
 
+- ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B1%7D%20) : mean of group 1
+- ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B2%7D%20) : mean of group 2
+- ![equation](http://latex.codecogs.com/gif.latex?n_%7B1%7D) : sample size of group 1
+- ![equation](http://latex.codecogs.com/gif.latex?n_%7B2%7D) : sample size of group 2
+- _SD_ : standard deviation of group 1
+- _SD_ : standard deviation of group 2
+- _N_ : sum of sample size of group 1 and sample size of group 2
+- _t_ : estimate of noncentrality parameter used to compute confidence intervals
+- _g_ : Hedges' _g_
+
 <!-- Cohen's d -->
 
  ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d%20=%20%5Cfrac%7B%20%5Coverline%7Bx%7D_%7B1%7D%20-%20%5Coverline%7Bx%7D_%7B2%7D%20%7D%7B%20%5Csqrt%7B%5Cfrac%20%7B(n_%7B1%7D%20-%201)%20SD%5E%7B2%7D_%7B1%7D%20+%20(n_%7B2%7D%20-%201)%20SD%5E%7B2%7D_%7B2%7D%20%7D%7Bn_%7B1%7D%20+%20n_%7B2%7D%20-%202%7D%7D%7D)
 
-<!-- Hedges' g -->
+<!-- Hedges' g %5Ctextrm%7BHedges'%7D%5C%20 -->
 
- ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BHedges'%7D%5C%20g%20=%20%5Ctextrm%7BCohen's%7D%5C%20d%20%5Ctimes%20%20%5Cbig(1%20-%20%20%5Cfrac%7B3%7D%7B4(%20n_%7B1%7D%20+%20n_%7B2%7D%20)%20-%209%20%7D%20%5Cbig))
+ ![equation](http://latex.codecogs.com/gif.latex?g%20=%20%5Ctextrm%7BCohen's%7D%5C%20d%20%5Ctimes%20%20%5Cbig(1%20-%20%20%5Cfrac%7B3%7D%7B4(%20n_%7B1%7D%20+%20n_%7B2%7D%20)%20-%209%20%7D%20%5Cbig))
 
 <!-- g to r -->
 
