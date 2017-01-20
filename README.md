@@ -52,7 +52,7 @@ _M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : popu
 
 ##### Notation:
 
-![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B1%7D%20) : mean of group 1; ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B2%7D%20) : mean of group 2; ![equation](http://latex.codecogs.com/gif.latex?n_%7B1%7D) : sample size of group 1; ![equation](http://latex.codecogs.com/gif.latex?n_%7B2%7D) : sample size of group 2; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B1%7D) : standard deviation of group 1; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B2%7D) : standard deviation of group 2; _N_ : sum of sample size of group 1 and sample size of group 2; _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda)
+![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B1%7D%20) : mean of group 1; ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B2%7D%20) : mean of group 2; ![equation](http://latex.codecogs.com/gif.latex?n_%7B1%7D) : sample size of group 1; ![equation](http://latex.codecogs.com/gif.latex?n_%7B2%7D) : sample size of group 2; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B1%7D) : standard deviation of group 1; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B2%7D) : standard deviation of group 2; _N_ : sum of sample size of group 1 and sample size of group 2; _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda); ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d_%7BLL,%20UL%7D) : Lower and upper limits on Cohen's _d_
 
 #### Paired-samples t-test
 
@@ -86,7 +86,7 @@ _M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : popu
 
 ##### Notation:
 
-![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B1%7D%20) : mean of group 1; ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B2%7D%20) : mean of group 2; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B1%7D) : standard deviation of group 1; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B2%7D) : standard deviation of group 2; ![equation](http://latex.codecogs.com/gif.latex?n_%7Bpairs%7D) : number of pairs; _r_ : correlation between group 1 and group 2; ![equation](http://latex.codecogs.com/gif.latex?S_%7B12%7D) : covariance of group 1 and group 2; _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda)
+![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B1%7D%20) : mean of group 1; ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B2%7D%20) : mean of group 2; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B1%7D) : standard deviation of group 1; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B2%7D) : standard deviation of group 2; ![equation](http://latex.codecogs.com/gif.latex?n_%7Bpairs%7D) : number of pairs; _r_ : correlation between group 1 and group 2; ![equation](http://latex.codecogs.com/gif.latex?S_%7B12%7D) : covariance of group 1 and group 2; _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda); ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d_%7BLL,%20UL%7D) : Lower and upper limits on Cohen's _d_
 
 ## References
 
