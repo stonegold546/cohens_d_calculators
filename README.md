@@ -18,9 +18,9 @@ where _M_ is the sample mean, ![equation](http://latex.codecogs.com/gif.latex?%5
 
 _d_ is converted to _t_ using the formula:
 
-![equation](http://latex.codecogs.com/gif.latex?t=%5Cfrac%7B%5Ctextrm%7BCohen's%7D%5C%20d%7D%7B%20%5Csqrt%7Bn%7D%7D)
+![equation](http://latex.codecogs.com/gif.latex?t=%5Ctextrm%7BCohen's%7D%5C%20d%5Ctimes%20%5Csqrt%7Bn%7D)
 
-The following Open URI call is made to get the confidence intervals around _t_ using the noncentral method:
+The following Open URI API call is made to get the confidence intervals around _t_ using the noncentral method:
 
 > <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json>, body: { ncp: _t_, df: _n_ - 1 }
 
