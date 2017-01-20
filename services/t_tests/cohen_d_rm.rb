@@ -33,7 +33,7 @@ class CohenDrm
   end
 
   def cohen_d
-    base = Math.sqrt(@sd1 * @sd1 + @sd2 * @sd2 - 2 * @r * @sd1 * @sd2)
+    base = Math.sqrt(@sd1 * @sd1 + @sd2 * @sd2 - 2 * @cov)
     standardization = Math.sqrt(2 * (1 - @r))
     @mean_d * standardization / base
   end
