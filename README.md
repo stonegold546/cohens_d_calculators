@@ -26,7 +26,7 @@ _t_ is calculated by converting from _d_, except for the paired-samples test. An
 
 ##### Notation:
 
-_M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : population mean; _s_ : sample standard deviation; _n_ : sample size; _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda); [!equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d_%7BLL,%20UL%7D) : Lower and upper limits on Cohen's _d_
+_M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : population mean; _s_ : sample standard deviation; _n_ : sample size; _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda); ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d_%7BLL,%20UL%7D) : Lower and upper limits on Cohen's _d_
 
 #### Independent-samples t-test
 
