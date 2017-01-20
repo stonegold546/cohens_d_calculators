@@ -22,11 +22,11 @@ _t_ is calculated by converting from _d_, except for the paired-samples test. An
 
 > <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json>, body: { ncp: _t_, df: _n_ - 1 }
 
-![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d%20=%5Cfrac%7Bt%7D%7B%20%5Csqrt%7Bn%7D%7D)
+![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d_%7BLL,%20UL%7D%20=%5Cfrac%7Bt%7D%7B%20%5Csqrt%7Bn%7D%7D)
 
 ##### Notation:
 
-_M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : population mean; _s_ : sample standard deviation; _n_ : sample size; _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda)
+_M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : population mean; _s_ : sample standard deviation; _n_ : sample size; _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda); [!equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d_%7BLL,%20UL%7D) : Lower and upper limits on Cohen's _d_
 
 #### Independent-samples t-test
 
@@ -86,7 +86,7 @@ _M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : popu
 
 ##### Notation:
 
-![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B1%7D%20) : mean of group 1; ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B2%7D%20) : mean of group 2; ![equation](http://latex.codecogs.com/gif.latex?n_%7Bpairs%7D) : number of pairs; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B1%7D) : standard deviation of group 1; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B2%7D) : standard deviation of group 2; ![equation](http://latex.codecogs.com/gif.latex?S_%7B12%7D) : covariance of groups 1 and 2; _r_ : correlation between group 1 and group 2 ; _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda)
+![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B1%7D%20) : mean of group 1; ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B2%7D%20) : mean of group 2; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B1%7D) : standard deviation of group 1; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B2%7D) : standard deviation of group 2; ![equation](http://latex.codecogs.com/gif.latex?n_%7Bpairs%7D) : number of pairs; _r_ : correlation between group 1 and group 2; ![equation](http://latex.codecogs.com/gif.latex?S_%7B12%7D) : covariance of group 1 and group 2; _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda)
 
 ## References
 
