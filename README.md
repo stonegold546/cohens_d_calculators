@@ -60,6 +60,16 @@ _M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : popu
 
 <!-- Cohen's d -->
 
+ ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d%20=%20%5Cfrac%7B%20%5Coverline%7Bx%7D_%7B1%7D%20-%20%5Coverline%7Bx%7D_%7B2%7D%20%7D%7B%20%5Csqrt%7B%5Cfrac%20%7B(n_%7B1%7D%20-%201)%20SD%5E%7B2%7D_%7B1%7D%20+%20(n_%7B2%7D%20-%201)%20SD%5E%7B2%7D_%7B2%7D%20%7D%7Bn_%7B1%7D%20+%20n_%7B2%7D%20-%202%7D%7D%7D)
+
+<!-- Hedges' g -->
+
+ ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BHedges'%7D%5C%20g%20=%20%5Ctextrm%7BCohen's%7D%5C%20d%20%5Ctimes%20%20%5Cbig(1%20-%20%20%5Cfrac%7B3%7D%7B4(%20n_%7Bpairs%7D%20-1)%20-%201%20%7D%20%5Cbig))
+
+##### Calculated using repeated measures
+
+<!-- Cohen's d -->
+
  ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d%20==%20%5Cfrac%7B%20%5Coverline%7Bx%7D_%7B1%7D%20-%20%5Coverline%7Bx%7D_%7B2%7D%20%7D%7B%20%5Csqrt%7BSD%5E%7B2%7D_%7B1%7D%20+%20SD%5E%7B2%7D_%7B2%7D%20-2%5Ctimes%20r%20%5Ctimes%20SD_%7B1%7D%20%5Ctimes%20SD_%7B2%7D%7D%7D%20%5Ctimes%20%5Csqrt%7B2(1-r)%7D)
 
 <!-- Hedges' g -->
@@ -68,9 +78,7 @@ _M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : popu
 
 ##### Notation:
 
-![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B1%7D%20) : mean of group 1; ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B2%7D%20) : mean of group 2; ![equation](http://latex.codecogs.com/gif.latex?n_%7Bpairs%7D) : number of pairs; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B1%7D) : standard deviation of group 1; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B2%7D) : standard deviation of group 2; _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda)
-
-##### Calculated using repeated measures
+![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B1%7D%20) : mean of group 1; ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B2%7D%20) : mean of group 2; ![equation](http://latex.codecogs.com/gif.latex?n_%7Bpairs%7D) : number of pairs; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B1%7D) : standard deviation of group 1; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B2%7D) : standard deviation of group 2; _N_ : sum of sample size of group 1 and sample size of group 2; _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda)
 
 ## References
 
