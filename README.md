@@ -60,12 +60,9 @@ Notation:
 
 Notation:
 
-- ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B1%7D%20) : mean of group 1
-- ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B2%7D%20) : mean of group 2
-- ![equation](http://latex.codecogs.com/gif.latex?n_%7B1%7D) : sample size of group 1
-- ![equation](http://latex.codecogs.com/gif.latex?n_%7B2%7D) : sample size of group 2
-- ![equation](http://latex.codecogs.com/gif.latex?SD_%7B1%7D) : standard deviation of group 1
-- ![equation](http://latex.codecogs.com/gif.latex?SD_%7B2%7D) : standard deviation of group 2
+- ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B1%7D%20) : mean of group 1; ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B2%7D%20) : mean of group 2
+- ![equation](http://latex.codecogs.com/gif.latex?n_%7B1%7D) : sample size of group 1; ![equation](http://latex.codecogs.com/gif.latex?n_%7B2%7D) : sample size of group 2
+- ![equation](http://latex.codecogs.com/gif.latex?SD_%7B1%7D) : standard deviation of group 1; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B2%7D) : standard deviation of group 2
 - _N_ : sum of sample size of group 1 and sample size of group 2
 - _t_ : estimate of noncentrality parameter
 
