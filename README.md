@@ -22,7 +22,7 @@ _d_ is converted to _t_ using the formula:
 
 The following Open URI call is made to get the confidence intervals around _t_ using the noncentral method:
 
-<https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json>, body: { ncp: _t_, df: _n_ - 1 }
+> <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json>, body: { ncp: _t_, df: _n_ - 1 }
 
 It uses the `conf.limits.nct` function within R `MBESS` package
 
