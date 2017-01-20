@@ -14,9 +14,13 @@ _d_ is converted to _t_. An Open URI API call is made using _t_ as an estimate o
 
 #### One-sample t-test
 
-![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d%20=%20%5Cfrac%7BM%20-%20%20%5Cmu%7D%7Bs%7D)
+- _M_: sample mean
+- ![equation](http://latex.codecogs.com/gif.latex?%5Cmu): population mean
+- _s_: sample standard deviation
+- _n_: sample size
+- _t_: estimate of noncentrality parameter used to compute confidence intervals
 
-where _M_ is the sample mean, ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) is the population mean, and _s_ is the sample standard deviation.
+![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d%20=%20%5Cfrac%7BM%20-%20%20%5Cmu%7D%7Bs%7D)
 
 ##### Confidence Intervals
 
