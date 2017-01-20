@@ -6,11 +6,11 @@ Cohen's d calculator for ESQREM 6641 class
 
 ### Cohen's _d_ family
 
-The formulae for point estimates for the Cohen's _d_ family of effect sizes were obtained from Lakens (2013). The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _t_ method. The confidence intervals were computed on _d_ rather than _g_ (Cumming, 2012). The formulae for the estimation of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda) and its transformation to confidence intervals around _d_ for within-subject designs were obtained from Algina & Keselman (2003).
+The formulae for point estimates for the Cohen's _d_ family of effect sizes were obtained from Lakens (2013). The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _t_ method. The confidence intervals were computed on _d_ rather than _g_ (Cumming, 2012). The formulae for the estimation of the noncentrality parameter (![equation](http://latex.codecogs.com/gif.latex?%5Clambda)) and its transformation to confidence intervals around _d_ for within-subject designs were obtained from Algina & Keselman (2003).
 
 #### Confidence Intervals (All 95%)
 
-_d_ is converted to _t_. An Open URI API call is made using _t_ as an estimate of the noncentrality parameter. This uses the `conf.limits.nct` function within the R `MBESS` package. It returns lower and upper limits on _t_, which are converted back to lower and upper limits _d_.
+_d_ is converted to _t_. An Open URI API call is made using _t_ as an estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda). This uses the `conf.limits.nct` function within the R `MBESS` package. It returns lower and upper limits on _t_, which are converted back to lower and upper limits _d_.
 
 #### One-sample t-test
 
@@ -30,7 +30,7 @@ _d_ is converted to _t_. An Open URI API call is made using _t_ as an estimate o
 - ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : population mean
 - _s_ : sample standard deviation
 - _n_ : sample size
-- _t_ : estimate of noncentrality parameter
+- _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda)
 
 #### Independent-samples t-test
 
@@ -60,7 +60,7 @@ _d_ is converted to _t_. An Open URI API call is made using _t_ as an estimate o
 - ![equation](http://latex.codecogs.com/gif.latex?n_%7B1%7D) : sample size of group 1; ![equation](http://latex.codecogs.com/gif.latex?n_%7B2%7D) : sample size of group 2
 - ![equation](http://latex.codecogs.com/gif.latex?SD_%7B1%7D) : standard deviation of group 1; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B2%7D) : standard deviation of group 2
 - _N_ : sum of sample size of group 1 and sample size of group 2
-- _t_ : estimate of noncentrality parameter
+- _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda)
 
 #### Paired-samples t-test
 
