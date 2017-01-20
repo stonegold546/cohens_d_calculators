@@ -26,11 +26,7 @@ _d_ is converted to _t_. An Open URI API call is made using _t_ as an estimate o
 
 ##### Notation:
 
-- _M_ : sample mean
-- ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : population mean
-- _s_ : sample standard deviation
-- _n_ : sample size
-- _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda)
+_M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : population mean; _s_ : sample standard deviation; _n_ : sample size; _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda)
 
 #### Independent-samples t-test
 
