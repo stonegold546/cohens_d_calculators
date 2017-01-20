@@ -24,9 +24,7 @@ _d_ is converted to _t_. An Open URI API call is made using _t_ as an estimate o
 
 ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d%20=%5Cfrac%7Bt%7D%7B%20%5Csqrt%7Bn%7D%7D)
 
---------------------------------------------------------------------------------
-
-Notation:
+##### Notation:
 
 - _M_ : sample mean
 - ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : population mean
