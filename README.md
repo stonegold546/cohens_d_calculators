@@ -22,6 +22,8 @@ Notation:
 - _n_ : sample size
 - _t_ : estimate of noncentrality parameter
 
+--------------------------------------------------------------------------------
+
 ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d%20=%20%5Cfrac%7BM%20-%20%20%5Cmu%7D%7Bs%7D)
 
 ##### Confidence Intervals
@@ -44,6 +46,8 @@ Notation:
 - ![equation](http://latex.codecogs.com/gif.latex?SD_%7B2%7D) : standard deviation of group 2
 - _N_ : sum of sample size of group 1 and sample size of group 2
 - _t_ : estimate of noncentrality parameter
+
+--------------------------------------------------------------------------------
 
 <!-- Cohen's d -->
 
