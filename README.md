@@ -8,6 +8,10 @@ Cohen's d calculator for ESQREM 6641 class
 
 The formulae for point estimates for the Cohen's _d_ family of effect sizes were obtained from Lakens (2013). The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _t_ method. The confidence intervals were computed on _d_ rather than _g_ (Cumming, 2012). The formulae for the estimation of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda) and its transformation to confidence intervals around _d_ for within-subject designs were obtained from Algina & Keselman (2003).
 
+#### Confidence Intervals (All 95%)
+
+_d_ is converted to _t_. An Open URI API call is made using _t_ as an estimate of the noncentrality parameter. This uses the `conf.limits.nct` function within the R `MBESS` package. It returns lower and upper limits on _t_, which are converted back to lower and upper limits _d_.
+
 #### One-sample t-test
 
 ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d%20=%20%5Cfrac%7BM%20-%20%20%5Cmu%7D%7Bs%7D)
@@ -16,17 +20,9 @@ where _M_ is the sample mean, ![equation](http://latex.codecogs.com/gif.latex?%5
 
 ##### Confidence Intervals
 
-_d_ is converted to _t_ using the formula:
-
 ![equation](http://latex.codecogs.com/gif.latex?t=%5Ctextrm%7BCohen's%7D%5C%20d%5Ctimes%20%5Csqrt%7Bn%7D)
 
-The following Open URI API call is made to get the confidence intervals around _t_ using the noncentral method:
-
 > <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json>, body: { ncp: _t_, df: _n_ - 1 }
-
-It uses the `conf.limits.nct` function within the R `MBESS` package
-
-The lower and upper limits of _t_ obtained from the `conf.limits.nct` function are converted back to _d_ using the formula:
 
 ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d%20=%5Cfrac%7Bt%7D%7B%20%5Csqrt%7Bn%7D%7D)
 
@@ -46,17 +42,9 @@ The lower and upper limits of _t_ obtained from the `conf.limits.nct` function a
 
 ##### Confidence Intervals
 
-_d_ is converted to _t_ using the formula:
-
 ![equation](http://latex.codecogs.com/gif.latex?t=%20%5Cfrac%7B%5Ctextrm%7BCohen's%20%7Dd%7D%7B%20%5Csqrt%7B%20%5Cfrac%7B1%7D%7Bn_%7B1%7D%7D+%5Cfrac%7B1%7D%7Bn_%7B2%7D%7D%7D%7D)
 
-The following Open URI API call is made to get the confidence intervals around _t_ using the noncentral method:
-
 > <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json>, body: { ncp: _t_, df: ![equation](http://latex.codecogs.com/gif.latex?n_%7B1%7D+n_%7B2%7D-2) }
-
-It uses the `conf.limits.nct` function within the R `MBESS` package
-
-The lower and upper limits of _t_ obtained from the `conf.limits.nct` function are converted back to _d_ using the formula:
 
 ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d%20=t%5Ctimes%5Csqrt%7B%20%5Cfrac%7B1%7D%7Bn_%7B1%7D%7D+%5Cfrac%7B1%7D%7Bn_%7B2%7D%7D%7D)
 
