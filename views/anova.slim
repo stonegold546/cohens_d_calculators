@@ -1,7 +1,7 @@
 markdown:
   ---
   
-  ## Partial eta-squared fixed effects
+  ## Partial eta-squared (Fixed effects)
 
   ### Inputs
 
@@ -38,15 +38,18 @@ table cellpadding='10' align='center'
       input type='number' class='result-fixed-effects' name=':partial_eta_sq' readonly='true' tabindex=-1
   tr align='right'
     td
-      | Lower limit on <i>partial eta-squared</i>: 
+      | Lower limit on partial eta-squared: 
       input type='number' class='result-fixed-effects' name=':lower_limit_eta' readonly='true' tabindex=-1
     td
-      | Upper limit on <i>partial eta-squared</i>: 
+      | Upper limit on partial eta-squared: 
       input type='number' class='result-fixed-effects' name=':upper_limit_eta' readonly='true' tabindex=-1
   tr
     td align='center' colspan=2
       button type='reset' tabindex=4 onClick="clearInputs('result-fixed-effects')" Clear
 
+
+p name=':warning'
+  | The confidence intervals produced here will differ from the confidence intervals produced in the OLS section. The calculation for the intervals returned here assumes the predictors are planned/fixed as in an experiment.
 
 markdown:
   

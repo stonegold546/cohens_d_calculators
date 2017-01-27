@@ -23,8 +23,8 @@ class PartialEtaSq
       'df.1' => @df_effect, 'df.2' => @df_error
     }
     result = Oj.load response.body
-    lower = calc_non_cent_eta(result[LL][0])
-    upper = calc_non_cent_eta(result[UL][0])
+    lower = calc_non_cent_eta(result[LL_F][0])
+    upper = calc_non_cent_eta(result[UL_F][0])
     { lower: lower, upper: upper }
   end
 
