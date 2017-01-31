@@ -11,10 +11,17 @@ class PartialEtaSq
     partial_eta_sq = calc_eta(@f)
     npci = non_par_conf_int
     result = {
-      partial_eta_sq: partial_eta_sq, lower_limit_eta: npci[:lower],
-      upper_limit_eta: npci[:upper], inputs: @inputs
+      partial_eta_sq: partial_eta_sq, partial_ome_sq: partial_ome_sq,
+      lower_limit_eta: npci[:lower], upper_limit_eta: npci[:upper],
+      inputs: @inputs
     }
     Oj.dump result
+  end
+
+  def partial_ome_sq
+    num = @f - 1
+    denum = @f + ((@df_error + 1) / @df_effect)
+    num / denum
   end
 
   def non_par_conf_int
@@ -28,9 +35,10 @@ class PartialEtaSq
     { lower: lower, upper: upper }
   end
 
-  def calc_non_cent_eta(lambda)
-    denum = lambda + @df_effect + @df_error + DF_F
-    lambda / denum
+  def calc_non_cent_eta(non_cent_par)
+    non_cent_par = 0 if non_cent_par == 'NA' || non_cent_par.nil?
+    denum = non_cent_par + @df_effect + @df_error + DF_F
+    non_cent_par / denum
   end
 
   def calc_eta(f)
