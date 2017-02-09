@@ -12,6 +12,7 @@ gem 'activemodel'
 gem 'virtus'
 gem 'oj'
 gem 'httparty'
+gem 'awesome_print'
 
 group :test do
   gem 'minitest'
