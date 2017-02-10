@@ -13,6 +13,7 @@ gem 'virtus'
 gem 'oj'
 gem 'httparty'
 gem 'awesome_print'
+gem 'classy_hash'
 
 group :test do
   gem 'minitest'
