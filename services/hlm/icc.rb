@@ -1,17 +1,16 @@
-require 'ap'
 require 'csv'
 
 # Calculator for partial-eta-squared
 class Icc
-  def initialize(params)
-    file = params.values[FILE_STRING].split("\r\n")[CSV_TEXT]
-    data = CSV.parse file
-    @data = data[CSV_DATA].transpose
-    @data[1] = @data[1].map(&:to_f)
+  def initialize(hlm_icc)
+    data = CSV.parse hlm_icc.icc_file[:tempfile]
+    data = data[CSV_DATA].transpose
+    @clusters = data[0]
+    @values = data[1].map(&:to_f)
   end
 
   def call
-    num_s = "#{@data[0].uniq.count} clusters, #{@data[1].count} units"
+    num_s = "#{@clusters.uniq.count} clusters, #{@values.count} units"
     icc_calc = calc_icc
     result = create_result(icc_calc)
     result[:inputs] = num_s
@@ -20,7 +19,7 @@ class Icc
 
   def calc_icc
     response = HTTParty.post URL_ICC, body: {
-      'x' => @data[0].to_s, 'y' => @data[1].to_s
+      'x' => @clusters.to_s, 'y' => @values.to_s
     }
     Oj.load response.body
   end

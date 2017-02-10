@@ -2,6 +2,7 @@
 /* jslint forin:true */
 /* global XMLHttpRequest */
 /* eslint no-unused-vars: */
+/* eslint no-undef: */
 
 var inputsICC = document.getElementsByClassName('data-icc')
 
@@ -11,9 +12,8 @@ function getIcc () {
   var iccFormData = new FormData()
   var url = '/icc'
   var iccFile = document.getElementById('icc_file')
-  iccFormData.append('file', iccFile.files[0])
+  iccFormData.append(iccFile.name, iccFile.files[0])
   myResult.open('post', url, true)
-  myResult.setRequestHeader('Content-Type', 'multipart/form-data')
   myResult.send(iccFormData)
   myResult.onreadystatechange = function () {
     var result = document.getElementsByClassName('result-icc')
