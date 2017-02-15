@@ -12,7 +12,9 @@ function getIcc () {
   var iccFormData = new FormData()
   var url = '/icc'
   var iccFile = document.getElementById('icc_file')
+  var method = document.getElementById('method')
   iccFormData.append(iccFile.name, iccFile.files[0])
+  iccFormData.append(method.id, method.options[method.selectedIndex].value)
   myResult.open('post', url, true)
   myResult.send(iccFormData)
   myResult.onreadystatechange = function () {
@@ -60,6 +62,7 @@ function iccBtnClick () {
       return
     }
   }
+  clearInputs('result-icc')
   getIcc()
 }
 

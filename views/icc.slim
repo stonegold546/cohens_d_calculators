@@ -9,9 +9,17 @@ markdown:
   
   Alternatively, you can download [this csv](/icc_csv.csv) file and copy the cluster values into the cluster column, and the Y values into the y column. Leave row 1 unchanged, clear row 2.
 
-  Upload the file after filling it out, then click Calculate.
+  Upload the file after filling it out, select a method, then click Calculate.
+
+  REML and FEML take several seconds  
 
 input type='file' class='data-icc' id='icc_file' name='icc_file' tabindex=6 required='true'
+| Method: 
+select id='method'
+  option value='ANOVA' ANOVA
+  option value='TRUE' selected='selected' REML
+  option value='FALSE' FEML
+br
 button type='submit' id='icc_btn' name='icc_btn' tabindex=6 onClick='iccBtnClick()' Calculate
 
 div
@@ -20,7 +28,7 @@ div
 
 markdown:
 
-  ### Results - Calculated using variance components from One-Way ANOVA (95% CI)
+  ### Results - CI are always calculated from One-Way ANOVA (95% CI)
 
 table cellpadding='10' align='center'
   tr align='center'
@@ -29,18 +37,18 @@ table cellpadding='10' align='center'
       input type='number' class='result-icc' name=':icc_est' readonly='true' tabindex=-1
   tr align='right'
     td
-      | Lower limit on ICC: 
-      input type='number' class='result-icc' name=':lower' readonly='true' tabindex=-1
-    td
-      | Upper limit on ICC: 
-      input type='number' class='result-icc' name=':upper' readonly='true' tabindex=-1
-  tr align='right'
-    td
       | Variance between: 
       input type='number' class='result-icc' name=':vara' readonly='true' tabindex=-1
     td
       | Variance within: 
       input type='number' class='result-icc' name=':varw' readonly='true' tabindex=-1
+  tr align='right'
+    td
+      | Lower limit on ICC: 
+      input type='number' class='result-icc' name=':lower' readonly='true' tabindex=-1
+    td
+      | Upper limit on ICC: 
+      input type='number' class='result-icc' name=':upper' readonly='true' tabindex=-1
   tr align='right'
     td
       | Clusters analyzed: 
