@@ -104,7 +104,7 @@ function getRmSample () {
       url = url.concat(inputsRmSample[i].name, '=', inputsRmSample[i].value, '&')
     }
   }
-  spinTheWheel('paired-samples-home')
+  // spinTheWheel('paired-samples-home')
   myResult.open('GET', url, true)
   myResult.send()
   myResult.onreadystatechange = function () {
@@ -177,7 +177,7 @@ function getAvSample () {
         result[i].innerText = ''
       }
     }
-    stopTheWheel('paired-samples-home')
+    // stopTheWheel('paired-samples-home')
   }
 }
 
