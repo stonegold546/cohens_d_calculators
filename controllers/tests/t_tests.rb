@@ -16,27 +16,27 @@ WARNING = 'The observed noncentrality parameter of the '\
 class CohenDCalc < Sinatra::Base
   cohen_dz = lambda do
     one_sample = OneSample.new(params)
-    halt 400 unless one_sample.valid?
+    halt 400, one_sample.errors.messages.to_s unless one_sample.valid?
     result = CohenDz.new(one_sample)
     result.call
   end
 
   cohen_ds = lambda do
-    independent_samples = IndependentSamples.new(params)
-    halt 400 unless independent_samples.valid?
-    CohenDs.new(independent_samples).call
+    ind_samples = IndependentSamples.new(params)
+    halt 400, ind_samples.errors.messages.to_s unless ind_samples.valid?
+    CohenDs.new(ind_samples).call
   end
 
   cohen_dav = lambda do
     average_samples = AverageSamples.new(params)
-    halt 400 unless average_samples.valid?
+    halt 400, average_samples.errors.messages.to_s unless average_samples.valid?
     CohenDav.new(average_samples).call
   end
 
   cohen_drm = lambda do
-    repeated_samples = RepeatedSamples.new(params)
-    halt 400 unless repeated_samples.valid?
-    CohenDrm.new(repeated_samples).call
+    rep_samples = RepeatedSamples.new(params)
+    halt 400, rep_samples.errors.messages.to_s unless rep_samples.valid?
+    CohenDrm.new(rep_samples).call
   end
 
   d_to_r = lambda do
