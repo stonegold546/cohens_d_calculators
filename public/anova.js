@@ -35,6 +35,8 @@ function getFixedEffects () {
         result[i].value = ''
         result[i].innerText = ''
       }
+      var error = myResult.responseText
+      result[':inputs'].innerText = 'Data entry error: ' + error
     } else {
       for (i = 0; i < result.length; i++) {
         result[i].value = ''

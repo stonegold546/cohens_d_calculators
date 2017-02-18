@@ -8,7 +8,7 @@ DF_F = 1
 class CohenDCalc < Sinatra::Base
   anova = lambda do
     anova = Anova.new(params)
-    halt 400 unless anova.valid?
+    halt 400, anova.errors.messages.to_s unless anova.valid?
     result = PartialEtaSq.new(anova)
     result.call
   end
