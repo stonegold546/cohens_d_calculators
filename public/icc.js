@@ -19,7 +19,6 @@ function getIcc () {
   var target = document.getElementById('icc-home')
   if (spinner == null) {
     spinner = new Spinner(opts).spin(target)
-    console.log(spinner)
   } else {
     spinner.spin(target)
   }
