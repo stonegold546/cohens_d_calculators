@@ -20,10 +20,10 @@ SCHEMA = {
 class CohenDCalc < Sinatra::Base
   icc = lambda do
     hlm_icc = HlmIcc.new(params)
-    halt 400 unless hlm_icc.valid?
+    halt 400, hlm_icc.errors.messages.to_s unless hlm_icc.valid?
     begin ClassyHash.validate(hlm_icc.icc_file, SCHEMA)
-    rescue
-      halt 400
+    rescue => e
+      halt 400, e.message
     end
     result = Icc.new(hlm_icc)
     result.call
