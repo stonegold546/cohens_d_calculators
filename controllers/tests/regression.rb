@@ -7,7 +7,7 @@ UL_R2 = 'Upper.Conf.Limit.R2'.freeze
 class CohenDCalc < Sinatra::Base
   ols_r2 = lambda do
     regression = Regression.new(params)
-    halt 400 unless regression.valid?
+    halt 400, regression.errors.messages.to_s unless regression.valid?
     result = RSquared.new(regression)
     result.call
   end
