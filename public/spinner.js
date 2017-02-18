@@ -1,4 +1,5 @@
 /* eslint no-unused-vars: */
+/* eslint no-undef: */
 
 var opts = {
   lines: 13, // The number of lines to draw
@@ -21,4 +22,20 @@ var opts = {
   shadow: false, // Whether to render a shadow
   hwaccel: false, // Whether to use hardware acceleration
   position: 'fixed' // Element positioning
+}
+
+var spinner = null
+
+function spinTheWheel (targetDiv) {
+  var target = document.getElementById(targetDiv)
+  if (spinner == null) {
+    spinner = new Spinner(opts).spin(target)
+  } else {
+    spinner.spin(target)
+  }
+}
+
+function stopTheWheel (targetDiv) {
+  var target = document.getElementById(targetDiv)
+  spinner.stop(target)
 }

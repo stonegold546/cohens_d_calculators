@@ -2,6 +2,7 @@
 /* jslint forin:true */
 /* global XMLHttpRequest */
 /* eslint no-unused-vars: */
+/* eslint no-undef: */
 
 var inputsFixedEffects = document.getElementsByClassName('data-fixed-effects')
 
@@ -14,6 +15,7 @@ function getFixedEffects () {
       url = url.concat(inputsFixedEffects[i].name, '=', inputsFixedEffects[i].value, '&')
     }
   }
+  spinTheWheel('anova-home')
   myResult.open('GET', url, true)
   myResult.send()
   myResult.onreadystatechange = function () {
@@ -43,6 +45,7 @@ function getFixedEffects () {
         result[i].innerText = ''
       }
     }
+    stopTheWheel('anova-home')
   }
 }
 

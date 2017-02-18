@@ -2,6 +2,7 @@
 /* jslint forin:true */
 /* global XMLHttpRequest */
 /* eslint no-unused-vars: */
+/* eslint no-undef: */
 
 var inputsOneSample = document.getElementsByClassName('data-one-sample')
 var inputsIndSample = document.getElementsByClassName('data-ind-sample')
@@ -17,6 +18,7 @@ function getOneSample () {
       url = url.concat(inputsOneSample[i].name, '=', inputsOneSample[i].value, '&')
     }
   }
+  spinTheWheel('one-sample-home')
   myResult.open('GET', url, true)
   myResult.send()
   myResult.onreadystatechange = function () {
@@ -46,6 +48,7 @@ function getOneSample () {
         result[i].innerText = ''
       }
     }
+    stopTheWheel('one-sample-home')
   }
 }
 
@@ -58,6 +61,7 @@ function getIndSample () {
       url = url.concat(inputsIndSample[i].name, '=', inputsIndSample[i].value, '&')
     }
   }
+  spinTheWheel('ind-samples-home')
   myResult.open('GET', url, true)
   myResult.send()
   myResult.onreadystatechange = function () {
@@ -87,6 +91,7 @@ function getIndSample () {
         result[i].innerText = ''
       }
     }
+    stopTheWheel('ind-samples-home')
   }
 }
 
@@ -99,6 +104,7 @@ function getRmSample () {
       url = url.concat(inputsRmSample[i].name, '=', inputsRmSample[i].value, '&')
     }
   }
+  spinTheWheel('paired-samples-home')
   myResult.open('GET', url, true)
   myResult.send()
   myResult.onreadystatechange = function () {
@@ -128,6 +134,7 @@ function getRmSample () {
         result[i].innerText = ''
       }
     }
+    stopTheWheel('paired-samples-home')
   }
 }
 
@@ -140,6 +147,7 @@ function getAvSample () {
       url = url.concat(inputsAvSample[i].name, '=', inputsAvSample[i].value, '&')
     }
   }
+  spinTheWheel('paired-samples-home')
   myResult.open('GET', url, true)
   myResult.send()
   myResult.onreadystatechange = function () {
@@ -169,6 +177,7 @@ function getAvSample () {
         result[i].innerText = ''
       }
     }
+    stopTheWheel('paired-samples-home')
   }
 }
 

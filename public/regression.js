@@ -2,6 +2,7 @@
 /* jslint forin:true */
 /* global XMLHttpRequest */
 /* eslint no-unused-vars: */
+/* eslint no-undef: */
 
 var inputsRegression = document.getElementsByClassName('data-ols')
 
@@ -14,6 +15,7 @@ function getOls () {
       url = url.concat(inputsRegression[i].name, '=', inputsRegression[i].value, '&')
     }
   }
+  spinTheWheel('regression-home')
   myResult.open('GET', url, true)
   myResult.send()
   myResult.onreadystatechange = function () {
@@ -43,6 +45,7 @@ function getOls () {
         result[i].innerText = ''
       }
     }
+    stopTheWheel('regression-home')
   }
 }
 
