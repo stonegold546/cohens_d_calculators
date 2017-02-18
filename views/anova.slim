@@ -1,61 +1,62 @@
-markdown:
-  ---
-  
-  ## Partial eta-squared (Fixed effects)
+div id='anova-home'
+  markdown:
+    ---
+    
+    ## Partial eta-squared (Fixed effects)
 
-  ### Inputs
+    ### Inputs
 
-table cellpadding='10' align='center'
-  tr align='center'
-    td colspan='2'
-      | <i>F</i>-value: 
-      input type='number' class='data-fixed-effects' name='f' required='true' min=0 placeholder='Greater than 0' tabindex=4 step='any'
-  tr align='right'
-    td
-      | Numerator degrees of freedom: 
-      input type='number' class='data-fixed-effects' name='df_effect' required='true' min=1 placeholder='Greater than 0' tabindex=4 step='any'
-    td
-      | Denominator degrees of freedom: 
-      input type='number' class='data-fixed-effects' name='df_error' required='true' min=2 placeholder='Greater than 1' tabindex=4 step='any'
-  tr
-    td align='right'
-      button type='submit' id='fixed_effects_btn' name='fixed_effects_btn' tabindex=4 onClick='fixedEffectsBtnClick()' Calculate
-    td align='left'
-      button type='reset' tabindex=4 onClick="clearInputs('data-fixed-effects')" Clear
+  table cellpadding='10' align='center'
+    tr align='center'
+      td colspan='2'
+        | <i>F</i>-value: 
+        input type='number' class='data-fixed-effects' name='f' required='true' min=0 placeholder='Greater than 0' tabindex=4 step='any'
+    tr align='right'
+      td
+        | Numerator degrees of freedom: 
+        input type='number' class='data-fixed-effects' name='df_effect' required='true' min=1 placeholder='Greater than 0' tabindex=4 step='any'
+      td
+        | Denominator degrees of freedom: 
+        input type='number' class='data-fixed-effects' name='df_error' required='true' min=2 placeholder='Greater than 1' tabindex=4 step='any'
+    tr
+      td align='right'
+        button type='submit' id='fixed_effects_btn' name='fixed_effects_btn' tabindex=4 onClick='fixedEffectsBtnClick()' Calculate
+      td align='left'
+        button type='reset' tabindex=4 onClick="clearInputs('data-fixed-effects')" Clear
 
-div
-  p class='result-fixed-effects' id='fixed_effects_inputs' name=':inputs'
-  p class='result-fixed-effects' id='fixed_effects_warning' name=':warning'
+  div
+    p class='result-fixed-effects' id='fixed_effects_inputs' name=':inputs'
+    p class='result-fixed-effects' id='fixed_effects_warning' name=':warning'
 
-markdown:
+  markdown:
 
-  ### Results (90% CI using noncentral _F_ distribution)
+    ### Results (90% CI using noncentral _F_ distribution)
 
-table cellpadding='10' align='center'
-  tr align='right'
-    td
-      | Partial eta-squared: 
-      input type='number' class='result-fixed-effects' name=':partial_eta_sq' readonly='true' tabindex=-1
-    td
-      | Lower limit on partial eta-squared: 
-      input type='number' class='result-fixed-effects' name=':lower_limit_eta' readonly='true' tabindex=-1
-  tr align='right'
-    td
-      | Partial omega-squared: 
-      input type='number' class='result-fixed-effects' name=':partial_ome_sq' readonly='true' tabindex=-1
-    td
-      | Upper limit on partial eta-squared: 
-      input type='number' class='result-fixed-effects' name=':upper_limit_eta' readonly='true' tabindex=-1
-  tr
-    td align='center' colspan=2
-      button type='reset' tabindex=4 onClick="clearInputs('result-fixed-effects')" Clear
+  table cellpadding='10' align='center'
+    tr align='right'
+      td
+        | Partial eta-squared: 
+        input type='number' class='result-fixed-effects' name=':partial_eta_sq' readonly='true' tabindex=-1
+      td
+        | Lower limit on partial eta-squared: 
+        input type='number' class='result-fixed-effects' name=':lower_limit_eta' readonly='true' tabindex=-1
+    tr align='right'
+      td
+        | Partial omega-squared: 
+        input type='number' class='result-fixed-effects' name=':partial_ome_sq' readonly='true' tabindex=-1
+      td
+        | Upper limit on partial eta-squared: 
+        input type='number' class='result-fixed-effects' name=':upper_limit_eta' readonly='true' tabindex=-1
+    tr
+      td align='center' colspan=2
+        button type='reset' tabindex=4 onClick="clearInputs('result-fixed-effects')" Clear
 
 
-p name=':warning'
-  | The confidence intervals produced here will differ from the confidence intervals produced in the OLS section. The calculation for the intervals returned here assumes the predictors are planned/fixed as in an experiment.
+  p name=':warning'
+    | The confidence intervals produced here will differ from the confidence intervals produced in the OLS section. The calculation for the intervals returned here assumes the predictors are planned/fixed as in an experiment.
 
-markdown:
-  
-  ___
+  markdown:
+    
+    ___
 
 script src='anova.js'

@@ -1,69 +1,70 @@
-markdown:
-  ---
-  
-  ## Intraclass Correlation Coefficient
+div id='icc-home'
+  markdown:
+    ---
+    
+    ## Intraclass Correlation Coefficient
 
-  ### Inputs
+    ### Inputs
 
-  Simply export the cluster variable and y variable into a csv file. The first row has to be the variable names - use any names. *Cluster* variable first column, *Y* variable second column.
-  
-  Alternatively, you can download [this csv](/icc_csv.csv) file and copy the cluster values into the cluster column, and the Y values into the y column. Leave row 1 unchanged, clear row 2.
+    Simply export the cluster variable and y variable into a csv file. The first row has to be the variable names - use any names. *Cluster* variable first column, *Y* variable second column.
+    
+    Alternatively, you can download [this csv](/icc_csv.csv) file and copy the cluster values into the cluster column, and the Y values into the y column. Leave row 1 unchanged, clear row 2.
 
-  Upload the file after filling it out, select a method, then click Calculate.
+    Upload the file after filling it out, select a method, then click Calculate.
 
-  REML and FEML take several seconds  
+    REML and FEML take several seconds  
 
-input type='file' class='data-icc' id='icc_file' name='icc_file' tabindex=6 required='true'
-| Method: 
-select id='method'
-  option value='ANOVA' selected='selected' ANOVA
-  option value='TRUE' REML
-  option value='FALSE' FEML
-br
-button type='submit' id='icc_btn' name='icc_btn' tabindex=6 onClick='iccBtnClick()' Calculate
+  input type='file' class='data-icc' id='icc_file' name='icc_file' tabindex=6 required='true'
+  | Method: 
+  select id='method'
+    option value='ANOVA' selected='selected' ANOVA
+    option value='TRUE' REML
+    option value='FALSE' FEML
+  br
+  button type='submit' id='icc_btn' name='icc_btn' tabindex=6 onClick='iccBtnClick()' Calculate
 
-div
-  p class='result-icc' id='icc_inputs' name=':inputs'
-  p class='result-icc' id='icc_warning' name=':warning'
+  div
+    p class='result-icc' id='icc_inputs' name=':inputs'
+    p class='result-icc' id='icc_warning' name=':warning'
 
-markdown:
+  markdown:
 
-  ### Results - CI are always calculated from One-Way ANOVA (95% CI)
+    ### Results - CI are always calculated from One-Way ANOVA (95% CI)
 
-table cellpadding='10' align='center'
-  tr align='center'
-    td colspan='2'
-      | Estimate of ICC: 
-      input type='number' class='result-icc' name=':icc_est' readonly='true' tabindex=-1
-  tr align='right'
-    td
-      | Variance between: 
-      input type='number' class='result-icc' name=':vara' readonly='true' tabindex=-1
-    td
-      | Variance within: 
-      input type='number' class='result-icc' name=':varw' readonly='true' tabindex=-1
-  tr align='right'
-    td
-      | Lower limit on ICC: 
-      input type='number' class='result-icc' name=':lower' readonly='true' tabindex=-1
-    td
-      | Upper limit on ICC: 
-      input type='number' class='result-icc' name=':upper' readonly='true' tabindex=-1
-  tr align='right'
-    td
-      | Clusters analyzed: 
-      input type='number' class='result-icc' name=':n' readonly='true' tabindex=-1
-    td
-      | Average per cluster: 
-      input type='number' class='result-icc' name=':k' readonly='true' tabindex=-1
-  tr
-    td align='center' colspan=2
-      button type='reset' tabindex=4 onClick="clearInputs('result-icc')" Clear
+  table cellpadding='10' align='center'
+    tr align='center'
+      td colspan='2'
+        | Estimate of ICC: 
+        input type='number' class='result-icc' name=':icc_est' readonly='true' tabindex=-1
+    tr align='right'
+      td
+        | Variance between: 
+        input type='number' class='result-icc' name=':vara' readonly='true' tabindex=-1
+      td
+        | Variance within: 
+        input type='number' class='result-icc' name=':varw' readonly='true' tabindex=-1
+    tr align='right'
+      td
+        | Lower limit on ICC: 
+        input type='number' class='result-icc' name=':lower' readonly='true' tabindex=-1
+      td
+        | Upper limit on ICC: 
+        input type='number' class='result-icc' name=':upper' readonly='true' tabindex=-1
+    tr align='right'
+      td
+        | Clusters analyzed: 
+        input type='number' class='result-icc' name=':n' readonly='true' tabindex=-1
+      td
+        | Average per cluster: 
+        input type='number' class='result-icc' name=':k' readonly='true' tabindex=-1
+    tr
+      td align='center' colspan=2
+        button type='reset' tabindex=4 onClick="clearInputs('result-icc')" Clear
 
-markdown:
+  markdown:
 
-  **Note**: Average per cluister is less than mean for unbalanced designs.
+    **Note**: Average per cluister is less than mean for unbalanced designs.
 
-  ___
+    ___
 
 script src='icc.js'

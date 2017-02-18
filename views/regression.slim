@@ -1,51 +1,52 @@
-markdown:
-  ---
-  
-  ## _R_-squared (OLS)
+div id='regression-home'
+  markdown:
+    ---
+    
+    ## _R_-squared (OLS)
 
-  ### Inputs
+    ### Inputs
 
-table cellpadding='10' align='center'
-  tr align='center'
-    td colspan='2'
-      | <i>R</i>-squared: 
-      input type='number' class='data-ols' name='r2' required='true' min=0 max=1 placeholder='Greater than 0' tabindex=5 step='any'
-  tr align='right'
-    td
-      | Numerator degrees of freedom: 
-      input type='number' class='data-ols' name='df_1' required='true' min=1 placeholder='Greater than 0' tabindex=5 step='any'
-    td
-      | Denominator degrees of freedom: 
-      input type='number' class='data-ols' name='df_2' required='true' min=2 placeholder='Greater than 1' tabindex=5 step='any'
-  tr
-    td align='right'
-      button type='submit' id='ols_btn' name='ols_btn' tabindex=5 onClick='olsBtnClick()' Calculate
-    td align='left'
-      button type='reset' tabindex=5 onClick="clearInputs('data-ols')" Clear
+  table cellpadding='10' align='center'
+    tr align='center'
+      td colspan='2'
+        | <i>R</i>-squared: 
+        input type='number' class='data-ols' name='r2' required='true' min=0 max=1 placeholder='Greater than 0' tabindex=5 step='any'
+    tr align='right'
+      td
+        | Numerator degrees of freedom: 
+        input type='number' class='data-ols' name='df_1' required='true' min=1 placeholder='Greater than 0' tabindex=5 step='any'
+      td
+        | Denominator degrees of freedom: 
+        input type='number' class='data-ols' name='df_2' required='true' min=2 placeholder='Greater than 1' tabindex=5 step='any'
+    tr
+      td align='right'
+        button type='submit' id='ols_btn' name='ols_btn' tabindex=5 onClick='olsBtnClick()' Calculate
+      td align='left'
+        button type='reset' tabindex=5 onClick="clearInputs('data-ols')" Clear
 
-div
-  p class='result-ols' id='ols_inputs' name=':inputs'
-  p class='result-ols' id='ols_warning' name=':warning'
+  div
+    p class='result-ols' id='ols_inputs' name=':inputs'
+    p class='result-ols' id='ols_warning' name=':warning'
 
-markdown:
+  markdown:
 
-  ### Results (90% CI)
+    ### Results (90% CI)
 
-table cellpadding='10' align='center'
-  tr align='right'
-    td
-      | Lower limit on <i>R</i>-squared: 
-      input type='number' class='result-ols' name=':lower_limit_r2' readonly='true' tabindex=-1
-    td
-      | Upper limit on <i>R</i>-squared: 
-      input type='number' class='result-ols' name=':upper_limit_r2' readonly='true' tabindex=-1
-  tr
-    td align='center' colspan=2
-      button type='reset' tabindex=5 onClick="clearInputs('result-ols')" Clear
+  table cellpadding='10' align='center'
+    tr align='right'
+      td
+        | Lower limit on <i>R</i>-squared: 
+        input type='number' class='result-ols' name=':lower_limit_r2' readonly='true' tabindex=-1
+      td
+        | Upper limit on <i>R</i>-squared: 
+        input type='number' class='result-ols' name=':upper_limit_r2' readonly='true' tabindex=-1
+    tr
+      td align='center' colspan=2
+        button type='reset' tabindex=5 onClick="clearInputs('result-ols')" Clear
 
 
-markdown:
-  
-  ___
+  markdown:
+    
+    ___
 
 script src='regression.js'

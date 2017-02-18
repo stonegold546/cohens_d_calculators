@@ -5,6 +5,7 @@
 /* eslint no-undef: */
 
 var inputsICC = document.getElementsByClassName('data-icc')
+var spinner = null
 
 function getIcc () {
   'use strict'
@@ -15,6 +16,13 @@ function getIcc () {
   var method = document.getElementById('method')
   iccFormData.append(iccFile.name, iccFile.files[0])
   iccFormData.append(method.id, method.options[method.selectedIndex].value)
+  var target = document.getElementById('icc-home')
+  if (spinner == null) {
+    spinner = new Spinner(opts).spin(target)
+    console.log(spinner)
+  } else {
+    spinner.spin(target)
+  }
   myResult.open('post', url, true)
   myResult.send(iccFormData)
   myResult.onreadystatechange = function () {
@@ -44,6 +52,7 @@ function getIcc () {
         result[i].innerText = ''
       }
     }
+    spinner.stop(target)
   }
 }
 
