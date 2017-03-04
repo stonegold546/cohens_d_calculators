@@ -21,6 +21,10 @@ class CohenDCalc < Sinatra::Base
   icc = lambda do
     hlm_icc = HlmIcc.new(params)
     halt 400, hlm_icc.errors.messages.to_s unless hlm_icc.valid?
+    begin File.readlines(hlm_icc.icc_file[:tempfile]).grep(/monitor/)
+    rescue
+      halt 400, 'Your file is probably not a CSV file.'
+    end
     begin ClassyHash.validate(hlm_icc.icc_file, SCHEMA)
     rescue => e
       halt 400, e.message
