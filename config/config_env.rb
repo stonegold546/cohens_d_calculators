@@ -3,6 +3,6 @@ config_env :development do
 end
 
 config_env :production do
-  set 'MSG_KEY', 'x63_ONYy95W4IzC7ll9DwZmSH8lSuGfNad4cOZe5V-4='
+  set 'MSG_KEY', 'tpFSEbUqJLUFnf5mpCiG2Le4-9vy-osUKaI99jUMwWs='
   set 'PYTHON_URL', 'https://python-worker.herokuapp.com'
 end
