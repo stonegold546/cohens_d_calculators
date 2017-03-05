@@ -44,11 +44,7 @@ class Icc
   end
 
   def calc_icc_ml(icc_calc)
-    # data_frame = create_data_frame
-    # lmer = perform_lmer(data_frame)
-    # variances = obtain_variances(lmer)
-    # icc_calc
-    response = HTTParty.post 'http://127.0.0.1:5000/icc', body: {
+    response = HTTParty.post "#{ENV['PYTHON_URL']}/icc", body: {
       x: @clusters, y: @values, method: which_method
     }.to_json, headers: {
       'Content-Type' => 'application/json'
@@ -66,40 +62,4 @@ class Icc
     icc_calc[:varw] = variances[:var_w]
     icc_calc
   end
-
-  # def create_data_frame
-  #   response = HTTParty.post URL_ICC_DATA_FRAME, body: {
-  #     'X1' => @clusters.to_s, 'X2' => @values.to_s
-  #   }
-  #   response.headers['x-ocpu-session']
-  # end
-
-  # def perform_lmer(data_frame)
-  #   response = HTTParty.post URL_ICC_LMER, body: {
-  #     'formula' => 'X2 ~ 1 + (1 | X1)', 'REML' => @method,
-  #     'data' => data_frame
-  #   }
-  #   response.headers['x-ocpu-session']
-  # end
-
-  # def obtain_variances(lmer)
-  #   summary = obtain_summary(lmer)
-  #   var_b = var_b_w(summary, 'varcor$X1')
-  #   var_w = var_b_w(summary, 'sigma^2')
-  #   { var_b: var_b, var_w: var_w }
-  # end
-
-  # def obtain_summary(lmer)
-  #   response = HTTParty.post URL_SUMMARY, body: {
-  #     'object' => lmer
-  #   }
-  #   response.headers['x-ocpu-session']
-  # end
-
-  # def var_b_w(summary, expr)
-  #   var = HTTParty.post URL_WITH, body: {
-  #     'data' => summary, 'expr' => expr
-  #   }
-  #   var.body.delete('[').delete(']').to_f
-  # end
 end

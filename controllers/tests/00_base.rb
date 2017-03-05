@@ -8,7 +8,7 @@ require 'oj'
 require 'httparty'
 
 configure :development, :test do
-  ConfigEnv.path_to_config("#{__dir__}/config/config_env.rb")
+  ConfigEnv.path_to_config('config/config_env.rb')
 end
 
 # Base app
