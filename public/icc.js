@@ -21,6 +21,7 @@ function getIcc () {
   myResult.onreadystatechange = function () {
     var result = document.getElementsByClassName('result-icc')
     if (myResult.readyState === 4 && myResult.status === 200) {
+      result[':warning'].innerText = ''
       var data = JSON.parse(myResult.responseText)
       var names = Object.keys(data)
       for (var i = 0; i < names.length; i++) {
