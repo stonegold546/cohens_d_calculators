@@ -33,17 +33,12 @@ function getIcc () {
         }
       }
     } else if (myResult.readyState === 4 && myResult.status === 400) {
-      for (i = 0; i < result.length; i++) {
-        result[i].value = ''
-        result[i].innerText = ''
-      }
+      clearInputs('result-icc')
       var error = myResult.responseText
-      result[':inputs'].innerText = 'Data entry error: ' + error
+      result[':warning'].innerText = 'Data entry error: ' + error
     } else {
-      for (i = 0; i < result.length; i++) {
-        result[i].value = ''
-        result[i].innerText = ''
-      }
+      clearInputs('result-icc')
+      result[':warning'].innerText = 'Something went wrong, please ensure your file is valid.'
     }
     stopTheWheel('icc-home')
   }
