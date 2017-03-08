@@ -6,7 +6,7 @@ Calculator I built for ESQREM 6641 class
 
   - [One-sample t-test](#one-sample-t-test)
   - [Independent-samples t-test](#independent-samples-t-test)
-  - [Paired samples t-test](paired-samples-t-test)
+  - [Paired samples t-test](#paired-samples-t-test)
 
 - [ANOVA](#anova)
 
@@ -16,6 +16,10 @@ Calculator I built for ESQREM 6641 class
 - [Regression (OLS)](#regression-ols)
 
   - [_R_-squared confidence intervals](#r-squared-confidence-intervals)
+
+- [Hierarchical Linear Modeling / Multilevel Modeling / Mixed Effects Modeling]()
+
+  - [Intracluster/Intraclass correlation coefficient (ICC)]()
 
 ## Formulae
 
