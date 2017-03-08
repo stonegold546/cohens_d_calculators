@@ -112,6 +112,8 @@ This call to Open CPU returns the limits on _F_, as noncentrality parameters (![
 
 ##### Notation:
 
+![equation](http://latex.codecogs.com/gif.latex?n_%7Bp%7D%5E%7B2%7D) : partial eta-squared; _F_ : _F_-statistic; ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D) : effect degrees of freedom; ![equation](http://latex.codecogs.com/gif.latex?df_%7B2%7D) : error degrees of freedom; ![equation](http://latex.codecogs.com/gif.latex?%5Clambda) : noncentrality parameter; ![equation](http://latex.codecogs.com/gif.latex?%5Comega_%7Bp%7D%5E%7B2%7D) : partial omega-squared
+
 ## References
 
 - Algina, J., & Keselman, H. J. (2003). Approximate Confidence Intervals for Effect Sizes. _Educational and Psychological Measurement, 63_(4), 537–553\. <https://doi.org/10.1177/0013164403256358>
