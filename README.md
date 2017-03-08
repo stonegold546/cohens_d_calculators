@@ -92,13 +92,13 @@ _M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : popu
 
 ### ANOVA
 
+The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _F_ method. The confidence intervals are set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _F_-statistic cannot be negative (Smithson, 2003).
+
 #### Partial Eta-squared
 
 ![equation](http://latex.codecogs.com/gif.latex?n_%7Bp%7D%5E%7B2%7D%3D%5Cfrac%7B%7D%7BF*df_%7B1%7D%7D%7B%28F*df_%7B1%7D%29+df_%7B2%7D%7D)
 
 ##### Confidence Intervals
-
-The confidence intervals are set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _F_-statistic cannot be negative (Smithson, 2003).
 
 > <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.ncf/json>, body: { 'F.value' => _F_, 'df.1' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D), 'df.2' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B2%7D), 'conf.level' => 0.90 }
 
@@ -121,6 +121,8 @@ This formula for partial omega-squared applies only when all our factors are man
 ![equation](http://latex.codecogs.com/gif.latex?%5Comega_%7Bp%7D%5E%7B2%7D) : partial omega-squared; _F_ : _F_-statistic; ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D) : effect degrees of freedom; ![equation](http://latex.codecogs.com/gif.latex?df_%7B2%7D) : error degrees of freedom
 
 ### Regression OLS
+
+The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the `ci.R2` function. The confidence intervals are set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _R_-squared cannot be negative (Smithson, 2003).
 
 #### R-squared
 
