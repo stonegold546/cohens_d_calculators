@@ -108,7 +108,7 @@ This call to Open CPU returns the limits on _F_, as noncentrality parameters (![
 
 #### Partial Omega-squared
 
-![equation](http://latex.codecogs.com/gif.download?%5Comega_%7Bp%7D%5E%7B2%7D%3D%5Cfrac%7BF-1%7D%7BF%20+%20%5Cfrac%7Bdf_%7B2%7D%20+%201%7D%7Bdf_%7B1%7D%7D%7D)
+![equation](http://latex.codecogs.com/gif.latex?%5Comega_%7Bp%7D%5E%7B2%7D%3D%5Cfrac%7BF-1%7D%7BF%20+%20%5Cfrac%7Bdf_%7B2%7D%20+%201%7D%7Bdf_%7B1%7D%7D%7D)
 
 ##### Notation:
 
