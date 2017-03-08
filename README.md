@@ -130,7 +130,11 @@ The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencp
 
 ##### Notation:
 
-_R2_ : R-squared; ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D) : effect degrees of freedom; ![equation](http://latex.codecogs.com/gif.latex?df_%7B2%7D) : error degrees of freedom
+_R2_ : _R_-squared; ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D) : effect degrees of freedom; ![equation](http://latex.codecogs.com/gif.latex?df_%7B2%7D) : error degrees of freedom
+
+### Hierarchical Linear Modeling
+
+#### Intracluster/Intraclass correlation coefficient (ICC)
 
 ## References
 
