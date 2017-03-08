@@ -1,7 +1,7 @@
 require 'virtus'
 require 'active_model'
 
-# Value object for partial eta-squared (ANOVA)
+# Value object for R^2 (OLS)
 class Regression
   include Virtus.model
   include ActiveModel::Validations

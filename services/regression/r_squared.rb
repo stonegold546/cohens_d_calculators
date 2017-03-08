@@ -1,4 +1,4 @@
-# Calculator for partial-eta-squared
+# Calculator for R^2
 class RSquared
   def initialize(regression)
     @inputs = regression.attributes
