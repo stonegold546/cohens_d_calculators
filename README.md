@@ -112,6 +112,8 @@ This call to Open CPU returns the limits on _F_, as noncentrality parameters (![
 
 #### Partial Omega-squared
 
+This formula for partial omega-squared applies only when all our factors are manipulated not measured, and there are no covariates (Carroll & Nordholm, 1975).
+
 ![equation](http://latex.codecogs.com/gif.latex?%5Comega_%7Bp%7D%5E%7B2%7D%3D%5Cfrac%7BF-1%7D%7BF%20+%20%5Cfrac%7Bdf_%7B2%7D%20+%201%7D%7Bdf_%7B1%7D%7D%7D)
 
 ##### Notation:
@@ -133,6 +135,7 @@ _R2_ : R-squared; ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D) : 
 ## References
 
 - Algina, J., & Keselman, H. J. (2003). Approximate Confidence Intervals for Effect Sizes. _Educational and Psychological Measurement, 63_(4), 537–553\. <https://doi.org/10.1177/0013164403256358>
+- Carroll, R. M., & Nordholm, L. A. (1975). Sampling Characteristics of Kelley's ![equation](http://latex.codecogs.com/gif.latex?%epsilon) and Hays' ![equation](http://latex.codecogs.com/gif.latex?%5Comega). _Educational and Psychological Measurement, 35_(3), 541–554\. <https://doi.org/10.1177/001316447503500304>
 - Cumming, G. (2012). _Understanding The New Statistics_. Routledge. Retrieved from <http://proquest.safaribooksonline.com/9780415879675>
 - Kelley, K. (2007). Methods for the Behavioral, Educational, and Social Sciences: An R package. _Behavior Research Methods, 39_(4), 979–984\. <https://doi.org/10.3758/BF03192993>
 - Lakens, D. (2013). Calculating and reporting effect sizes to facilitate cumulative science: a practical primer for t-tests and ANOVAs. _Frontiers in Psychology, 4_(863). <https://doi.org/10.3389/fpsyg.2013.00863>
