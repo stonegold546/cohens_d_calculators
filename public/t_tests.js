@@ -255,6 +255,7 @@ function doRm () {
       for (var i = 0; i < result.length; i++) {
         result[i].value = ''
       }
+      stopTheWheel('paired-samples-home')
       return
     }
   }

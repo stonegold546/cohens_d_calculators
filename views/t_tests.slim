@@ -150,7 +150,7 @@ div id='paired-samples-home'
         input type='number' class='data-rm-sample data-av-sample' name='n_pairs' required='true' tabindex=3 min=2 placeholder='Must be > 1' step='1'
       td
         | <i>r</i>: 
-        input type='number' class='data-rm-sample' name='r' required='false' tabindex=3 min='-1' max='1' placeholder='For CI; -1 < r < 1' step='any'
+        input type='number' class='data-rm-sample' name='r' required='true' tabindex=3 min='-1' max='1' placeholder='For CI; -1 < r < 1' step='any'
     tr
       td align='right'
         button type='submit' id='dep_sample_btn' name='dep_sample_btn' tabindex=3 onClick='depSampleBtnClick()' Calculate
