@@ -17,9 +17,9 @@ Calculator I built for ESQREM 6641 class
 
   - [_R_-squared confidence intervals](#r-squared-confidence-intervals)
 
-- [Hierarchical Linear Modeling / Multilevel Modeling / Mixed Effects Modeling]()
+- [Hierarchical Linear Modeling / Multilevel Modeling / Mixed Effects Modeling](#hierarchical-linear-modeling--multilevel-modeling--mixed-effects-modeling)
 
-  - [Intracluster/Intraclass correlation coefficient (ICC)]()
+  - [Intracluster/Intraclass correlation coefficient (ICC)](#intraclusterintraclass-correlation-coefficient-icc)
 
 ## Formulae
 
@@ -153,9 +153,23 @@ _R2_ : _R_-squared; ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D) 
 
 ### Hierarchical Linear Modeling / Multilevel Modeling / Mixed Effects Modeling
 
-All analysis related to multilevel models is performed using a [Python API]()
+All analysis related to multilevel models is performed using a [Python API](https://github.com/stonegold546/py_cohens_d_calculators) I created for the task.
 
 #### Intracluster/Intraclass correlation coefficient (ICC)
+
+##### ANOVA Method
+
+##### REML/ML
+
+The Python API performs REML and FEML/ML using the code below from `statsmodels` package in Python.
+
+> model = sm.MixedLM.from_formula('values ~ 1', df, groups=df['clusters'])
+
+> res = model.fit(reml=method)
+
+Values are the outcome data, with clusters being the cluster groupings. Method is either `TRUE` to use REML or `FALSE` to use ML.
+
+The level-2 variance around the intercept, ![equation](http://latex.codecogs.com/gif.latex?%5Ctau_%7B00%7D), is retrieved from `res.cov_re.groups[0]`, while the within group variance is retrieved from `res.scale`, and the ICC is calculated using the formula, ![equation](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Ctau_%7B00%7D%7D%7B%5Ctau_%7B00%7D+%5Csigma%5E2%7D).
 
 ## References
 
