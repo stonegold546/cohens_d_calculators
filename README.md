@@ -124,9 +124,7 @@ This formula for partial omega-squared applies only when all our factors are man
 
 The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the `ci.R2` function. The confidence intervals are set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _R_-squared cannot be negative (Smithson, 2003).
 
-#### R-squared
-
-A call to Open CPU provides the lower and upper limits on R-squared.
+#### R-squared Confidence Intervals
 
 > <https://public.opencpu.org/ocpu/library/MBESS/R/ci.R2/json>, body: { 'R2' => _R2_, 'df.1' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D), 'df.2' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B2%7D), 'conf.level' => 0.90 }
 
