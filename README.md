@@ -161,15 +161,15 @@ All analysis related to multilevel models is performed using a [Python API](http
 
 ##### REML/ML
 
-The Python API performs REML and FEML/ML using the code below from `statsmodels` package in Python.
+The Python API performs REML and FEML/ML using the code below from the `statsmodels` package in Python.
 
 > model = sm.MixedLM.from_formula('values ~ 1', df, groups=df['clusters'])
 
 > res = model.fit(reml=method)
 
-Values are the outcome data, with clusters being the cluster groupings. Method is either `TRUE` to use REML or `FALSE` to use ML.
+The data is stored in a dataframe, `df`; `values` are the outcome data, with `clusters` being the cluster groupings. Method is either `TRUE` to use REML or `FALSE` to use ML.
 
-The level-2 variance around the intercept, ![equation](http://latex.codecogs.com/gif.latex?%5Ctau_%7B00%7D), is retrieved from `res.cov_re.groups[0]`, while the within group variance is retrieved from `res.scale`, and the ICC is calculated using the formula, ![equation](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Ctau_%7B00%7D%7D%7B%5Ctau_%7B00%7D+%5Csigma%5E2%7D).
+The level-2 variance around the intercept, ![equation](http://latex.codecogs.com/gif.latex?%5Ctau_%7B00%7D), is obtained using `res.cov_re.groups[0]`, while the within group variance is obtained using `res.scale`, and the ICC is calculated using the formula, ![equation](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Ctau_%7B00%7D%7D%7B%5Ctau_%7B00%7D+%5Csigma%5E2%7D).
 
 ## References
 
