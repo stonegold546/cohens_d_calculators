@@ -2,6 +2,8 @@
 
 Calculator I built for ESQREM 6641 class
 
+# Formulae
+
 - [Cohen's _d_ family](#cohens-d-family)
 
   - [One-sample t-test](#one-sample-t-test)
@@ -20,8 +22,6 @@ Calculator I built for ESQREM 6641 class
 - [Hierarchical Linear Modeling / Multilevel Modeling / Mixed Effects Modeling](#hierarchical-linear-modeling--multilevel-modeling--mixed-effects-modeling)
 
   - [Intracluster/Intraclass correlation coefficient (ICC)](#intraclusterintraclass-correlation-coefficient-icc)
-
-# Formulae
 
 ## Cohen's _d_ family
 
