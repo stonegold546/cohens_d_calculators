@@ -25,7 +25,7 @@ Calculator I built for ESQREM 6641 class
 
 ## Cohen's _d_ family
 
-The formulae for point estimates for the Cohen's _d_ family of effect sizes (_d_, _g_, _r_) were obtained from Lakens (2013). The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _t_ method. The confidence intervals were computed on _d_ rather than _g_ (Cumming, 2012). The formulae for the estimation of the noncentrality parameter (![equation](http://latex.codecogs.com/gif.latex?%5Clambda)) and its transformation to confidence intervals around _d_ for:
+The formulae for point estimates for the Cohen's _d_ family of effect sizes (_d_, _g_) and _r_ were obtained from Lakens (2013). The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _t_ method. The confidence intervals were computed on _d_ rather than _g_ (Cumming, 2012). The formulae for the estimation of the noncentrality parameter (![equation](http://latex.codecogs.com/gif.latex?%5Clambda)) and its transformation to confidence intervals around _d_ for:
 
 - the one-sample t-tests and independent-samples t-test are equivalent to equations 4.6 & 4.7 in chapter 4 of Smithson's Confidence Intervals (2003, pp. 33–41);
 - the within-subject designs are equations 8 & 9 in Algina & Keselman (2003).
