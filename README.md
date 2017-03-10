@@ -1,6 +1,6 @@
 # Effect size calculators
 
-Calculator I built for ESQREM 6641 class, owes a lot to [Daniël Lakens'](https://twitter.com/lakens) work.
+Calculator I built for ESQREM 6641 class, owes a lot to [Daniël Lakens'](https://daniellakens.blogspot.nl/) work.
 
 # Formulae
 
