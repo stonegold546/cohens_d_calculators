@@ -126,7 +126,7 @@ The formula for partial eta-squared is equation 13 from Lakens (2013), while tha
 
 > <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.ncf/json>, body: { 'F.value' => _F_, 'df.1' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D), 'df.2' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B2%7D), 'conf.level' => 0.90 }
 
-This call to Open CPU returns the limits on _F_, as noncentrality parameters (![equation](http://latex.codecogs.com/gif.latex?%5Clambda)), which need to be converted back to partial eta-squared.
+This call to Open CPU returns the limits on _F_, as noncentrality parameters (![equation](http://latex.codecogs.com/gif.latex?%5Clambda)), which need to be converted back to partial eta-squared. I use the `conf.limits.ncf` function within the R `MBESS` package.
 
 ![equation](http://latex.codecogs.com/gif.latex?n_%7Bp%28LL%2CUL%29%7D%5E%7B2%7D%3D%5Cfrac%7B%5Clambda%7D%7B%5Clambda%20+%20df_%7B1%7D%20+%20df_%7B2%7D%20+%201%7D)
 
