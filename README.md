@@ -176,7 +176,7 @@ The Python API performs REML and FEML/ML using the code below from the `statsmod
 
 The data is stored in a dataframe, `df`; `values` are the outcome data, with `clusters` being the cluster groupings. Method is either `TRUE` to use REML or `FALSE` to use ML.
 
-The level-2 variance around the intercept, ![equation](http://latex.codecogs.com/gif.latex?%5Ctau_%7B00%7D), is obtained using `res.cov_re.groups[0]`, while the within group variance is obtained using `res.scale`, and the ICC is calculated using the formula, ![equation](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Ctau_%7B00%7D%7D%7B%5Ctau_%7B00%7D+%5Csigma%5E2%7D). REML and ML return only the ICC, and the variance estimates. All other results are computed using the ANOVA method.
+The level-2 variance around the intercept, ![equation](http://latex.codecogs.com/gif.latex?%5Ctau_%7B00%7D), is obtained using `res.cov_re.groups[0]`, the within group variance is obtained using `res.scale`, and the ICC is calculated using the formula, ![equation](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Ctau_%7B00%7D%7D%7B%5Ctau_%7B00%7D+%5Csigma%5E2%7D). REML and ML return only the ICC, and the variance estimates. All other results are computed using the ANOVA method.
 
 ## References
 
