@@ -114,7 +114,7 @@ _M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : popu
 
 ## ANOVA
 
-The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _F_ method. The confidence intervals are set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _F_-statistic cannot be negative (Smithson, 2003, pp. 42–66).
+These formulae apply only when all your factors are manipulated not measured, and when there are no covariates. It The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _F_ method. The confidence intervals are set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _F_-statistic cannot be negative (Smithson, 2003, pp. 42–66).
 
 ### Partial eta-squared
 
@@ -136,7 +136,7 @@ This call to Open CPU returns the limits on _F_, as noncentrality parameters (![
 
 ### Partial omega-squared
 
-This formula for partial omega-squared applies only when all our factors are manipulated not measured, and there are no covariates. It is equation 10 in Carroll and Nordholm (1975).
+This formula for partial omega-squared is equation 10 in Carroll and Nordholm (1975).
 
 ![equation](http://latex.codecogs.com/gif.latex?%5Comega_%7Bp%7D%5E%7B2%7D%3D%5Cfrac%7BF-1%7D%7BF%20+%20%5Cfrac%7Bdf_%7B2%7D%20+%201%7D%7Bdf_%7B1%7D%7D%7D)
 
