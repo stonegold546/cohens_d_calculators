@@ -164,6 +164,8 @@ All analysis related to multilevel models is performed using a [Python API](http
 
 #### ANOVA Method
 
+I used a variation of Searle's method (1971) which adjusts for unbalanced data by replacing the number of subjects per cluster with the weighted mean cluster size - equation 9 in Ukoumunne (2002) - to calculate the confidence intervals. All of this is handled by a call to the Python API listed above. The code within the Python API is near-identical to the `ICCest` function in the [R `ICC` package](https://github.com/matthewwolak/ICC). The call to the API returns the ICC, an estimate of variance across clusters, an estimate of variance within clusters, lower and upper limits on ICC, the number of clusters used in the analysis, and the weighted mean cluster size.
+
 #### REML/ML
 
 The Python API performs REML and FEML/ML using the code below from the `statsmodels` package in Python.
@@ -174,7 +176,7 @@ The Python API performs REML and FEML/ML using the code below from the `statsmod
 
 The data is stored in a dataframe, `df`; `values` are the outcome data, with `clusters` being the cluster groupings. Method is either `TRUE` to use REML or `FALSE` to use ML.
 
-The level-2 variance around the intercept, ![equation](http://latex.codecogs.com/gif.latex?%5Ctau_%7B00%7D), is obtained using `res.cov_re.groups[0]`, while the within group variance is obtained using `res.scale`, and the ICC is calculated using the formula, ![equation](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Ctau_%7B00%7D%7D%7B%5Ctau_%7B00%7D+%5Csigma%5E2%7D).
+The level-2 variance around the intercept, ![equation](http://latex.codecogs.com/gif.latex?%5Ctau_%7B00%7D), is obtained using `res.cov_re.groups[0]`, while the within group variance is obtained using `res.scale`, and the ICC is calculated using the formula, ![equation](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Ctau_%7B00%7D%7D%7B%5Ctau_%7B00%7D+%5Csigma%5E2%7D). REML and ML return only the ICC, and the variance estimates. All other results are computed using the ANOVA method.
 
 ## References
 
@@ -183,5 +185,7 @@ The level-2 variance around the intercept, ![equation](http://latex.codecogs.com
 - Cumming, G. (2012). _Understanding The New Statistics_. Routledge. Retrieved from <http://proquest.safaribooksonline.com/9780415879675>
 - Kelley, K. (2007). Methods for the Behavioral, Educational, and Social Sciences: An R package. _Behavior Research Methods, 39_(4), 979–984\. <https://doi.org/10.3758/BF03192993>
 - Lakens, D. (2013). Calculating and reporting effect sizes to facilitate cumulative science: a practical primer for t-tests and ANOVAs. _Frontiers in Psychology, 4_(863). <https://doi.org/10.3389/fpsyg.2013.00863>
+- Searle, S. R. (1971). _Linear Models_. New York: Wiley.
 - Smithson, M. (2003). Noncentral Confidence Intervals for Standardized Effect Sizes. In _Confidence Intervals_ (pp. 33–41). Thousand Oaks California: SAGE Publications, Inc. <https://doi.org/10.4135/9781412983761>
 - Smithson, M. (2003). Applications in ANOVA and Regression. In _Confidence Intervals_ (pp. 42–66). Thousand Oaks California: SAGE Publications, Inc. <https://doi.org/10.4135/9781412983761.n5>
+- Ukoumunne, O. C. (2002). A comparison of confidence interval methods for the intraclass correlation coefficient in cluster randomized trials. _Statistics in Medicine, 21_(24), 3757–3774\. <https://doi.org/10.1002/sim.1330>
