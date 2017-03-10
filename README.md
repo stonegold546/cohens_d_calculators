@@ -164,7 +164,7 @@ All analysis related to multilevel models is performed using a [Python API](http
 
 #### ANOVA Method
 
-I used a variation of Searle's method (1971) which adjusts for unbalanced data by replacing the number of subjects per cluster with the weighted mean cluster size - equation 9 in Ukoumunne (2002) - to calculate the confidence intervals. All of this is handled by a call to the Python API listed above. The code within the Python API is near-identical to the `ICCest` function in the [R `ICC` package](https://github.com/matthewwolak/ICC). The call to the API returns the ICC, an estimate of variance across clusters, an estimate of variance within clusters, lower and upper limits on ICC, the number of clusters used in the analysis, and the weighted mean cluster size.
+I used a variation of Searle's method (1971) which adjusts for unbalanced data by replacing the number of subjects per cluster with the weighted mean cluster size - equation 9 in Ukoumunne (2002) - to calculate the confidence intervals. All of this is handled by a call to the Python API listed above. The code within the Python API is near-identical to the `ICCest` function in the R [ICC](https://cran.r-project.org/web/packages/ICC/ICC.pdf) package. The call to the API returns the ICC, an estimate of variance across clusters, an estimate of variance within clusters, lower and upper limits on ICC, the number of clusters used in the analysis, and the weighted mean cluster size.
 
 #### REML/ML
 
