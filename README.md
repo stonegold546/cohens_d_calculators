@@ -1,6 +1,6 @@
 # Effect size calculators
 
-Calculator I originally built for Introduction to Educational Statistics class I serve as Teaching Assistant for. I intended that it focus on Cohen's _d_ family of effect sizes only. My work here owes a lot to [Daniël Lakens'](https://twitter.com/lakens) [writings](https://daniellakens.blogspot.nl/).
+Calculator I originally built for the Introduction to Educational Statistics class I serve as Teaching Assistant for. I initially intended that it focus on the Cohen's _d_ family of effect sizes only. My work here owes a lot to [Daniël Lakens'](https://twitter.com/lakens) [writings](https://daniellakens.blogspot.nl/).
 
 You can contact me at uanhoro.1@osu.edu.
 
