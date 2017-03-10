@@ -1,6 +1,6 @@
 # Effect size calculators
 
-Calculator I built for ESQREM 6641 class
+Calculator I built for ESQREM 6641 class, owes a lot to [Daniël Lakens'](https://twitter.com/lakens) work.
 
 # Formulae
 
@@ -136,7 +136,7 @@ This call to Open CPU returns the limits on _F_, as noncentrality parameters (![
 
 ### Partial omega-squared
 
-This formula for partial omega-squared applies only when all our factors are manipulated not measured, and there are no covariates (Carroll & Nordholm, 1975).
+This formula for partial omega-squared applies only when all our factors are manipulated not measured, and there are no covariates. It is equation 10 in Carroll and Nordholm (1975).
 
 ![equation](http://latex.codecogs.com/gif.latex?%5Comega_%7Bp%7D%5E%7B2%7D%3D%5Cfrac%7BF-1%7D%7BF%20+%20%5Cfrac%7Bdf_%7B2%7D%20+%201%7D%7Bdf_%7B1%7D%7D%7D)
 
