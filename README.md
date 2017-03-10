@@ -25,7 +25,10 @@ Calculator I built for ESQREM 6641 class
 
 ## Cohen's _d_ family
 
-The formulae for point estimates for the Cohen's _d_ family of effect sizes were obtained from Lakens (2013). The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _t_ method. The confidence intervals were computed on _d_ rather than _g_ (Cumming, 2012). The formulae for the estimation of the noncentrality parameter (![equation](http://latex.codecogs.com/gif.latex?%5Clambda)) and its transformation to confidence intervals around _d_ for within-subject designs were obtained from Algina & Keselman (2003).
+The formulae for point estimates for the Cohen's _d_ family of effect sizes (_d_, _g_, _r_) were obtained from Lakens (2013). The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _t_ method. The confidence intervals were computed on _d_ rather than _g_ (Cumming, 2012). The formulae for the estimation of the noncentrality parameter (![equation](http://latex.codecogs.com/gif.latex?%5Clambda)) and its transformation to confidence intervals around _d_ for:
+
+- the one-sample t-tests and independent-samples t-test are equivalent to equations 4.6 & 4.7 in chapter 4 of Smithson's Confidence Intervals (2003, pp. 33–41);
+- the within-subject designs are equations 8 & 9 in Algina & Keselman (2003).
 
 ### Confidence Intervals (All 95%)
 
@@ -111,9 +114,11 @@ _M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : popu
 
 ## ANOVA
 
-The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _F_ method. The confidence intervals are set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _F_-statistic cannot be negative (Smithson, 2003).
+The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _F_ method. The confidence intervals are set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _F_-statistic cannot be negative (Smithson, 2003, pp. 42–66).
 
-### Partial Eta-squared
+### Partial eta-squared
+
+The formula for partial eta-squared is equation 13 from Lakens (2013), while that for its confidence intervals is equation 5.6 in chapter 5 of Smithson's Confidence Intervals (2003, pp. 42–66).
 
 ![equation](http://latex.codecogs.com/gif.latex?n_%7Bp%7D%5E%7B2%7D%3D%5Cfrac%7B%7D%7BF*df_%7B1%7D%7D%7B%28F*df_%7B1%7D%29+df_%7B2%7D%7D)
 
@@ -129,7 +134,7 @@ This call to Open CPU returns the limits on _F_, as noncentrality parameters (![
 
 ![equation](http://latex.codecogs.com/gif.latex?n_%7Bp%7D%5E%7B2%7D) : partial eta-squared; _F_ : _F_-statistic; ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D) : effect degrees of freedom; ![equation](http://latex.codecogs.com/gif.latex?df_%7B2%7D) : error degrees of freedom; ![equation](http://latex.codecogs.com/gif.latex?%5Clambda) : noncentrality parameter
 
-### Partial Omega-squared
+### Partial omega-squared
 
 This formula for partial omega-squared applies only when all our factors are manipulated not measured, and there are no covariates (Carroll & Nordholm, 1975).
 
@@ -141,7 +146,7 @@ This formula for partial omega-squared applies only when all our factors are man
 
 ## Regression OLS
 
-The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the `ci.R2` function. The confidence intervals are set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _R_-squared cannot be negative (Smithson, 2003).
+The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the `ci.R2` function. The confidence intervals are set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _R_-squared cannot be negative (Smithson, 2003, pp. 42–66).
 
 ### _R_-squared confidence intervals
 
@@ -178,4 +183,5 @@ The level-2 variance around the intercept, ![equation](http://latex.codecogs.com
 - Cumming, G. (2012). _Understanding The New Statistics_. Routledge. Retrieved from <http://proquest.safaribooksonline.com/9780415879675>
 - Kelley, K. (2007). Methods for the Behavioral, Educational, and Social Sciences: An R package. _Behavior Research Methods, 39_(4), 979–984\. <https://doi.org/10.3758/BF03192993>
 - Lakens, D. (2013). Calculating and reporting effect sizes to facilitate cumulative science: a practical primer for t-tests and ANOVAs. _Frontiers in Psychology, 4_(863). <https://doi.org/10.3389/fpsyg.2013.00863>
+- Smithson, M. (2003). Noncentral Confidence Intervals for Standardized Effect Sizes. In _Confidence Intervals_ (pp. 33–41). Thousand Oaks California: SAGE Publications, Inc. <https://doi.org/10.4135/9781412983761>
 - Smithson, M. (2003). Applications in ANOVA and Regression. In _Confidence Intervals_ (pp. 42–66). Thousand Oaks California: SAGE Publications, Inc. <https://doi.org/10.4135/9781412983761.n5>
