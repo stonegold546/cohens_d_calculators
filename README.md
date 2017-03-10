@@ -114,7 +114,7 @@ _M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : popu
 
 ## ANOVA
 
-These formulae apply only when all your factors are manipulated not measured, and when there are no covariates. It The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _F_ method. The confidence intervals are set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _F_-statistic cannot be negative (Smithson, 2003, pp. 42–66).
+These formulae apply only when all your factors are manipulated not measured, and when there are no covariates. The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _F_ method. The confidence intervals are set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _F_-statistic cannot be negative (Smithson, 2003, pp. 42–66).
 
 ### Partial eta-squared
 
