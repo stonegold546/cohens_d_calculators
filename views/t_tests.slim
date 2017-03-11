@@ -38,7 +38,7 @@ div id='one-sample-home'
 
   markdown:
 
-    ### Results (95% CI using noncentral _t_ distribution)
+    ### Results (CI using noncentral _t_ distribution)
 
   table cellpadding='10' align='center'
     tr
@@ -107,7 +107,7 @@ div id='ind-samples-home'
 
   markdown:
 
-    ### Results (95% CI using noncentral _t_ distribution)
+    ### Results (CI using noncentral _t_ distribution)
 
   table cellpadding='10' align='center'
     tr align='right'
@@ -161,6 +161,12 @@ div id='paired-samples-home'
       td
         | <i>r</i>: 
         input type='number' class='data-rm-sample' name='r' required='true' tabindex=3 min='-1' max='1' placeholder='For CI; -1 < r < 1' step='any'
+    tr align='center'
+      td colspan=2
+        | Confidence Interval: 
+        input type='number' class='data-rm-sample' name='conf_int' required='true' value='95' min=0 max=99.9 placeholder='Between 0 and 100%' tabindex=3 step='any'
+        | %
+
     tr
       td align='right'
         button type='submit' id='dep_sample_btn' name='dep_sample_btn' tabindex=3 onClick='depSampleBtnClick()' Calculate
@@ -181,7 +187,7 @@ div id='paired-samples-home'
 
   markdown:
 
-    ### Results (95% CI using noncentral _t_ distribution)
+    ### Results (CI using noncentral _t_ distribution)
 
   table cellpadding='10' align='center'
     tr align='right'

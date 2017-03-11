@@ -7,14 +7,13 @@ class CohenDrm
     @sd2 = repeated_samples.sd_2.to_f
     @r = repeated_samples.r.to_f
     @n_pairs = repeated_samples.n_pairs.to_f
+    @conf_int = repeated_samples.confidence_interval
     @cov = cov
-    @t = calc_t
+    # @t = calc_t
   end
 
   def call
     d_rm = cohen_d
-    # result = { cohen_drm: d_rm, inputs: @inputs }
-    # return Oj.dump(result) if @n_pairs.zero?
     g_rm = d_rm * HedgesCorrection.new(@n_pairs, DF).call
     npci = non_par_conf_int
     result = warning(
@@ -25,7 +24,9 @@ class CohenDrm
   end
 
   def non_par_conf_int
-    response = HTTParty.post URL, body: { ncp: @t, df: @n_pairs - DF }
+    response = HTTParty.post URL, body: {
+      ncp: calc_t, df: @n_pairs - DF, 'conf.level' => @conf_int
+    }
     result = Oj.load response.body
     lower = calc_d(result[LL][0])
     upper = calc_d(result[UL][0])
@@ -55,7 +56,7 @@ class CohenDrm
   end
 
   def warning(result)
-    warning_message = @t > TNCP_MAX ? WARNING : EMPTY_MESSAGE
+    warning_message = calc_t > TNCP_MAX ? WARNING : EMPTY_MESSAGE
     result.merge(warning: warning_message)
   end
 end
