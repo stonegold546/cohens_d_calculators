@@ -1,3 +1,5 @@
+/ TODO: Wake Python API up in proper manner
+
 div id='icc-home'
   markdown:
     ---
@@ -14,7 +16,7 @@ div id='icc-home'
 
     REML and FEML take several seconds  
 
-  input type='file' class='data-icc' id='icc_file' name='icc_file' tabindex=6 required='true'
+  input type='file' class='data-icc' id='icc_file' name='icc_file' onchange='pingPython()' tabindex=6 required='true'
   | Method: 
   select id='method' tabindex=6
     option value='ANOVA' selected='selected' ANOVA
