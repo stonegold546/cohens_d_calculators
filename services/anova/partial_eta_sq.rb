@@ -5,6 +5,7 @@ class PartialEtaSq
     @f = anova.f
     @df_error = anova.df_error
     @df_effect = anova.df_effect
+    @conf_int = anova.confidence_interval
   end
 
   def call
@@ -26,7 +27,7 @@ class PartialEtaSq
 
   def non_par_conf_int
     response = HTTParty.post URL_F, body: {
-      'F.value' => @f, 'conf.level' => CONFINT_F,
+      'F.value' => @f, 'conf.level' => @conf_int,
       'df.1' => @df_effect, 'df.2' => @df_error
     }
     result = Oj.load response.body

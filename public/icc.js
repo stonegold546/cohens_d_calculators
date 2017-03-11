@@ -74,3 +74,8 @@ function clearInputs (className) {
     input.value = ''
   }
 }
+
+function pingPython () {
+  'use strict'
+  new Image().src = 'https://python-worker.herokuapp.com'
+}

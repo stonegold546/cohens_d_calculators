@@ -187,6 +187,7 @@ function oneSampleBtnClick () {
   for (idx = 0; idx < inputsOneSample.length; idx += 1) {
     var inputOne = inputsOneSample[idx]
     if (inputOne.name === 'n' && inputOne.value === '') {
+    } else if (inputOne.name === 'conf_int' && inputOne.value === '') {
     } else if (inputOne.checkValidity() === false) {
       var inputs = document.getElementById('one_sample_inputs')
       var warning = document.getElementById('one_sample_warning')

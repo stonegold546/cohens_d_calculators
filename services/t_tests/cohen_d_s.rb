@@ -9,12 +9,10 @@ class CohenDs
     @sd2 = independent_samples.sd_2.to_f
     @n1 = independent_samples.n_1.to_f
     @n2 = independent_samples.n_2.to_f
+    @conf_int = independent_samples.confidence_interval
   end
 
   def call
-    # se_d_s = se_d(d_s)
-    # se_g_s = se_d_s * j
-    # cohen_ds: d_s, se_d: se_d_s, se_g: se_g_s
     d_s = cohen_d
     g_s = d_s * j
     @t = calc_t(d_s) # Calculate interval on d not g
@@ -28,7 +26,9 @@ class CohenDs
   end
 
   def non_par_conf_int
-    response = HTTParty.post URL, body: { ncp: @t, df: @n1 + @n2 - DF - DF }
+    response = HTTParty.post URL, body: {
+      ncp: @t, df: @n1 + @n2 - DF - DF, 'conf.level' => @conf_int
+    }
     result = Oj.load response.body
     lower = calc_d(result[LL][0])
     upper = calc_d(result[UL][0])

@@ -7,10 +7,14 @@ div id='anova-home'
     ### Inputs
 
   table cellpadding='10' align='center'
-    tr align='center'
-      td colspan='2'
+    tr align='right'
+      td
         | <i>F</i>-value: 
         input type='number' class='data-fixed-effects' name='f' required='true' min=0 placeholder='Greater than 0' tabindex=4 step='any'
+      td
+        | Confidence Interval: 
+        input type='number' class='data-fixed-effects' name='conf_int' required='true' value='90' min=0 max=99.9 placeholder='Between 0 and 100%' tabindex=4 step='any'
+        | %
     tr align='right'
       td
         | Numerator degrees of freedom: 
@@ -24,13 +28,15 @@ div id='anova-home'
       td align='left'
         button type='reset' tabindex=4 onClick="clearInputs('data-fixed-effects')" Clear
 
+  p It is recommended that you use the <b>90% CI</b> if you have an alpha level of 5%.
+
   div
     p class='result-fixed-effects' id='fixed_effects_inputs' name=':inputs'
     p class='result-fixed-effects' id='fixed_effects_warning' name=':warning'
 
   markdown:
 
-    ### Results (90% CI using noncentral _F_ distribution)
+    ### Results (CI using noncentral _F_ distribution)
 
   table cellpadding='10' align='center'
     tr align='right'
@@ -53,7 +59,8 @@ div id='anova-home'
 
 
   p name=':warning'
-    | The confidence intervals produced here will differ from the confidence intervals produced in the OLS section. The calculation for the intervals returned here assumes the predictors are planned/fixed as in an experiment.
+    | Partial eta-squared and omega-squared calculated here should only be interpreted if all your factors are manipulated not observed (such as gender), and you have no covariates.
+    br Additionally, the confidence intervals produced here will differ from the confidence intervals produced in the OLS section. The calculation for the intervals returned here assumes the predictors are planned/fixed as in an experiment.
 
   markdown:
     

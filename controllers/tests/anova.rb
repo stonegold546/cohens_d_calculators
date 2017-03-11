@@ -1,4 +1,3 @@
-CONFINT_F = 0.90
 URL_F = 'https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.ncf/json'.freeze
 LL_F = 'Lower.Limit'.freeze
 UL_F = 'Upper.Limit'.freeze

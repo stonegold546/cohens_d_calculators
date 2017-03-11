@@ -5,6 +5,7 @@ class RSquared
     @r2 = regression.r2
     @df1 = regression.df_1
     @df2 = regression.df_2
+    @conf_int = regression.confidence_interval
   end
 
   def call
@@ -18,7 +19,7 @@ class RSquared
 
   def non_par_conf_int
     response = HTTParty.post URL_R2, body: {
-      'R2' => @r2, 'conf.level' => CONFINT_R2, 'df.1' => @df1, 'df.2' => @df2
+      'R2' => @r2, 'conf.level' => @conf_int, 'df.1' => @df1, 'df.2' => @df2
     }
     result = Oj.load response.body
     lower = result[LL_R2][0]
