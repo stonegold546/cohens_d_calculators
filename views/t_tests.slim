@@ -21,6 +21,11 @@ div id='one-sample-home'
       td
         | Sample size: 
         input type='number' class='data-one-sample' name='n' required='false' min=2 placeholder='Greater than 1' tabindex=1 step='1'
+    tr align='center'
+      td colspan=2
+        | Confidence Interval: 
+        input type='number' class='data-one-sample' name='conf_int' required='false' value='95' min=0 max=99.9 placeholder='Between 0 and 100%' tabindex=1 step='any'
+        | %
     tr
       td align='right'
         button type='submit' id='one_sample_btn' name='one_sample_btn' tabindex=1 onClick='oneSampleBtnClick()' Calculate

@@ -6,6 +6,7 @@ class CohenDz
     @pop_mean = one_sample.pop_mean.to_f
     @sample_sd = one_sample.sample_sd.to_f
     @n = one_sample.n.to_f
+    @conf_int = one_sample.conf_int.to_f / 100
     @t = calc_t
   end
 
@@ -13,7 +14,7 @@ class CohenDz
     cohen_dz = (@sample_mean - @pop_mean) / @sample_sd
     result = { cohen_dz: cohen_dz, lower_limit: '', upper_limit: '',
                inputs: @inputs }
-    return Oj.dump result if @t.zero? || @n.zero?
+    return Oj.dump result if @t.zero? || @n.zero? || @conf_int.zero?
     npci = non_par_conf_int
     result = { cohen_dz: cohen_dz, lower_limit: npci[:lower],
                upper_limit: npci[:upper], inputs: @inputs }
