@@ -7,10 +7,14 @@ div id='anova-home'
     ### Inputs
 
   table cellpadding='10' align='center'
-    tr align='center'
-      td colspan='2'
+    tr align='right'
+      td
         | <i>F</i>-value: 
         input type='number' class='data-fixed-effects' name='f' required='true' min=0 placeholder='Greater than 0' tabindex=4 step='any'
+      td
+        | Confidence Interval: 
+        input type='number' class='data-fixed-effects' name='conf_int' required='true' value='95' min=0 max=99.9 placeholder='Between 0 and 100%' tabindex=4 step='any'
+        | %
     tr align='right'
       td
         | Numerator degrees of freedom: 
