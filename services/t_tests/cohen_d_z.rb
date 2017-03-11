@@ -6,7 +6,7 @@ class CohenDz
     @pop_mean = one_sample.pop_mean.to_f
     @sample_sd = one_sample.sample_sd.to_f
     @n = one_sample.n.to_f
-    @conf_int = one_sample.conf_int.to_f / 100
+    @conf_int = one_sample.confidence_interval
     @t = calc_t
   end
 
@@ -23,7 +23,9 @@ class CohenDz
   end
 
   def non_par_conf_int
-    response = HTTParty.post URL, body: { ncp: @t, df: @n - DF }
+    response = HTTParty.post URL, body: {
+      ncp: @t, df: @n - DF, 'conf.level' => @conf_int
+    }
     result = Oj.load response.body
     lower = result[LL][0] / Math.sqrt(@n)
     upper = result[UL][0] / Math.sqrt(@n)

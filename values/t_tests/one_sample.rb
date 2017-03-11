@@ -18,4 +18,8 @@ class OneSample
   validates_numericality_of :n, greater_than: 1, allow_nil: true
   validates_numericality_of :conf_int, greater_than: 0, less_than: 100,
                                        allow_nil: true
+
+  def confidence_interval
+    conf_int / 100.0
+  end
 end
