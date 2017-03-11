@@ -1,4 +1,3 @@
-CONFINT_R2 = 0.90
 URL_R2 = 'https://public.opencpu.org/ocpu/library/MBESS/R/ci.R2/json?digits=7'.freeze
 LL_R2 = 'Lower.Conf.Limit.R2'.freeze
 UL_R2 = 'Upper.Conf.Limit.R2'.freeze

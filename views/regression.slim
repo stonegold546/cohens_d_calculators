@@ -7,10 +7,14 @@ div id='regression-home'
     ### Inputs
 
   table cellpadding='10' align='center'
-    tr align='center'
-      td colspan='2'
+    tr align='right'
+      td
         | <i>R</i>-squared: 
         input type='number' class='data-ols' name='r2' required='true' min=0 max=1 placeholder='Greater than 0' tabindex=5 step='any'
+      td
+        | Confidence Interval: 
+        input type='number' class='data-ols' name='conf_int' required='true' value='90' min=0 max=99.9 placeholder='Between 0 and 100%' tabindex=5 step='any'
+        | %
     tr align='right'
       td
         | Numerator degrees of freedom: 
@@ -24,13 +28,15 @@ div id='regression-home'
       td align='left'
         button type='reset' tabindex=5 onClick="clearInputs('data-ols')" Clear
 
+  p It is recommended that you use the <b>90% CI</b> if you have an alpha level of 5%.
+
   div
     p class='result-ols' id='ols_inputs' name=':inputs'
     p class='result-ols' id='ols_warning' name=':warning'
 
   markdown:
 
-    ### Results (90% CI)
+    ### Results
 
   table cellpadding='10' align='center'
     tr align='right'
