@@ -2,20 +2,21 @@
 class OddsRatio
   def initialize(odds)
     @inputs = odds.attributes
-    @tyoy = odds.tyoy
-    @tyon = odds.tyon
-    @cyoy = odds.cyoy
-    @cyon = odds.cyon
+    @odds_vector = odds.odds_vector
+    @method_url = odds.method_url
+    @conf_int = odds.confidence_interval
   end
 
   def call
-    odds_ratio = (@tyoy * @cyon) / (@tyon * @cyoy)
-    ap odds_ratio
-    response = HTTParty.post URL_ODDS_CI, body: {
-      'x' => 'NA', 'n1' => @tyoy + @tyon, 'n2' => @cyoy + @cyon,
-      'm1' => @tyoy + @cyoy, 'psi' => odds_ratio
+    response = HTTParty.post @method_url, body: {
+      'x' => @odds_vector, 'conf.level' => @conf_int
     }
-    result = Oj.load response.body
-    ap result
+    response = HTTParty.post URL_WITH, body: {
+      data: response.headers['x-ocpu-session'], expr: 'measure[2,]'
+    }
+    {
+      odds_ratio: response[0], lower_limit_odds: response[1],
+      upper_limit_odds: response[2], inputs: @inputs
+    }
   end
 end
