@@ -12,6 +12,8 @@ You can contact me at uanhoro.1@osu.edu.
   - [Independent-samples t-test](#independent-samples-t-test)
   - [Paired samples t-test](#paired-samples-t-test)
 
+- [Odds-ratio](#odds-ratio)
+
 - [ANOVA](#anova)
 
   - [Partial eta-squared](#partial-eta-squared)
@@ -32,7 +34,7 @@ The formulae for point estimates for the Cohen's _d_ family of effect sizes (_d_
 - the one-sample t-tests and independent-samples t-test are equivalent to equations 4.6 & 4.7 in chapter 4 of Smithson's Confidence Intervals (2003, pp. 33–41);
 - the within-subject designs are equations 8 & 9 in Algina & Keselman (2003).
 
-### Confidence Intervals (All 95%)
+### Confidence Intervals
 
 _t_ is calculated by converting from _d_, except for the paired-samples test. An Open URI API call is made using _t_ as an estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda). This uses the `conf.limits.nct` function within the R `MBESS` package. It returns lower and upper limits on _t_, which are converted back to lower and upper limits _d_.
 
@@ -44,7 +46,7 @@ _t_ is calculated by converting from _d_, except for the paired-samples test. An
 
 ![equation](http://latex.codecogs.com/gif.latex?t=%5Ctextrm%7BCohen's%7D%5C%20d%5Ctimes%20%5Csqrt%7Bn%7D)
 
-> <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json>, body: { ncp: _t_, df: _n_ - 1 }
+> <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json>, body: { ncp: _t_, df: _n_ - 1, 'conf.level' => confidence_interval }
 
 ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d_%7BLL,%20UL%7D%20=%5Cfrac%7Bt%7D%7B%20%5Csqrt%7Bn%7D%7D)
 
@@ -70,7 +72,7 @@ _M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : popu
 
 ![equation](http://latex.codecogs.com/gif.latex?t=%20%5Cfrac%7B%5Ctextrm%7BCohen's%20%7Dd%7D%7B%20%5Csqrt%7B%20%5Cfrac%7B1%7D%7Bn_%7B1%7D%7D+%5Cfrac%7B1%7D%7Bn_%7B2%7D%7D%7D%7D)
 
-> <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json>, body: { ncp: _t_, df: ![equation](http://latex.codecogs.com/gif.latex?n_%7B1%7D+n_%7B2%7D-2) }
+> <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json>, body: { ncp: _t_, df: ![equation](http://latex.codecogs.com/gif.latex?n_%7B1%7D+n_%7B2%7D-2), 'conf.level' => confidence_interval }
 
 ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d_%7BLL,%20UL%7D%20=t%5Ctimes%5Csqrt%7B%20%5Cfrac%7B1%7D%7Bn_%7B1%7D%7D+%5Cfrac%7B1%7D%7Bn_%7B2%7D%7D%7D)
 
@@ -106,7 +108,7 @@ _M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : popu
 
 ![equation](http://latex.codecogs.com/gif.latex?t=%20%5Cfrac%7B%20%5Coverline%7Bx%7D_%7B1%7D%20-%20%5Coverline%7Bx%7D_%7B2%7D%20%7D%7B%20%5Csqrt%7B%5Cfrac%20%7BSD%5E%7B2%7D_%7B1%7D%20+%20SD%5E%7B2%7D_%7B2%7D%20-2%20S_%7B12%7D%20%7D%7Bn_%7Bpairs%7D%7D%7D%7D)
 
-> <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json>, body: { ncp: _t_, df: ![equation](http://latex.codecogs.com/gif.latex?n_%7Bpairs%7D-1) }
+> <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.nct/json>, body: { ncp: _t_, df: ![equation](http://latex.codecogs.com/gif.latex?n_%7Bpairs%7D-1), 'conf.level' => confidence_interval }
 
 ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d_%7BLL,%20UL%7D%20=t%20%5Ctimes%20%5Csqrt%7B%5Cfrac%7B2(SD%5E%7B2%7D_%7B1%7D+SD%5E%7B2%7D_%7B2%7D-2S_%7B12%7D)%7D%7Bn_%7Bpairs%7D(SD%5E%7B2%7D_%7B1%7D+SD%5E%7B2%7D_%7B2%7D)%7D%7D)
 
@@ -114,9 +116,15 @@ _M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : popu
 
 ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B1%7D%20) : mean of group 1; ![equation](http://latex.codecogs.com/gif.latex?%5Coverline%7Bx%7D_%7B2%7D%20) : mean of group 2; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B1%7D) : standard deviation of group 1; ![equation](http://latex.codecogs.com/gif.latex?SD_%7B2%7D) : standard deviation of group 2; ![equation](http://latex.codecogs.com/gif.latex?n_%7Bpairs%7D) : number of pairs; _r_ : correlation between group 1 and group 2; ![equation](http://latex.codecogs.com/gif.latex?S_%7B12%7D) : covariance of group 1 and group 2; _t_ : estimate of ![equation](http://latex.codecogs.com/gif.latex?%5Clambda); ![equation](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCohen's%7D%5C%20d_%7BLL,%20UL%7D) : Lower and upper limits on Cohen's _d_
 
+## Odds-ratio
+
+The R package `epitools` (Aragon, 2012) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute the odds-ratio and confidence intervals using the `oddsratio` set of functions. The function called depends on the method the user selects: { midp: oddsratio.midp, fisher: oddsratio.fisher, wald: oddsratio.wald, small: oddsratio.small }. The matrix is transformed into a vector which is passed to the oddsratio function, alongside the confidence interval. It returns the odds ratio, and its confidence interval.
+
+> <https://public.opencpu.org/ocpu/library/epitools/R/oddsratio.{USER_METHOD}>, body: { 'x' => {Matrix transformed into vector}, 'conf.level' => confidence_interval }
+
 ## ANOVA
 
-These formulae apply only when all your factors are manipulated not measured, and when there are no covariates. The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _F_ method. The confidence intervals are set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _F_-statistic cannot be negative (Smithson, 2003, pp. 42–66).
+These formulae apply only when all your factors are manipulated not measured, and when there are no covariates. The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _F_ method. The default confidence interval is set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _F_-statistic cannot be negative (Smithson, 2003, pp. 42–66).
 
 ### Partial eta-squared
 
@@ -128,7 +136,7 @@ The formula for partial eta-squared is equation 13 from Lakens (2013), while tha
 
 This call to Open CPU returns the limits on _F_, as noncentrality parameters (![equation](http://latex.codecogs.com/gif.latex?%5Clambda)), which need to be converted back to partial eta-squared. I use the `conf.limits.ncf` function within the R `MBESS` package.
 
-> <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.ncf/json>, body: { 'F.value' => _F_, 'df.1' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D), 'df.2' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B2%7D), 'conf.level' => 0.90 }
+> <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.ncf/json>, body: { 'F.value' => _F_, 'df.1' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D), 'df.2' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B2%7D), 'conf.level' => confidence_interval }
 
 ![equation](http://latex.codecogs.com/gif.latex?n_%7Bp%28LL%2CUL%29%7D%5E%7B2%7D%3D%5Cfrac%7B%5Clambda%7D%7B%5Clambda%20+%20df_%7B1%7D%20+%20df_%7B2%7D%20+%201%7D)
 
@@ -148,11 +156,11 @@ This formula for partial omega-squared is equation 10 in Carroll and Nordholm (1
 
 ## Regression OLS
 
-The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the `ci.R2` function. The confidence intervals are set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _R_-squared cannot be negative (Smithson, 2003, pp. 42–66).
+The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the `ci.R2` function. The default confidence interval is set to 90%. This is equivalent to the 95% two-sided confidence interval given that the _R_-squared cannot be negative (Smithson, 2003, pp. 42–66).
 
 ### _R_-squared confidence intervals
 
-> <https://public.opencpu.org/ocpu/library/MBESS/R/ci.R2/json>, body: { 'R2' => _R2_, 'df.1' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D), 'df.2' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B2%7D), 'conf.level' => 0.90 }
+> <https://public.opencpu.org/ocpu/library/MBESS/R/ci.R2/json>, body: { 'R2' => _R2_, 'df.1' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D), 'df.2' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B2%7D), 'conf.level' => confidence_interval }
 
 #### Notation:
 
@@ -182,6 +190,7 @@ The level-2 variance around the intercept, ![equation](http://latex.codecogs.com
 
 ## References
 
+- Aragon, T. J. (2012). epitools: Epidemiology Tools. Retrieved from <https://cran.r-project.org/package=epitools>
 - Algina, J., & Keselman, H. J. (2003). Approximate Confidence Intervals for Effect Sizes. _Educational and Psychological Measurement, 63_(4), 537–553\. <https://doi.org/10.1177/0013164403256358>
 - Carroll, R. M., & Nordholm, L. A. (1975). Sampling Characteristics of Kelley's ![equation](http://latex.codecogs.com/gif.latex?%5Cepsilon) and Hays' ![equation](http://latex.codecogs.com/gif.latex?%5Comega). _Educational and Psychological Measurement, 35_(3), 541–554\. <https://doi.org/10.1177/001316447503500304>
 - Cumming, G. (2012). _Understanding The New Statistics_. Routledge. Retrieved from <http://proquest.safaribooksonline.com/9780415879675>
