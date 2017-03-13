@@ -118,7 +118,7 @@ _M_ : sample mean; ![equation](http://latex.codecogs.com/gif.latex?%5Cmu) : popu
 
 ## Odds-ratio
 
-The R package `epitools` (Aragon, 2012) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute the odds-ratio and confidence intervals using the `oddsratio` set of functions. The function called depends on the method the user selects: { midp: oddsratio.midp, fisher: oddsratio.fisher, wald: oddsratio.wald, small: oddsratio.small }. The matrix is transformed into a vector which is passed to the oddsratio function, alongside the confidence interval. It returns the odds ratio, and its confidence interval.
+The R package `epitools` (Aragon, 2012) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute the odds-ratio and confidence intervals using the `oddsratio` set of functions. The function called depends on the method the user selects: { `midp`: `oddsratio.midp`, `fisher`: `oddsratio.fisher`, `wald`: `oddsratio.wald`, `small`: `oddsratio.small` }. The matrix is transformed into a vector which is passed to the oddsratio function, alongside the confidence interval. It returns the odds ratio, and its confidence interval.
 
 > <https://public.opencpu.org/ocpu/library/epitools/R/oddsratio.{USER_METHOD}>, body: { 'x' => {Matrix transformed into vector}, 'conf.level' => confidence_interval }
 
