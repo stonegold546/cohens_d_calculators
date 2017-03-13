@@ -1,0 +1,76 @@
+div id='odds-home'
+  markdown:
+    ---
+    
+    ## Odds-ratio
+
+    ### Inputs
+
+  table cellpadding='10' align='center'
+    tr align='right'
+      td colspan='3' Outcome Frequency
+    tr align='right'
+      td colspan='2' Yes
+      td No
+    tr align='right'
+      td
+        | Treatment
+      td
+        input type='number' class='data-odds-ratio' name='treat_1' required='true' min=1 tabindex=4 step='1'
+      td
+        input type='number' class='data-odds-ratio' name='treat_0' required='true' min=1 tabindex=4 step='1'
+    tr align='right'
+      td
+        | Control
+      td
+        input type='number' class='data-odds-ratio' name='control_1' required='true' min=1 tabindex=4 step='1'
+      td
+        input type='number' class='data-odds-ratio' name='control_0' required='true' min=1 tabindex=4 step='1'
+    tr align='right'
+      td colspan='3'
+        | Method: 
+        select id='method-odds' name='method-odds' class='data-odds-ratio' tabindex=4 required='true'
+          option value='midp' selected='selected' Median-unbiased estimation (mid-p)
+          option value='fisher' Conditional maximum likelihood estimation (Fisher)
+          option value='wald' Unconditional maximum likelihood estimation (Wald)
+          option value='small' Small sample adjustment (small)
+    tr align='right'
+      td colspan='3'
+        | Confidence Interval: 
+        input type='number' class='data-odds-ratio' name='conf_int' required='true' value='95' min=0 max=99.9 placeholder='Between 0 and 100%' tabindex=4 step='any'
+        | %
+    tr
+      td colspan='2' align='right'
+        button type='submit' id='odds_ratio_btn' name='odds_ratio_btn' tabindex=4 onClick='oddsRatioBtnClick()' Calculate
+      td align='left'
+        button type='reset' tabindex=4 onClick="clearInputs('data-odds-ratio')" Clear
+
+  div
+    p class='result-odds-ratio' id='odds_ratio_inputs' name=':inputs'
+    p class='result-odds-ratio' id='odds_ratio_warning' name=':warning'
+
+  markdown:
+
+    ### Results
+
+  table cellpadding='10' align='center'
+    tr align='center'
+      td colspan='2'
+        | Odds-ratio: 
+        input type='number' class='result-odds-ratio' name=':odds_ratio' readonly='true' tabindex=-1
+    tr align='right'
+      td
+        | Lower limit on odds-ratio: 
+        input type='number' class='result-odds-ratio' name=':lower_limit_odds' readonly='true' tabindex=-1
+      td
+        | Upper limit on odds-ratio: 
+        input type='number' class='result-odds-ratio' name=':upper_limit_odds' readonly='true' tabindex=-1
+    tr
+      td align='center' colspan=2
+        button type='reset' tabindex=4 onClick="clearInputs('result-odds-ratio')" Clear
+
+  markdown:
+    
+    ___
+
+script src='odds.js'

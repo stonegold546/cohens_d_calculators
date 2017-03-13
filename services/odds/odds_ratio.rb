@@ -14,9 +14,9 @@ class OddsRatio
     response = HTTParty.post URL_WITH, body: {
       data: response.headers['x-ocpu-session'], expr: 'measure[2,]'
     }
-    {
+    Oj.dump(
       odds_ratio: response[0], lower_limit_odds: response[1],
       upper_limit_odds: response[2], inputs: @inputs
-    }
+    )
   end
 end

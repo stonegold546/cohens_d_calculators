@@ -4,22 +4,25 @@
 /* eslint no-unused-vars: */
 /* eslint no-undef: */
 
-var inputsICC = document.getElementsByClassName('data-icc')
+var inputsOddsRatio = document.getElementsByClassName('data-odds-ratio')
 
-function getIcc () {
+function getOddsRatio () {
   'use strict'
   var myResult = new XMLHttpRequest()
-  var iccFormData = new FormData()
-  var url = '/icc'
-  var iccFile = document.getElementById('icc_file')
-  var method = document.getElementById('method-icc')
-  iccFormData.append(iccFile.name, iccFile.files[0])
-  iccFormData.append('method', method.options[method.selectedIndex].value)
-  spinTheWheel('icc-home')
-  myResult.open('post', url, true)
-  myResult.send(iccFormData)
+  var url = '/odds?'
+  for (var i = 0; i < inputsOddsRatio.length; i++) {
+    if (inputsOddsRatio[i].id === 'method-odds') {
+      var method = inputsOddsRatio[i]
+      url = url.concat('method=', method.options[method.selectedIndex].value, '&')
+    } else if (inputsOddsRatio[i].value !== '') {
+      url = url.concat(inputsOddsRatio[i].name, '=', inputsOddsRatio[i].value, '&')
+    }
+  }
+  spinTheWheel('odds-home')
+  myResult.open('GET', url, true)
+  myResult.send()
   myResult.onreadystatechange = function () {
-    var result = document.getElementsByClassName('result-icc')
+    var result = document.getElementsByClassName('result-odds-ratio')
     if (myResult.readyState === 4 && myResult.status === 200) {
       result[':warning'].innerText = ''
       var data = JSON.parse(myResult.responseText)
@@ -34,36 +37,36 @@ function getIcc () {
         }
       }
     } else if (myResult.readyState === 4 && myResult.status === 400) {
-      clearInputs('result-icc')
+      clearInputs('result-odds-ratio')
       var error = myResult.responseText
       result[':warning'].innerText = 'Data entry error: ' + error
     } else {
-      clearInputs('result-icc')
-      result[':warning'].innerText = 'Something went wrong, please ensure your file is valid.'
+      clearInputs('result-odds-ratio')
+      result[':warning'].innerText = 'Something went wrong.'
     }
-    stopTheWheel('icc-home')
+    stopTheWheel('odds-home')
   }
 }
 
 var idx
 
-function iccBtnClick () {
-  for (idx = 0; idx < inputsICC.length; idx += 1) {
-    var inputsIcc = inputsICC[idx]
-    if (inputsIcc.checkValidity() === false) {
-      var inputs = document.getElementById('icc_inputs')
-      var warning = document.getElementById('icc_warning')
-      var result = document.getElementsByClassName('result-icc')
+function oddsRatioBtnClick () {
+  for (idx = 0; idx < inputsOddsRatio.length; idx += 1) {
+    var inputOdds = inputsOddsRatio[idx]
+    if (inputOdds.checkValidity() === false) {
+      var inputs = document.getElementById('odds_ratio_inputs')
+      var warning = document.getElementById('odds_ratio_warning')
+      var result = document.getElementsByClassName('result-odds-ratio')
       inputs.innerHTML = ''
-      warning.innerHTML = 'For '.concat(inputsIcc.name, ': ', inputsIcc.validationMessage)
+      warning.innerHTML = 'For '.concat(inputOdds.name, ': ', inputOdds.validationMessage)
       for (var i = 0; i < result.length; i++) {
         result[i].value = ''
       }
       return
     }
   }
-  clearInputs('result-icc')
-  getIcc()
+  clearInputs('result-odds-ratio')
+  getOddsRatio()
 }
 
 function clearInputs (className) {
@@ -73,9 +76,4 @@ function clearInputs (className) {
     if (i === 0) input.focus()
     input.value = ''
   }
-}
-
-function pingPython () {
-  'use strict'
-  new Image().src = 'https://python-worker.herokuapp.com'
 }
