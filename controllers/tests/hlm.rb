@@ -33,5 +33,21 @@ class CohenDCalc < Sinatra::Base
     result.call
   end
 
+  hlm_r2_parse = lambda do
+    hlm_r2 = HlmRsquared.new(params)
+    halt 400, hlm_r2.errors.messages.to_s unless hlm_r2.valid?
+    begin File.readlines(hlm_r2.file_r2[:tempfile]).grep(/monitor/)
+    rescue
+      halt 400, 'Your file is probably not a CSV file.'
+    end
+    begin ClassyHash.validate(hlm_r2.file_r2, SCHEMA)
+    rescue => e
+      halt 400, e.message
+    end
+    result = R2Parse.new(hlm_r2)
+    result.call
+  end
+
   post '/icc/?', &icc
+  post '/hlm_r2_parse/?', &hlm_r2_parse
 end
