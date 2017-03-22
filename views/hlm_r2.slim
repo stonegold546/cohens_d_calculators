@@ -1,0 +1,69 @@
+/ TODO: Wake Python API up in proper manner
+
+div id='r2-home'
+  markdown:
+    
+    ## HLM Pseudo R-squared
+
+    ### Inputs
+
+    Export all your variables into a csv file. The first row has to be the variable names - use any names.
+    
+  input type='file' class='data-hlm-r2' id='file_r2' name='file_r2' onchange='getVariables()' tabindex=7 required='true'
+  | Method: 
+  select id='method-r2' tabindex=7 required='true'
+    option value='TRUE' REML
+    option value='FALSE' selected='selected' FEML
+  br
+  br
+
+  div id='outcome-table'
+
+  br
+  button type='submit' id='hlm_r2_btn' name='hlm_r2_btn' tabindex=7 onClick='hlmR2BtnClick()' disabled='true' Calculate
+
+  div
+    p class='result-hlm-r2' id='hlm_r2_inputs' name=':inputs'
+    p class='result-hlm-r2' id='hlm_r2_warning' name=':warning'
+
+  markdown:
+
+    ### Results
+
+  table cellpadding='10' align='center'
+    tr align='center'
+      td colspan='2'
+        | Estimate of ICC: 
+        input type='number' class='result-hlm-r2' name=':icc_est' readonly='true' tabindex=-1
+    tr align='right'
+      td
+        | Variance between: 
+        input type='number' class='result-hlm-r2' name=':vara' readonly='true' tabindex=-1
+      td
+        | Variance within: 
+        input type='number' class='result-hlm-r2' name=':varw' readonly='true' tabindex=-1
+    tr align='right'
+      td
+        | Lower limit on ICC: 
+        input type='number' class='result-hlm-r2' name=':lower' readonly='true' tabindex=-1
+      td
+        | Upper limit on ICC: 
+        input type='number' class='result-hlm-r2' name=':upper' readonly='true' tabindex=-1
+    tr align='right'
+      td
+        | Clusters analyzed: 
+        input type='number' class='result-hlm-r2' name=':n' readonly='true' tabindex=-1
+      td
+        | Average per cluster: 
+        input type='number' class='result-hlm-r2' name=':k' readonly='true' tabindex=-1
+    tr
+      td align='center' colspan=2
+        button type='reset' tabindex=4 onClick="clearInputs('result-hlm-r2')" Clear
+
+  markdown:
+
+    **Note**: Average per cluister is less than mean for unbalanced designs.
+
+    ___
+
+script src='hlm_r2.js'
