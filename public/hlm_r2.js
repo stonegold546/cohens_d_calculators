@@ -1,5 +1,6 @@
 // TODO: Cluster must not equal Outcome
 // TODO: Cluster and outcome must not reappear in analysis
+// TODO: Have all data, uses more hashes, validate hashes!
 
 /* jslint browser:true */
 /* jslint forin:true */
@@ -10,44 +11,74 @@
 var inputsHLMData = document.getElementsByClassName('data-hlm-r2')
 var data
 
-// function getIcc () {
-//   'use strict'
-//   var myResult = new XMLHttpRequest()
-//   var hlmR2FormData = new FormData()
-//   var url = '/icc'
-//   var hlmR2File = document.getElementById('file_r2')
-//   var method = document.getElementById('method-r2')
-//   hlmR2FormData.append(hlmR2File.name, hlmR2File.files[0])
-//   hlmR2FormData.append('method', method.options[method.selectedIndex].value)
-//   spinTheWheel('r2-home')
-//   myResult.open('post', url, true)
-//   myResult.send(hlmR2FormData)
-//   myResult.onreadystatechange = function () {
-//     var result = document.getElementsByClassName('result-hlm-r2')
-//     if (myResult.readyState === 4 && myResult.status === 200) {
-//       result[':warning'].innerText = ''
-//       var data = JSON.parse(myResult.responseText)
-//       var names = Object.keys(data)
-//       for (var i = 0; i < names.length; i++) {
-//         if (names[i] === ':inputs') {
-//           result[names[i]].innerText = 'Entered values: '.concat(JSON.stringify(data[names[i]], null, 1))
-//         } else if (names[i] === ':warning') {
-//           result[names[i]].innerText = data[names[i]]
-//         } else {
-//           result[names[i]].value = data[names[i]]
-//         }
-//       }
-//     } else if (myResult.readyState === 4 && myResult.status === 400) {
-//       clearInputs('result-hlm-r2')
-//       var error = myResult.responseText
-//       result[':warning'].innerText = 'Data entry error: ' + error
-//     } else {
-//       clearInputs('result-hlm-r2')
-//       result[':warning'].innerText = 'Something went wrong, please ensure your file is valid.'
-//     }
-//     stopTheWheel('r2-home')
-//   }
-// }
+function getHLMR2 () {
+  'use strict'
+  var myResult = new XMLHttpRequest()
+  var hlmR2FormData = new FormData()
+  var url = '/hlm_r2'
+  var hlmR2File = document.getElementById('file_r2')
+  var method = document.getElementById('method-r2')
+  method = method.options[method.selectedIndex].value
+  var clusterVar = document.getElementById('clusterVar')
+  clusterVar = clusterVar.options[clusterVar.selectedIndex].text
+  var outcomeVar = document.getElementById('outcomeVar')
+  outcomeVar = outcomeVar.options[outcomeVar.selectedIndex].text
+  var interceptCenters = document.getElementsByClassName('hlm_table_center_intercept')
+  var interceptPredictors = [[], []]
+  for (var i = 0; i < interceptCenters.length; i++) {
+    if (interceptCenters[i].options[interceptCenters[i].selectedIndex].value !== 'null') {
+      interceptPredictors[0].push(interceptCenters[i].id.replace('hlm_table_select_center_level_two_', ''))
+      interceptPredictors[1].push(interceptCenters[i].options[interceptCenters[i].selectedIndex].value)
+    }
+  }
+  var levelOneCenters = document.getElementsByClassName('hlm_table_center')
+  console.log(levelOneCenters.length)
+  var levelOneHash = {}
+  for (var j = 0; j < levelOneCenters.length; j++) {
+    var levelOneName = levelOneCenters[j].id.replace('hlm_table_select_center_', '')
+    var slopeCenters = document.getElementsByClassName('hlm_table_center_'.concat(levelOneName))
+    var levelOnePreds = [[], []]
+    for (var k = 0; k < slopeCenters.length; k++) {
+      if (slopeCenters[k].options[slopeCenters[k].selectedIndex].value !== 'null') {
+        levelOnePreds[0].push(slopeCenters[k].id.replace('hlm_table_select_center_level_two_', ''))
+        levelOnePreds[1].push(slopeCenters[k].options[slopeCenters[k].selectedIndex].value)
+      }
+    }
+    levelOneHash[levelOneName] = [levelOnePreds, levelOneCenters[j].selectedIndex]
+  }
+  var variablesForServer = [method, clusterVar, outcomeVar, interceptPredictors, levelOneHash]
+  console.log(variablesForServer)
+  // hlmR2FormData.append(hlmR2File.name, hlmR2File.files[0])
+  // hlmR2FormData.append('method', method.options[method.selectedIndex].value)
+  // spinTheWheel('r2-home')
+  // myResult.open('post', url, true)
+  // myResult.send(hlmR2FormData)
+  // myResult.onreadystatechange = function () {
+  //   var result = document.getElementsByClassName('result-hlm-r2')
+  //   if (myResult.readyState === 4 && myResult.status === 200) {
+  //     result[':warning'].innerText = ''
+  //     var data = JSON.parse(myResult.responseText)
+  //     var names = Object.keys(data)
+  //     for (var i = 0; i < names.length; i++) {
+  //       if (names[i] === ':inputs') {
+  //         result[names[i]].innerText = 'Entered values: '.concat(JSON.stringify(data[names[i]], null, 1))
+  //       } else if (names[i] === ':warning') {
+  //         result[names[i]].innerText = data[names[i]]
+  //       } else {
+  //         result[names[i]].value = data[names[i]]
+  //       }
+  //     }
+  //   } else if (myResult.readyState === 4 && myResult.status === 400) {
+  //     clearInputs('result-hlm-r2')
+  //     var error = myResult.responseText
+  //     result[':warning'].innerText = 'Data entry error: ' + error
+  //   } else {
+  //     clearInputs('result-hlm-r2')
+  //     result[':warning'].innerText = 'Something went wrong, please ensure your file is valid.'
+  //   }
+  //   stopTheWheel('r2-home')
+  // }
+}
 
 var idx
 
@@ -67,7 +98,7 @@ function hlmR2BtnClick () {
     }
   }
   clearInputs('result-hlm-r2')
-  getIcc()
+  getHLMR2()
 }
 
 function clearInputs (className) {
@@ -181,10 +212,11 @@ function changeClusOutButton () {
     var keyVar = keyVars[i]
     if (keyVar.selectedIndex === 0) {
       inputs.innerHTML = ''
-      warning.innerHTML = 'For '.concat(keyVar.name, ': Please select a variable')
+      warning.innerHTML = ''
       for (var j = 0; j < result.length; j++) {
         result[j].value = ''
       }
+      alert('For '.concat(keyVar.name, ': Please select a variable'))
       return
     }
     inputs.innerHTML = ''
@@ -275,7 +307,6 @@ function aDifficultFunction () {
   var predictors = [levelOnePredictors, levelTwoPredictors]
   var divTable = document.getElementById('outcome-table')
   divTable.appendChild(specTable(predictors))
-  var calcButton = document.getElementById('hlm_r2_btn')
   calcButton.disabled = false
 }
 
@@ -300,7 +331,7 @@ function specTable (predictors) {
   var tdOne = tr.insertCell(1)
   tdZero.appendChild(document.createTextNode('Intercept: '))
   for (var j = 0; j < levelTwo.length; j++) {
-    tdOne.appendChild(centeringTwo(levelTwo[j]))
+    tdOne.appendChild(centeringTwo(levelTwo[j], 'intercept'))
   }
   for (var variable in levelOne) {
     tr = specTable.insertRow()
@@ -310,7 +341,7 @@ function specTable (predictors) {
     tdZero.appendChild(centering(levelOne[variable]))
     tdOne = tr.insertCell(1)
     for (var k = 0; k < levelTwo.length; k++) {
-      tdOne.appendChild(centeringTwo(levelTwo[k]))
+      tdOne.appendChild(centeringTwo(levelTwo[k], levelOne[variable]))
     }
   }
   return specTable
@@ -331,11 +362,11 @@ function centering (name) {
   return varCentering
 }
 
-function centeringTwo (name) {
+function centeringTwo (name, owner) {
   var id = 'hlm_table_select_center_level_two_'.concat(name)
   var varCentering = document.createElement('SELECT')
   varCentering.id = id
-  varCentering.className = 'hlm_table_center'
+  varCentering.className = 'hlm_table_center_'.concat(owner)
   var options = ['No-centering', 'Grand-mean-centering']
   var option = document.createElement('option')
   option.text = ''
@@ -344,7 +375,10 @@ function centeringTwo (name) {
   for (var i = 0; i < options.length; i++) {
     option = document.createElement('option')
     option.text = name.concat(' - ', options[i])
-    option.value = name.concat('-', options[i])
+    name.concat('-', options[i])
+    if (i === 0) {
+      option.value = i
+    } else { option.value = i + 1 }
     varCentering.add(option, i + 1)
   }
   return varCentering

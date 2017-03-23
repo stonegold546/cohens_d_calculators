@@ -48,6 +48,10 @@ class CohenDCalc < Sinatra::Base
     result.call
   end
 
+  hlm_r2 = lambda do
+  end
+
   post '/icc/?', &icc
   post '/hlm_r2_parse/?', &hlm_r2_parse
+  post 'hlm_r2', &hlm_r2
 end
