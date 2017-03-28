@@ -1,6 +1,3 @@
-# TODO: Create equations here, null and alternative.
-# TODO: Also pull out correct variables and variable data
-
 require 'csv'
 
 # Calculator for partial-eta-squared

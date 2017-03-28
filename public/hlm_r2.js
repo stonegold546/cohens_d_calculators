@@ -1,6 +1,4 @@
 // TODO: ENSURE YOU USE ACTUAL HLM DATASET
-// TODO: Cluster must not equal Outcome
-// TODO: Cluster and outcome must not reappear in analysis
 // TODO: Have all data, uses more hashes, validate hashes!
 
 /* jslint browser:true */
