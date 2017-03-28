@@ -1,3 +1,4 @@
+// TODO: ENSURE YOU USE ACTUAL HLM DATASET
 // TODO: Cluster must not equal Outcome
 // TODO: Cluster and outcome must not reappear in analysis
 // TODO: Have all data, uses more hashes, validate hashes!
@@ -28,7 +29,7 @@ function getHLMR2 () {
   for (var i = 0; i < interceptCenters.length; i++) {
     if (interceptCenters[i].options[interceptCenters[i].selectedIndex].value !== 'null') {
       interceptPredictors[0].push(interceptCenters[i].id.replace('hlm_table_select_center_level_two_', ''))
-      interceptPredictors[1].push(interceptCenters[i].options[interceptCenters[i].selectedIndex].value)
+      interceptPredictors[1].push(parseInt(interceptCenters[i].options[interceptCenters[i].selectedIndex].value))
     }
   }
   var levelOneCenters = document.getElementsByClassName('hlm_table_center')
@@ -41,43 +42,48 @@ function getHLMR2 () {
     for (var k = 0; k < slopeCenters.length; k++) {
       if (slopeCenters[k].options[slopeCenters[k].selectedIndex].value !== 'null') {
         levelOnePreds[0].push(slopeCenters[k].id.replace('hlm_table_select_center_level_two_', ''))
-        levelOnePreds[1].push(slopeCenters[k].options[slopeCenters[k].selectedIndex].value)
+        levelOnePreds[1].push(parseInt(slopeCenters[k].options[slopeCenters[k].selectedIndex].value))
       }
     }
     levelOneHash[levelOneName] = [levelOnePreds, levelOneCenters[j].selectedIndex]
   }
   var variablesForServer = [method, clusterVar, outcomeVar, interceptPredictors, levelOneHash]
   console.log(variablesForServer)
-  // hlmR2FormData.append(hlmR2File.name, hlmR2File.files[0])
-  // hlmR2FormData.append('method', method.options[method.selectedIndex].value)
-  // spinTheWheel('r2-home')
-  // myResult.open('post', url, true)
-  // myResult.send(hlmR2FormData)
-  // myResult.onreadystatechange = function () {
-  //   var result = document.getElementsByClassName('result-hlm-r2')
-  //   if (myResult.readyState === 4 && myResult.status === 200) {
-  //     result[':warning'].innerText = ''
-  //     var data = JSON.parse(myResult.responseText)
-  //     var names = Object.keys(data)
-  //     for (var i = 0; i < names.length; i++) {
-  //       if (names[i] === ':inputs') {
-  //         result[names[i]].innerText = 'Entered values: '.concat(JSON.stringify(data[names[i]], null, 1))
-  //       } else if (names[i] === ':warning') {
-  //         result[names[i]].innerText = data[names[i]]
-  //       } else {
-  //         result[names[i]].value = data[names[i]]
-  //       }
-  //     }
-  //   } else if (myResult.readyState === 4 && myResult.status === 400) {
-  //     clearInputs('result-hlm-r2')
-  //     var error = myResult.responseText
-  //     result[':warning'].innerText = 'Data entry error: ' + error
-  //   } else {
-  //     clearInputs('result-hlm-r2')
-  //     result[':warning'].innerText = 'Something went wrong, please ensure your file is valid.'
-  //   }
-  //   stopTheWheel('r2-home')
-  // }
+  hlmR2FormData.append(hlmR2File.name, hlmR2File.files[0])
+  hlmR2FormData.append('method', method)
+  hlmR2FormData.append('clusterVar', clusterVar)
+  hlmR2FormData.append('outcomeVar', outcomeVar)
+  hlmR2FormData.append('interceptPredictors', JSON.stringify(interceptPredictors))
+  hlmR2FormData.append('levelOneHash', JSON.stringify(levelOneHash))
+  hlmR2FormData.append('data', JSON.stringify(data))
+  spinTheWheel('r2-home')
+  myResult.open('post', url, true)
+  myResult.send(hlmR2FormData)
+  myResult.onreadystatechange = function () {
+    var result = document.getElementsByClassName('result-hlm-r2')
+    if (myResult.readyState === 4 && myResult.status === 200) {
+      result[':warning'].innerText = ''
+      var data = JSON.parse(myResult.responseText)
+      var names = Object.keys(data)
+      for (var i = 0; i < names.length; i++) {
+        if (names[i] === ':inputs') {
+          result[names[i]].innerText = 'Entered values: '.concat(JSON.stringify(data[names[i]], null, 1))
+        } else if (names[i] === ':warning') {
+          result[names[i]].innerText = data[names[i]]
+        } else {
+          result[names[i]].value = data[names[i]]
+        }
+      }
+    } else if (myResult.readyState === 4 && myResult.status === 400) {
+      clearInputs('result-hlm-r2')
+      var error = myResult.responseText
+      result[':warning'].innerText = 'Data entry error: ' + error
+    } else {
+      clearInputs('result-hlm-r2')
+      result[':warning'].innerText = 'Something went wrong, please ensure your file is valid.'
+    }
+    stopTheWheel('r2-home')
+  }
 }
 
 var idx
@@ -201,6 +207,10 @@ function changeClusOutButton () {
   var keyVars = document.getElementsByClassName('hlm_vars')
   var clusterVal = keyVars[0].options[keyVars[0].selectedIndex].text
   var outcomeVal = keyVars[1].options[keyVars[1].selectedIndex].text
+  if (clusterVal === outcomeVal) {
+    alert('Cluster variable must be different from outcome variable!')
+    return
+  }
   var varTable = document.getElementById('variable-table')
   dieTable('variable-table')
   dieTable('selectPredictorsButton')
