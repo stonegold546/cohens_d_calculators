@@ -19,7 +19,7 @@ function getHLMR2 () {
   var url = '/hlm_r2'
   var hlmR2File = document.getElementById('file_r2')
   var method = document.getElementById('method-r2')
-  method = method.options[method.selectedIndex].value
+  method = parseInt(method.options[method.selectedIndex].value)
   var clusterVar = document.getElementById('clusterVar')
   clusterVar = clusterVar.options[clusterVar.selectedIndex].text
   var outcomeVar = document.getElementById('outcomeVar')

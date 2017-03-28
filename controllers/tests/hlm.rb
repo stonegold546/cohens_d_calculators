@@ -59,7 +59,6 @@ class CohenDCalc < Sinatra::Base
     rescue => e
       halt 400, e.message
     end
-    ap hlm_r2.attributes
     result = HlmR2.new(hlm_r2)
     result.call
   end

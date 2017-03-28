@@ -23,7 +23,7 @@ class HlmRsquared
   include ActiveModel::Validations
 
   attribute :file_r2, Hash
-  attribute :method, String
+  attribute :method, Integer
   attribute :clusterVar, String
   attribute :outcomeVar, String
   attribute :interceptPredictors, StringArray
@@ -31,7 +31,7 @@ class HlmRsquared
   attribute :data, StringArray
 
   validates :file_r2, presence: true
-  validates_inclusion_of :method, in: %w(TRUE FALSE)
+  validates_inclusion_of :method, in: (0..3).to_a
   validates_inclusion_of :clusterVar, in: :data
   validates_inclusion_of :outcomeVar, in: :data
 end

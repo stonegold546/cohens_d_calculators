@@ -12,6 +12,7 @@ class HlmR2
     @cluster_var = remove_non_ascii(hlm_r2.clusterVar)
     @outcome_var = remove_non_ascii(hlm_r2.outcomeVar)
     @intercept_predictors = hlm_r2.interceptPredictors
+    @method = hlm_r2.method
     @level_one_hash = hlm_r2.levelOneHash
     @deleted_clusters
   end
@@ -23,7 +24,8 @@ class HlmR2
     response = HTTParty.post "#{ENV['PYTHON_URL']}/r2", body: {
       headers: @headers, data: @data, cluster_var: @cluster_var,
       outcome_var: @outcome_var, null_equation: null_equation,
-      l_one_preds: @level_one_hash, int_preds: @intercept_predictors
+      l_one_preds: @level_one_hash, int_preds: @intercept_predictors,
+      optim: @method
     }.to_json, headers: { 'Content-Type' => 'application/json' }
     form_response(response)
   end
@@ -34,7 +36,9 @@ class HlmR2
             varw_f: response['varw_f'], vara_f: response['vara_f'],
             n: response['a'], k: response['k'],
             level_one_r_2: response['level_one_r_2'],
-            level_two_r_2: response['level_two_r_2']
+            level_two_r_2: response['level_two_r_2'],
+            convergence_b: response['convergence_b'],
+            convergence_f: response['convergence_f']
   end
 
   def remove_non_ascii(text)

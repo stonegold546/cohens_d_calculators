@@ -10,10 +10,12 @@ div id='r2-home'
     Export all your variables into a csv file. The first row has to be the variable names - use any names.
     
   input type='file' class='data-hlm-r2' id='file_r2' name='file_r2' onchange='getVariables()' tabindex=7 required='true'
-  | Method: 
+  | Optimization Method: 
   select id='method-r2' tabindex=7 required='true'
-    option value='TRUE' REML
-    option value='FALSE' selected='selected' FEML
+    option value=0 selected='selected' Nelder-Mead
+    option value=1 Powell
+    option value=2 cg
+    option value=3 bfgs
   br
   br
 
@@ -43,15 +45,22 @@ div id='r2-home'
         | Variance between (base model): 
         input type='number' class='result-hlm-r2' name=':vara_b' readonly='true' tabindex=-1
       td
-        | Variance within (base model): 
-        input type='number' class='result-hlm-r2' name=':varw_b' readonly='true' tabindex=-1
-    tr align='right'
-      td
         | Variance between (fitted model): 
         input type='number' class='result-hlm-r2' name=':vara_f' readonly='true' tabindex=-1
+    tr align='right'
+      td
+        | Variance within (base model): 
+        input type='number' class='result-hlm-r2' name=':varw_b' readonly='true' tabindex=-1
       td
         | Variance within (fitted model): 
         input type='number' class='result-hlm-r2' name=':varw_f' readonly='true' tabindex=-1
+      tr align='right'
+        td
+          | Base model converged?: 
+          input type='text' class='result-hlm-r2' name=':convergence_b' readonly='true' tabindex=-1
+        td
+          | Fitted model converged?: 
+          input type='text' class='result-hlm-r2' name=':convergence_f' readonly='true' tabindex=-1
     tr align='right'
       td
         | Clusters analyzed: 
@@ -62,6 +71,9 @@ div id='r2-home'
     tr
       td align='center' colspan=2
         button type='reset' tabindex=4 onClick="clearInputs('result-hlm-r2')" Clear
+
+  p name=':warning'
+    | Check the results for convergence. If they do not converge, try another optimization method from the drop down menu above.
 
   markdown:
 
