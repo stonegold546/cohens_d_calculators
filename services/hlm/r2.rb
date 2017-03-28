@@ -39,9 +39,13 @@ class HlmR2
   end
 
   def remove_non_ascii(text)
-    text = text.gsub(/[\u0080-\u00ff]/, '') unless
-      text.force_encoding('UTF-8').ascii_only?
-    text
+    encoding_options = {
+      invalid: :replace, # Replace invalid byte sequences
+      undef: :replace, # Replace anything not defined in ASCII
+      replace: '', # Use a blank for those replacements
+      universal_newline: true # Always break lines with \n
+    }
+    text.encode(Encoding.find('ASCII'), encoding_options)
   end
 
   def variables
