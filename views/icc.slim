@@ -16,14 +16,17 @@ div id='icc-home'
 
     REML and FEML take several seconds  
 
-  input type='file' class='data-icc' id='icc_file' name='icc_file' onchange='pingPython()' tabindex=6 required='true'
+  input type='file' class='data-icc' id='icc_file' name='icc_file' onchange='getVariablesICC()' tabindex=6 required='true'
   | Method: 
   select id='method-icc' tabindex=6 required='true'
     option value='ANOVA' selected='selected' ANOVA
     option value='TRUE' REML
     option value='FALSE' FEML
   br
-  button type='submit' id='icc_btn' name='icc_btn' tabindex=6 onClick='iccBtnClick()' Calculate
+  br
+  div id='outcome-table-ICC'
+  br
+  button type='submit' id='icc_btn' name='icc_btn' tabindex=6 onClick='iccBtnClick()' disabled='true' Calculate
 
   div
     p class='result-icc' id='icc_inputs' name=':inputs'

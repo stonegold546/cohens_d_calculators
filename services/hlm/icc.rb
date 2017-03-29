@@ -3,10 +3,11 @@ require 'csv'
 # Calculator for partial-eta-squared
 class Icc
   def initialize(hlm_icc)
-    data = CSV.parse hlm_icc.icc_file[:tempfile]
-    data = data[CSV_DATA].transpose
-    @clusters = data[0]
-    @values = data[1].map { |e| e.nil? ? 'NA' : e.to_f }
+    @data = CSV.parse hlm_icc.icc_file[:tempfile]
+    @clusters = obtain_data(hlm_icc.clusterVar)
+    @values = obtain_data(hlm_icc.outcomeVar).map do |e|
+      e.nil? ? 'NA' : e.to_f
+    end
     @method = hlm_icc.method
   end
 
@@ -17,6 +18,23 @@ class Icc
     icc_calc = calc_icc
     icc_calc[:inputs] = num_s
     Oj.dump icc_calc
+  end
+
+  def obtain_data(variable)
+    headers = @data[0].map { |e| remove_non_ascii(e) }
+    data = @data[CSV_DATA].transpose
+    i = headers.find_index(remove_non_ascii(variable))
+    data[i]
+  end
+
+  def remove_non_ascii(text)
+    encoding_options = {
+      invalid: :replace, # Replace invalid byte sequences
+      undef: :replace, # Replace anything not defined in ASCII
+      replace: '', # Use a blank for those replacements
+      universal_newline: true # Always break lines with \n
+    }
+    text.encode(Encoding.find('ASCII'), encoding_options)
   end
 
   def calc_icc

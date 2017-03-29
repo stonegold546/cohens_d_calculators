@@ -8,7 +8,6 @@
 /* eslint no-undef: */
 
 var inputsHLMData = document.getElementsByClassName('data-hlm-r2')
-var data
 
 function getHLMR2 () {
   'use strict'
@@ -19,6 +18,10 @@ function getHLMR2 () {
   var method = document.getElementById('method-r2')
   method = parseInt(method.options[method.selectedIndex].value)
   var clusterVar = document.getElementById('clusterVar')
+  var data = []
+  for (var n = 0; n < clusterVar.length; n++) {
+    data.push(clusterVar.options[n].text)
+  }
   clusterVar = clusterVar.options[clusterVar.selectedIndex].text
   var outcomeVar = document.getElementById('outcomeVar')
   outcomeVar = outcomeVar.options[outcomeVar.selectedIndex].text
@@ -31,7 +34,6 @@ function getHLMR2 () {
     }
   }
   var levelOneCenters = document.getElementsByClassName('hlm_table_center')
-  console.log(levelOneCenters.length)
   var levelOneHash = {}
   for (var j = 0; j < levelOneCenters.length; j++) {
     var levelOneName = levelOneCenters[j].id.replace('hlm_table_select_center_', '')
@@ -46,7 +48,6 @@ function getHLMR2 () {
     levelOneHash[levelOneName] = [levelOnePreds, levelOneCenters[j].selectedIndex]
   }
   var variablesForServer = [method, clusterVar, outcomeVar, interceptPredictors, levelOneHash]
-  console.log(variablesForServer)
   hlmR2FormData.append(hlmR2File.name, hlmR2File.files[0])
   hlmR2FormData.append('method', method)
   hlmR2FormData.append('clusterVar', clusterVar)
@@ -136,7 +137,7 @@ function getVariables () {
     var result = document.getElementsByClassName('result-hlm-r2')
     if (myResult.readyState === 4 && myResult.status === 200) {
       result[':warning'].innerText = ''
-      data = JSON.parse(myResult.responseText)
+      var data = JSON.parse(myResult.responseText)
       var divTable = document.getElementById('outcome-table')
       divTable.appendChild(createModelTable(data))
       divTable.appendChild(buttonClusterOutcome(data))
@@ -230,6 +231,12 @@ function changeClusOutButton () {
     inputs.innerHTML = ''
     warning.innerHTML = ''
   }
+  var data = []
+  for (var n = 0; n < keyVars[0].length; n++) {
+    if (n !== 0) {
+      data.push(keyVars[0].options[n].text)
+    }
+  }
   var dropVars = [clusterVal, outcomeVal]
   var predictors = []
   for (var k = 0; k < data.length; k++) {
@@ -309,7 +316,7 @@ function aDifficultFunction () {
     }
   }
   if (levelOnePredictors.length === 0 && levelTwoPredictors.length === 0) {
-    alert('Predictors required to calculate Pseudo R-squared')
+    alert('Predictors are required to calculate Pseudo R-squared!')
     return
   }
   var predictors = [levelOnePredictors, levelTwoPredictors]
