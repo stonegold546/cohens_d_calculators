@@ -60,7 +60,9 @@ class CohenDCalc < Sinatra::Base
       halt 400, e.message
     end
     result = HlmR2.new(hlm_r2)
-    result.call
+    result = result.call
+    halt 503 if result == 503
+    result
   end
 
   post '/icc/?', &icc

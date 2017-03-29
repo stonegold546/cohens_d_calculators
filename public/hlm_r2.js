@@ -77,6 +77,9 @@ function getHLMR2 () {
       clearInputs('result-hlm-r2')
       var error = myResult.responseText
       result[':warning'].innerText = 'Data entry error: ' + error
+    } else if (myResult.readyState === 4 && myResult.status === 503) {
+      clearInputs('result-hlm-r2')
+      result[':warning'].innerText = 'Solving the model took too long. You could try another optimizer.'
     } else {
       clearInputs('result-hlm-r2')
       result[':warning'].innerText = 'Something went wrong, please ensure your file is valid.'
