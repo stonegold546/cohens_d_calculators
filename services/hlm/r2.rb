@@ -100,56 +100,6 @@ class HlmR2
         end end end
   end
 
-  # def fit_equation
-  #   int_preds = @intercept_predictors[0].join(' + ')
-  #   level_one_predictors = @level_one_hash.keys.join(' + ')
-  #   predictors = array_join([int_preds, level_one_predictors, create_cross])
-  #   real_preds = array_join(
-  #     [int_preds_new, level_one_predictors_new, create_cross_new]
-  #   )
-  #   ["#{@outcome_var} ~ #{predictors}", "#{@outcome_var} ~ #{real_preds}"]
-  # end
-  #
-  # def int_preds_new
-  #   @intercept_predictors.transpose.map do |pred|
-  #     pred[1] == '0' ? pred[0] : pred.join(CENT)
-  #   end.join(' + ')
-  # end
-  #
-  # def level_one_predictors_new
-  #   @level_one_hash.map do |pred, data|
-  #     data[1].zero? ? pred : "#{pred}#{CENT}#{data[1]}"
-  #   end.join(' + ')
-  # end
-  #
-  # def create_cross_new
-  #   level_one_preds = level_one_predictors_new
-  #   level_one_preds = level_one_preds.split(' + ')
-  #   @level_one_hash.map do |key, data|
-  #     level_one_preds.map do |l_one_pred|
-  #       key = l_one_pred if l_one_pred == "#{key}#{CENT}#{data[1]}"
-  #     end
-  #     pred = data[0][0]
-  #     unless pred.empty?
-  #       pred.map do |e|
-  #         "#{e} : #{key}"
-  #       end.join(' + ')
-  #     end
-  #   end.compact.join(' + ')
-  # end
-  #
-  # def create_cross
-  #   @level_one_hash.map do |key, data|
-  #     pred = data[0][0]
-  #     pred.map { |e| "#{e} : #{key}" }.join(' + ') unless pred.empty?
-  #   end.compact.join(' + ')
-  # end
-  #
-  # def array_join(predictors)
-  #   predictors = predictors.map { |e| e.empty? ? nil : e }.compact
-  #   predictors.compact.join(' + ')
-  # end
-
   def null_equation
     "#{@outcome_var} ~ 1"
   end
