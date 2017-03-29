@@ -15,21 +15,24 @@ class HlmR2
   end
 
   def call
+    response = HTTParty.post "#{ENV['PYTHON_URL']}/r2", body:
+      send_to_server, headers: { 'Content-Type' => 'application/json' }
+    return 503 if response.code == 503
+    form_response(response)
+  rescue Net::ReadTimeout
+    503
+  end
+
+  def send_to_server
     select_data(variables)
     delete_bad_clusters
     floatify
-    begin
-      response = HTTParty.post "#{ENV['PYTHON_URL']}/r2", body: {
-        data: @data, headers: @headers, cluster_var: @cluster_var,
-        outcome_var: @outcome_var, int_preds: @intercept_predictors,
-        optim: @method, null_equation: null_equation,
-        l_one_preds: @level_one_hash
-      }.to_json, headers: { 'Content-Type' => 'application/json' }
-      form_response(response)
-    rescue Net::ReadTimeout
-      503
-    end
-    # return 503 if response.code == 503
+    {
+      data: @data, headers: @headers, cluster_var: @cluster_var,
+      outcome_var: @outcome_var, int_preds: @intercept_predictors,
+      optim: @method, null_equation: null_equation,
+      l_one_preds: @level_one_hash
+    }.to_json
   end
 
   def form_response(response)
