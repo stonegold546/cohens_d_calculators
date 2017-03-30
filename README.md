@@ -219,9 +219,13 @@ Assuming the cluster variable is represented by `school`, the model (null or fit
 
 The level-2 variance around the intercept, ![equation](http://latex.codecogs.com/gif.latex?%5Ctau_%7B00%7D), is obtained using `res.cov_re.groups[0]`, the within group variance is obtained using `res.scale`.
 
-The level-1 R-squared is based on equation 11 in Snijders & Bosker (1994), ![equation](http://latex.codecogs.com/gif.latex?R%5E2_1=1-%5Cfrac%7B%5Ctau_%7B00f%7D+%5Csigma_%7Bf%7D%5E%7B2%7D%7D%7B%5Ctau_%7B00b%7D+%5Csigma_%7Bb%7D%5E%7B2%7D%7D).
+The level-1 R-squared is based on equation 11 in Snijders & Bosker (1994):
 
-The level-2 R-squared is based on equation 13 in Snijders & Bosker (1994), ![equation](http://latex.codecogs.com/gif.latex?R%5E2_2=1-%5Cfrac%7B%5Ctau_%7B00f%7D+%5Cfrac%7B%5Csigma_%7Bf%7D%5E%7B2%7D%7D%7Bk%7D%7D%7B%5Ctau_%7B00b%7D+%5Cfrac%7B%5Csigma_%7Bb%7D%5E%7B2%7D%7D%7Bk%7D%7D).
+![equation](http://latex.codecogs.com/gif.latex?R%5E2_1=1-%5Cfrac%7B%5Ctau_%7B00f%7D+%5Csigma_%7Bf%7D%5E%7B2%7D%7D%7B%5Ctau_%7B00b%7D+%5Csigma_%7Bb%7D%5E%7B2%7D%7D).
+
+The level-2 R-squared is based on equation 13 in Snijders & Bosker (1994):
+
+![equation](http://latex.codecogs.com/gif.latex?R%5E2_2=1-%5Cfrac%7B%5Ctau_%7B00f%7D+%5Cfrac%7B%5Csigma_%7Bf%7D%5E%7B2%7D%7D%7Bk%7D%7D%7B%5Ctau_%7B00b%7D+%5Cfrac%7B%5Csigma_%7Bb%7D%5E%7B2%7D%7D%7Bk%7D%7D).
 
 Subscripts ending in `b` signify values from the null/base model, while those ending in `f` are values from the fitted model. `k` is the harmonic mean of cluster size, as recommended by Snijders & Bosker (1994, p. 13) for unbalanced data.
 
