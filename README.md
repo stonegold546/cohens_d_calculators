@@ -26,6 +26,7 @@ You can contact me at uanhoro.1@osu.edu.
 - [Hierarchical Linear Modeling / Multilevel Modeling / Mixed Effects Modeling](#hierarchical-linear-modeling--multilevel-modeling--mixed-effects-modeling)
 
   - [Intracluster/Intraclass correlation coefficient (ICC)](#intraclusterintraclass-correlation-coefficient-icc)
+  - [Pseudo R-squared](#pseudo-r-squared-icc)
 
 ## Cohen's _d_ family
 
@@ -170,7 +171,7 @@ _R2_ : _R_-squared; ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D) 
 
 ## Hierarchical Linear Modeling / Multilevel Modeling / Mixed Effects Modeling
 
-All analysis related to multilevel models is performed using a [Python API](https://github.com/stonegold546/py_cohens_d_calculators) I created for the task.
+All analysis related to multilevel models is performed using a [Python API](https://github.com/stonegold546/py_cohens_d_calculators) I created for the task. The API largely depends on the `MixedLM` function within the `StatsModels` package.
 
 ### Intracluster/Intraclass correlation coefficient (ICC)
 
@@ -178,17 +179,59 @@ All analysis related to multilevel models is performed using a [Python API](http
 
 To calculate the confidence intervals, I used a variation of Searle's method (1971, p. 414 - third equation in Table 9.14) which adjusts for unbalanced data by replacing the number of subjects per cluster in Searle's formula with the weighted mean cluster size - equation 9 in Ukoumunne (2002). All of this is handled by a call to the Python API listed above. The code within the Python API is near-identical to the `ICCest` function in the R [ICC](https://cran.r-project.org/web/packages/ICC/ICC.pdf) package. The call to the API returns the ICC, an estimate of variance across clusters, an estimate of variance within clusters, lower and upper limits on ICC, the number of clusters used in the analysis, and the weighted mean cluster size.
 
-#### REML/ML
+#### REML/ML & Optimization method
 
-The Python API performs REML and FEML/ML using the code below from the `statsmodels` package in Python.
+The Python API performs REML and FEML/ML using the code below from the `StatsModels` package in Python. The Nelder-Mead optimization method (Nelder & Mead, 1965) is applied by default.
 
 > model = sm.MixedLM.from_formula('values ~ 1', df, groups=df['clusters'])
 
-> res = model.fit(reml=method)
+> res = model.fit(reml=method, method='nm')
 
-The data is stored in a dataframe, `df`; `values` are the outcome data, with `clusters` being the cluster groupings. Method is either `TRUE` to use REML or `FALSE` to use ML.
+The data are stored in a `Pandas` dataframe, `df`; `values` are the outcome data, with `clusters` being the cluster groupings. Method is either `True` to use REML or `False` to use ML.
 
 The level-2 variance around the intercept, ![equation](http://latex.codecogs.com/gif.latex?%5Ctau_%7B00%7D), is obtained using `res.cov_re.groups[0]`, the within group variance is obtained using `res.scale`, and the ICC is calculated using the formula, ![equation](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Ctau_%7B00%7D%7D%7B%5Ctau_%7B00%7D+%5Csigma%5E2%7D). REML and ML return only the ICC, and the variance estimates. All other results are computed using the ANOVA method.
+
+### Pseudo R-Squared
+
+The models are run using Maximum Likelihood.
+
+#### Optimization method
+
+The default optimization method is Nelder-Mead (Nelder & Mead, 1965). With the very limited test data I had, it produced models that converged unlike the default `bfgs` optimization method in `StatsModels`, which I listed as the last option.
+
+#### Model equations
+
+The Python API constructs the null and the fitted model equations. It also centers the variables based on user-specifications.
+
+For example, consider a model with outcome `math_achievement`; the level-1 predictors are `student_ses` and `gender`, and level-2 predictor is `school_type` as a predictor of the `intercept` and `student_ses`.
+
+The null model equation is: `math_achievement ~ 1`.
+
+The fitted model equation is: `math_achievement ~ student_ses + gender + school_type + student_ses:school_type`. Without specifying additional options, this is a random-intercepts model.
+
+Assuming the cluster variable is represented by `school`, the model (null or fitted) is saved into a variable called `model_equation`, and the data are stored in a `Pandas` dataframe called `data`, the StatsModels code is:
+
+> model = sm.MixedLM.from_formula(model_equation, data, groups=data['school'])
+
+> res = model.fit(reml=False, method='nm') # The method changes depending on the optimization method selected.
+
+#### Level-1 and Level-2 R-squared
+
+The level-2 variance around the intercept, ![equation](http://latex.codecogs.com/gif.latex?%5Ctau_%7B00%7D), is obtained using `res.cov_re.groups[0]`, the within group variance is obtained using `res.scale`.
+
+The level-1 R-squared is based on equation 11 in Snijders & Bosker (1994), ![equation](http://latex.codecogs.com/gif.latex?R%5E2_1=1-%5Cfrac%7B%5Ctau_%7B00f%7D+%5Csigma_%7Bf%7D%5E%7B2%7D%7D%7B%5Ctau_%7B00b%7D+%5Csigma_%7Bb%7D%5E%7B2%7D%7D).
+
+The level-2 R-squared is based on equation 13 in Snijders & Bosker (1994), ![equation](http://latex.codecogs.com/gif.latex?R%5E2_2=1-%5Cfrac%7B%5Ctau_%7B00f%7D+%5Cfrac%7B%5Csigma_%7Bf%7D%5E%7B2%7D%7D%7Bk%7D%7D%7B%5Ctau_%7B00b%7D+%5Cfrac%7B%5Csigma_%7Bb%7D%5E%7B2%7D%7D%7Bk%7D%7D).
+
+Subscripts ending in `b` signify values from the null/base model, while those ending in `f` are values from the fitted model. `k` is the harmonic mean of cluster size, as recommended by Snijders & Bosker (1994, p. 13) for unbalanced data.
+
+#### ICC
+
+The `ICC` (calculated from the null model) is also returned. This value may differ from the value in the ICC segment. If the variables used in this model contain any missing values, cases with missing values are deleted prior to running the null and fitted model. At times, this may remove entire clusters from the model.
+
+#### Model convergence
+
+At times, the (fitted) models may fail to converge, and other times, the results time out. When either happens, try a different optimization method. It is possible your data are too large for the servers I am currently using if the results repeatedly timeout.
 
 ## References
 
@@ -198,7 +241,9 @@ The level-2 variance around the intercept, ![equation](http://latex.codecogs.com
 - Cumming, G. (2012). _Understanding The New Statistics_. Routledge. Retrieved from <http://proquest.safaribooksonline.com/9780415879675>
 - Kelley, K. (2007). Methods for the Behavioral, Educational, and Social Sciences: An R package. _Behavior Research Methods, 39_(4), 979–984\. <https://doi.org/10.3758/BF03192993>
 - Lakens, D. (2013). Calculating and reporting effect sizes to facilitate cumulative science: a practical primer for t-tests and ANOVAs. _Frontiers in Psychology, 4_(863). <https://doi.org/10.3389/fpsyg.2013.00863>
+- Nelder, J. A., & Mead, R. (1965). A Simplex Method for Function Minimization. _The Computer Journal, 7_(4), 308–313\. <https://doi.org/10.1093/comjnl/7.4.308>
 - Searle, S. R. (1971). _Linear Models_. New York: Wiley.
 - Smithson, M. (2003). Noncentral Confidence Intervals for Standardized Effect Sizes. In _Confidence Intervals_ (pp. 33–41). Thousand Oaks California: SAGE Publications, Inc. <https://doi.org/10.4135/9781412983761>
 - Smithson, M. (2003). Applications in ANOVA and Regression. In _Confidence Intervals_ (pp. 42–66). Thousand Oaks California: SAGE Publications, Inc. <https://doi.org/10.4135/9781412983761.n5>
+- Snijders, T. A., & Bosker, R. J. (1994). Modeled Variance in Two-Level Models. _Sociological Methods & Research, 22_(3), 342–363\. <https://doi.org/10.1177/0049124194022003004>
 - Ukoumunne, O. C. (2002). A comparison of confidence interval methods for the intraclass correlation coefficient in cluster randomized trials. _Statistics in Medicine, 21_(24), 3757–3774\. <https://doi.org/10.1002/sim.1330>
