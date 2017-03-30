@@ -26,7 +26,7 @@ You can contact me at uanhoro.1@osu.edu.
 - [Hierarchical Linear Modeling / Multilevel Modeling / Mixed Effects Modeling](#hierarchical-linear-modeling--multilevel-modeling--mixed-effects-modeling)
 
   - [Intracluster/Intraclass correlation coefficient (ICC)](#intraclusterintraclass-correlation-coefficient-icc)
-  - [Pseudo R-squared](#pseudo-r-squared-icc)
+  - [Pseudo R-squared](#pseudo-r-squared)
 
 ## Cohen's _d_ family
 
