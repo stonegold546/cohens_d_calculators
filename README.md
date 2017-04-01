@@ -1,8 +1,14 @@
 # Effect size calculators
 
-Calculator I originally built for the Introduction to Educational Statistics class I serve as Teaching Assistant for. I initially intended that it focus on the Cohen's _d_ family of effect sizes only. My work here owes a lot to [Daniël Lakens'](https://twitter.com/lakens) [writings](https://daniellakens.blogspot.nl/).
+My name is James Uanhoro, and I am a PhD student in the [Quantitative Research, Evaluation & Measurement](http://ehe.osu.edu/educational-studies/qrem/) (QREM) program within the Educational Studies department at The Ohio State University. My advisor is [Professor Ann O'Connell](https://ehe.osu.edu/directory/?id=oconnell.87).
 
-You can contact me at uanhoro.1@osu.edu.
+This is a calculator I originally built as a spreadsheet for the Introduction to Educational Statistics class I serve(d) as Teaching Assistant for. I initially intended that it focus only on the Cohen's _d_ family of effect sizes. My work on the Cohen's _d_ family of effect sizes owes a lot to [Daniël Lakens'](https://twitter.com/lakens) [writings](https://daniellakens.blogspot.nl/).
+
+I want to thank [Professor Cristian Gugiu](https://ehe.osu.edu/directory/?id=gugiu.2) for originally introducing me to noncentral distributions for calculating confidence intervals (on ![equation](http://latex.codecogs.com/gif.latex?n_%7Bp%7D%5E%7B2%7D)) in his course on univariate statistics.
+
+And I thank [Professor O'Connell](https://ehe.osu.edu/directory/?id=oconnell.87) for her guidance through her multilevel modeling class and in person with my work here on multilevel models, and for her continued support of my graduate career and this project.
+
+You can contact me at [uanhoro.1@osu.edu](mailto:uanhoro.1@osu.edu).
 
 # Formulae
 
