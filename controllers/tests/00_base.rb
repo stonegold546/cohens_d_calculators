@@ -28,4 +28,8 @@ class CohenDCalc < Sinatra::Base
   end
 
   get '/', &root
+
+  get 'keybase.txt' do
+    File.read(File.join('public', 'keybase.txt'))
+  end
 end
