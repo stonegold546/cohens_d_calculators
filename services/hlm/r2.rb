@@ -18,6 +18,7 @@ class HlmR2
     response = HTTParty.post "#{ENV['PYTHON_URL']}/r2", body:
       send_to_server, headers: { 'Content-Type' => 'application/json' }
     return 503 if response.code == 503
+    response = Oj.load response.body
     form_response(response)
   rescue Net::ReadTimeout
     503
@@ -36,7 +37,6 @@ class HlmR2
   end
 
   def form_response(response)
-    response = Oj.load response.body
     Oj.dump varw_b: response['varw_b'], vara_b: response['vara_b'],
             varw_f: response['varw_f'], vara_f: response['vara_f'],
             n: response['a'], k: response['k'],
@@ -44,7 +44,7 @@ class HlmR2
             level_two_r_2: response['level_two_r_2'],
             convergence_b: response['convergence_b'],
             convergence_f: response['convergence_f'],
-            icc: response['ICC']
+            icc: response['ICC'], results: response['results']
   end
 
   def remove_non_ascii(text)

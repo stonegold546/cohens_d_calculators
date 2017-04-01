@@ -69,6 +69,15 @@ function getHLMR2 () {
           result[names[i]].innerText = 'Entered values: '.concat(JSON.stringify(data[names[i]], null, 1))
         } else if (names[i] === ':warning') {
           result[names[i]].innerText = data[names[i]]
+        } else if (names[i] === ':results') {
+          var blob = new Blob([data[names[i]]], {type: 'text/plain'})
+          var elem = window.document.createElement('a')
+          elem.href = window.URL.createObjectURL(blob)
+          elem.download = 'model_results.txt'
+          document.body.appendChild(elem)
+          elem.click()
+          document.body.removeChild(elem)
+          window.URL.revokeObjectURL(elem.href)
         } else {
           result[names[i]].value = data[names[i]]
         }
