@@ -1,0 +1,91 @@
+==================================================================
+https://keybase.io/jamesuanhoro
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://effect-size-calculator.herokuapp.com
+  * I am jamesuanhoro (https://keybase.io/jamesuanhoro) on keybase.
+  * I have a public key ASBrDLWyMcmu0ABKBl5-aGwcBVlA1zbzR11pqeTAd6F2Zwo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0120d0c0fc0f6abdf09f9de802054093aa0697a559b12ed796e726f0013f464831df0a",
+            "host": "keybase.io",
+            "kid": "01206b0cb5b231c9aed0004a065e7e686c1c055940d736f3475d69a9e4c077a176670a",
+            "uid": "b272ca1542d19265c65ce072b6bb6319",
+            "username": "jamesuanhoro"
+        },
+        "service": {
+            "hostname": "effect-size-calculator.herokuapp.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.20"
+    },
+    "ctime": 1491063158,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1491063050,
+        "hash": "a748839e83a604dfc5cb7754041d2106e58af06eb092f3599796be8a2a185c31f004f0af74ae8e1b91ec40058c003e253ae4901e4ba6d7a4a43c9a93c49a51d5",
+        "seqno": 993180
+    },
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://effect-size-calculator.herokuapp.com
+  * I am jamesuanhoro (https://keybase.io/jamesuanhoro) on keybase.
+  * I have a public key ASBrDLWyMcmu0ABKBl5-aGwcBVlA1zbzR11pqeTAd6F2Zwo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0120d0c0fc0f6abdf09f9de802054093aa0697a559b12ed796e726f0013f464831df0a",
+            "host": "keybase.io",
+            "kid": "01206b0cb5b231c9aed0004a065e7e686c1c055940d736f3475d69a9e4c077a176670a",
+            "uid": "b272ca1542d19265c65ce072b6bb6319",
+            "username": "jamesuanhoro"
+        },
+        "service": {
+            "hostname": "effect-size-calculator.herokuapp.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.20"
+    },
+    "ctime": 1491063158,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1491063050,
+        "hash": "a748839e83a604dfc5cb7754041d2106e58af06eb092f3599796be8a2a185c31f004f0af74ae8e1b91ec40058c003e253ae4901e4ba6d7a4a43c9a93c49a51d5",
+        "seqno": 993180
+    },
+    "prev": "c6f016e19885dc8c262a2d4d75da83a5f32f504eb5a5c2249b06d159c7ca3fee",
+    "seqno": 19,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgawy1sjHJrtAASgZefmhsHAVZQNc280ddaankwHehdmcKp3BheWxvYWTFAxF7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwZDBjMGZjMGY2YWJkZjA5ZjlkZTgwMjA1NDA5M2FhMDY5N2E1NTliMTJlZDc5NmU3MjZmMDAxM2Y0NjQ4MzFkZjBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwNmIwY2I1YjIzMWM5YWVkMDAwNGEwNjVlN2U2ODZjMWMwNTU5NDBkNzM2ZjM0NzVkNjlhOWU0YzA3N2ExNzY2NzBhIiwidWlkIjoiYjI3MmNhMTU0MmQxOTI2NWM2NWNlMDcyYjZiYjYzMTkiLCJ1c2VybmFtZSI6ImphbWVzdWFuaG9ybyJ9LCJzZXJ2aWNlIjp7Imhvc3RuYW1lIjoiZWZmZWN0LXNpemUtY2FsY3VsYXRvci5oZXJva3VhcHAuY29tIiwicHJvdG9jb2wiOiJodHRwczoifSwidHlwZSI6IndlYl9zZXJ2aWNlX2JpbmRpbmciLCJ2ZXJzaW9uIjoxfSwiY2xpZW50Ijp7Im5hbWUiOiJrZXliYXNlLmlvIGdvIGNsaWVudCIsInZlcnNpb24iOiIxLjAuMjAifSwiY3RpbWUiOjE0OTEwNjMxNTgsImV4cGlyZV9pbiI6NTA0NTc2MDAwLCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTQ5MTA2MzA1MCwiaGFzaCI6ImE3NDg4MzllODNhNjA0ZGZjNWNiNzc1NDA0MWQyMTA2ZTU4YWYwNmViMDkyZjM1OTk3OTZiZThhMmExODVjMzFmMDA0ZjBhZjc0YWU4ZTFiOTFlYzQwMDU4YzAwM2UyNTNhZTQ5MDFlNGJhNmQ3YTRhNDNjOWE5M2M0OWE1MWQ1Iiwic2Vxbm8iOjk5MzE4MH0sInByZXYiOiJjNmYwMTZlMTk4ODVkYzhjMjYyYTJkNGQ3NWRhODNhNWYzMmY1MDRlYjVhNWMyMjQ5YjA2ZDE1OWM3Y2EzZmVlIiwic2Vxbm8iOjE5LCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQKsle+JPnt61ozK4Aiv36Cylo5tfLabKvls2VuJdIn6LUF+hHLlIsLr/J51TUMmuXKH5u2KsVCBFtG5KGid1mg+oc2lnX3R5cGUgpGhhc2iCpHR5cGUIpXZhbHVlxCDyH8Y48WWQ+IJzYqxlJi87fyzmqu8FmC9e0NXzhFthv6N0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jamesuanhoro
+
+==================================================================
