@@ -54,13 +54,13 @@ div id='r2-home'
       td
         | Variance within (fitted model): 
         input type='number' class='result-hlm-r2' name=':varw_f' readonly='true' tabindex=-1
-      tr align='right'
-        td
-          | Base model converged?: 
-          input type='text' class='result-hlm-r2' name=':convergence_b' readonly='true' tabindex=-1
-        td
-          | Fitted model converged?: 
-          input type='text' class='result-hlm-r2' name=':convergence_f' readonly='true' tabindex=-1
+    tr align='right'
+      td
+        | Base model ICC: 
+        input type='number' class='result-hlm-r2' name=':icc_b' readonly='true' tabindex=-1
+      td
+        | Residual ICC: 
+        input type='number' class='result-hlm-r2' name=':icc_f' readonly='true' tabindex=-1
     tr align='right'
       td
         | Clusters analyzed: 
@@ -68,10 +68,13 @@ div id='r2-home'
       td
         | Average per cluster: 
         input type='number' class='result-hlm-r2' name=':k' readonly='true' tabindex=-1
-    tr align='center'
-      td colspan='2'
-        | ICC: 
-        input type='number' class='result-hlm-r2' name=':icc' readonly='true' tabindex=-1
+    tr align='right'
+      td
+        | Base model converged?: 
+        input type='text' class='result-hlm-r2' name=':convergence_b' readonly='true' tabindex=-1
+      td
+        | Fitted model converged?: 
+        input type='text' class='result-hlm-r2' name=':convergence_f' readonly='true' tabindex=-1
     tr
       td align='center' colspan=2
         button type='reset' tabindex=4 onClick="clearInputs('result-hlm-r2')" Clear

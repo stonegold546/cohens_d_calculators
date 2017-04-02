@@ -44,7 +44,8 @@ class HlmR2
             level_two_r_2: response['level_two_r_2'],
             convergence_b: response['convergence_b'],
             convergence_f: response['convergence_f'],
-            icc: response['ICC'], results: response['results']
+            icc_b: response['ICC_b'], icc_f: response['ICC_f'],
+            results: response['results']
   end
 
   def remove_non_ascii(text)

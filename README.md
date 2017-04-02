@@ -195,7 +195,7 @@ The Python API performs REML and FEML/ML using the code below from the `StatsMod
 
 The data are stored in a `Pandas` dataframe, `df`; `values` are the outcome data, with `clusters` being the cluster groupings. Method is either `True` to use REML or `False` to use ML.
 
-The level-2 variance around the intercept, ![equation](http://latex.codecogs.com/gif.latex?%5Ctau_%7B00%7D), is obtained using `res.cov_re.groups[0]`, the within group variance is obtained using `res.scale`, and the ICC is calculated using the formula, ![equation](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Ctau_%7B00%7D%7D%7B%5Ctau_%7B00%7D+%5Csigma%5E2%7D). REML and ML return only the ICC, and the variance estimates. All other results are computed using the ANOVA method.
+The level-2 variance around the intercept, ![equation](http://latex.codecogs.com/gif.latex?%5Ctau_%7B00%7D), is obtained using `res.cov_re.groups[0]`, the within group variance, ![equation](http://latex.codecogs.com/gif.latex?%5Csigma%5E2), is obtained using `res.scale`, and the ICC is calculated using the formula, ![equation](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Ctau_%7B00%7D%7D%7B%5Ctau_%7B00%7D+%5Csigma%5E2%7D). REML and ML return only the ICC, and the variance estimates. All other results are computed using the ANOVA method.
 
 ### Pseudo R-Squared
 
@@ -235,9 +235,11 @@ The level-2 R-squared is based on equation 13 in Snijders & Bosker (1994):
 
 Subscripts ending in `b` signify values from the null/base model, while those ending in `f` are values from the fitted model. `k` is the harmonic mean of cluster size, as recommended by Snijders & Bosker (1994, p. 13) for unbalanced data.
 
-#### ICC
+#### ICCs
 
-The `ICC` (calculated from the null model) is also returned. This value may differ from the value in the ICC segment. If the variables used in this model contain any missing values, cases with missing values are deleted prior to running the null and fitted model. At times, this may remove entire clusters from the model.
+The base-model `ICC` is also returned. This value may differ from the value in the ICC segment. If the variables used in this model contain any missing values, cases with missing values are deleted prior to running the null and fitted model. At times, this may remove entire clusters from the model.
+
+The `residual ICC` is calculated from the fitted random-intercepts model.
 
 #### Model convergence
 
