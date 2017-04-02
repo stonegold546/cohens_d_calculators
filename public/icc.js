@@ -165,7 +165,7 @@ function clearInputs (className) {
 
 function pingPython () {
   'use strict'
-  new Image().src = 'https://python-worker.herokuapp.com'
+  // new Image().src = 'https://pythonworkerhlm.appspot.com/'
 }
 
 function dieTableICC (id) {
