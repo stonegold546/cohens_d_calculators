@@ -34,15 +34,21 @@ function getOls () {
       }
     } else if (myResult.readyState === 4 && myResult.status === 400) {
       for (i = 0; i < result.length; i++) {
-        result[i].value = ''
-        result[i].innerText = ''
+        if (result[i] instanceof HTMLInputElement) {
+          result[i].value = ''
+        } else {
+          result[i].innerText = ''
+        }
       }
       var error = myResult.responseText
       result[':inputs'].innerText = 'Data entry error: ' + error
     } else {
       for (i = 0; i < result.length; i++) {
-        result[i].value = ''
-        result[i].innerText = ''
+        if (result[i] instanceof HTMLInputElement) {
+          result[i].value = ''
+        } else {
+          result[i].innerText = ''
+        }
       }
     }
     stopTheWheel('regression-home')
