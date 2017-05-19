@@ -39,7 +39,7 @@ You can contact me at [uanhoro.1@osu.edu](mailto:uanhoro.1@osu.edu).
 The formulae for point estimates for the Cohen's _d_ family of effect sizes (_d_, _g_) and _r_ were obtained from Lakens (2013). The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _t_ method. The confidence intervals were computed on _d_ rather than _g_ (Cumming, 2012). The formulae for the estimation of the noncentrality parameter (![equation](http://latex.codecogs.com/gif.latex?%5Clambda)) and its transformation to confidence intervals around _d_ for:
 
 - the one-sample t-tests and independent-samples t-test are equivalent to equations 4.6 & 4.7 in chapter 4 of Smithson's Confidence Intervals (2003, pp. 33–41);
-- the within-subject designs are equations 8 & 9 in Algina & Keselman (2003).
+- the within-subject designs are equations 8 & 9 in Algina, Keselman, and Penfield (2005).
 
 ### Confidence Intervals
 
@@ -248,7 +248,7 @@ At times, the (fitted) models may fail to converge, and other times, the results
 ## References
 
 - Aragon, T. J. (2012). epitools: Epidemiology Tools. Retrieved from <https://cran.r-project.org/package=epitools>
-- Algina, J., & Keselman, H. J. (2003). Approximate Confidence Intervals for Effect Sizes. _Educational and Psychological Measurement, 63_(4), 537–553\. <https://doi.org/10.1177/0013164403256358>
+- Algina, J., Keselman, H. J., & Penfield, R. D. (2005, apr). Effect Sizes and their Intervals: The Two-Level Repeated Measures Case. _Educational and Psychological Measurement, 65_(2), 241–258\. doi: 10.1177/0013164404268675
 - Carroll, R. M., & Nordholm, L. A. (1975). Sampling Characteristics of Kelley's ![equation](http://latex.codecogs.com/gif.latex?%5Cepsilon) and Hays' ![equation](http://latex.codecogs.com/gif.latex?%5Comega). _Educational and Psychological Measurement, 35_(3), 541–554\. <https://doi.org/10.1177/001316447503500304>
 - Cumming, G. (2012). _Understanding The New Statistics_. Routledge. Retrieved from <http://proquest.safaribooksonline.com/9780415879675>
 - Kelley, K. (2007). Methods for the Behavioral, Educational, and Social Sciences: An R package. _Behavior Research Methods, 39_(4), 979–984\. <https://doi.org/10.3758/BF03192993>
