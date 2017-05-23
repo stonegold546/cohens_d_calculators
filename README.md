@@ -240,7 +240,7 @@ Subscripts ending in `b` signify values from the null/base model, while those en
 
 #### Nakagawa & Schielzeth R-squared
 
-Nakagawa & Schielzeth's marginal and conditional R-squared's for mixed-effects models (Nakagawa & Schielzeth, 2013) are also computed on the Python API. They are an attempt to resolve some of the problems associated with previous formulations of R-squared's in mixed-effects models including the formulation by Snijders and Bosker. The _R_ supplement provided by Johnson (2014) is used as a guide; however, the R-squared's here are for random-intercepts models only, same as Snijders and Bosker above.
+Nakagawa & Schielzeth's marginal and conditional R-squared's for mixed-effects models (Nakagawa & Schielzeth, 2013) are also computed on the Python API. They are an attempt to resolve some of the problems associated with previous formulations of R-squared's in mixed-effects models including the formulation by Snijders and Bosker. The [_R_ supplement](http://onlinelibrary.wiley.com/store/10.1111/2041-210X.12225/asset/supinfo/mee312225-sup-0001-RScript.R?v=1&s=09ff71cf1ff0058eed83fc3c8bd694c649764767) provided by Johnson (2014) is used as a guide; however, the R-squared's here are for random-intercepts models only, same as Snijders and Bosker above.
 
 #### ICCs
 
