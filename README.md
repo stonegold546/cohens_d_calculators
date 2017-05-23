@@ -35,7 +35,7 @@ You can contact me at [uanhoro.1@osu.edu](mailto:uanhoro.1@osu.edu).
   - [Pseudo R-squared](#pseudo-r-squared)
 
     - [Snijders & Bosker R-squared](#level-1-and-level-2-r-squared)
-    - [Nakagawa & Schielzeth R-squared](#nakagawa-schielzeth-r-squared)
+    - [Nakagawa & Schielzeth R-squared](#nakagawa--schielzeth-r-squared)
 
 ## Cohen's _d_ family
 
