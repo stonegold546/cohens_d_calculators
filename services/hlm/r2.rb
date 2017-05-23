@@ -37,16 +37,19 @@ class HlmR2
   end
 
   def form_response(response)
-    Oj.dump varw_b: response['varw_b'], vara_b: response['vara_b'],
-            varw_f: response['varw_f'], vara_f: response['vara_f'],
-            n: response['a'], k: response['k'],
-            level_one_r_2: response['level_one_r_2'],
-            level_two_r_2: response['level_two_r_2'],
-            convergence_b: response['convergence_b'],
-            convergence_f: response['convergence_f'],
-            rsq_marg: response['rsq_marg'], rsq_cond: response['rsq_cond'],
-            icc_b: response['ICC_b'], icc_f: response['ICC_f'],
-            results: response['results']
+    Oj.dump response_hash(response)
+  end
+
+  def response_hash(response)
+    { varw_b: response['varw_b'], vara_b: response['vara_b'],
+      varw_f: response['varw_f'], vara_f: response['vara_f'],
+      level_one_r_2: response['level_one_r_2'],
+      level_two_r_2: response['level_two_r_2'],
+      convergence_b: response['convergence_b'],
+      convergence_f: response['convergence_f'],
+      n: response['a'], k: response['k'], rsq_marg: response['rsq_marg'],
+      rsq_cond: response['rsq_cond'], icc_b: response['ICC_b'],
+      icc_f: response['ICC_f'], results: response['results'] }
   end
 
   def remove_non_ascii(text)
