@@ -244,7 +244,9 @@ Nakagawa & Schielzeth's marginal and conditional R-squared's for mixed-effects m
 
 The marginal R-squared (![equation](http://latex.codecogs.com/gif.latex?R%5E2_m)) is variance explained by fixed factors, and the conditional R-squared (![equation](http://latex.codecogs.com/gif.latex?R%5E2_c)) is variance explained by both fixed and random factors. The formulae below differ from the standard expressions for (![equation](http://latex.codecogs.com/gif.latex?R%5E2_m)) & (![equation](http://latex.codecogs.com/gif.latex?R%5E2_c)) because for a linear mixed-effects model, there is no distribution-specific variance.
 
-![equation](http://latex.codecogs.com/gif.latex?R%5E2_m=%5Cfrac%7Bvar_%7Bfixed%7D%7D%7Bvar_%7Bfixed%7D+%5Ctau_%7B00f%7D+%5Csigma%5E2_f%7D) ![equation](http://latex.codecogs.com/gif.latex?R%5E2_c=%5Cfrac%7Bvar_%7Bfixed%7D+%5Ctau_%7B00f%7D%7D%7Bvar_%7Bfixed%7D+%5Ctau_%7B00f%7D+%5Csigma%5E2_f%7D)
+![equation](http://latex.codecogs.com/gif.latex?R%5E2_m=%5Cfrac%7Bvar_%7Bfixed%7D%7D%7Bvar_%7Bfixed%7D+%5Ctau_%7B00f%7D+%5Csigma%5E2_f%7D)
+
+![equation](http://latex.codecogs.com/gif.latex?R%5E2_c=%5Cfrac%7Bvar_%7Bfixed%7D+%5Ctau_%7B00f%7D%7D%7Bvar_%7Bfixed%7D+%5Ctau_%7B00f%7D+%5Csigma%5E2_f%7D)
 
 ##### Notation:
 
