@@ -250,7 +250,7 @@ The marginal R-squared (![equation](http://latex.codecogs.com/gif.latex?R%5E2_m)
 
 ##### Notation:
 
-![equation](<http://latex.codecogs.com/gif.latex?var_%7Bfixed%7D>
+![equation](http://latex.codecogs.com/gif.latex?var_%7Bfixed%7D) : variance explained by fixed effects
 
 The random-intercepts model to obtain the marginal and conditional R-squared should, under ideal conditions, be fitted using REML, as REML provides the better estimates of random effects. However, since Snijders and Bosker (S&B) R-squared's require comparing the null to the fitted model - where fixed effects are nested, ML is used. It is only due to computational limitations that the random-intercepts model is not fitted twice, using ML for S&B R-squared's, and REML for the marginal and conditional R-squared's.
 
