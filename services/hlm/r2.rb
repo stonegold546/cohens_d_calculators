@@ -44,6 +44,7 @@ class HlmR2
             level_two_r_2: response['level_two_r_2'],
             convergence_b: response['convergence_b'],
             convergence_f: response['convergence_f'],
+            rsq_marg: response['rsq_marg'], rsq_cond: response['rsq_cond'],
             icc_b: response['ICC_b'], icc_f: response['ICC_f'],
             results: response['results']
   end

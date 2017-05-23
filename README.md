@@ -34,6 +34,9 @@ You can contact me at [uanhoro.1@osu.edu](mailto:uanhoro.1@osu.edu).
   - [Intracluster/Intraclass correlation coefficient (ICC)](#intraclusterintraclass-correlation-coefficient-icc)
   - [Pseudo R-squared](#pseudo-r-squared)
 
+    - [Snijders & Bosker R-squared](#level-1-and-level-2-r-squared)
+    - [Nakagawa & Schielzeth R-squared](#nakagawa-schielzeth-r-squared)
+
 ## Cohen's _d_ family
 
 The formulae for point estimates for the Cohen's _d_ family of effect sizes (_d_, _g_) and _r_ were obtained from Lakens (2013). The R package `MBESS` (Kelley, 2007) - via the [Open CPU API](https://www.opencpu.org/api.html) - is used to compute confidence intervals using the noncentral _t_ method. The confidence intervals were computed on _d_ rather than _g_ (Cumming, 2012). The formulae for the estimation of the noncentrality parameter (![equation](http://latex.codecogs.com/gif.latex?%5Clambda)) and its transformation to confidence intervals around _d_ for:
@@ -235,6 +238,10 @@ The level-2 R-squared is based on equation 13 in Snijders & Bosker (1994):
 
 Subscripts ending in `b` signify values from the null/base model, while those ending in `f` are values from the fitted model. `k` is the harmonic mean of cluster size, as recommended by Snijders & Bosker (1994, p. 13) for unbalanced data.
 
+#### Nakagawa & Schielzeth R-squared
+
+Nakagawa & Schielzeth's marginal and conditional R-squared's for mixed-effects models (Nakagawa & Schielzeth, 2013) are also computed on the Python API. They are an attempt to resolve some of the problems associated with previous formulations of R-squared's in mixed-effects models including the formulation by Snijders and Bosker. The _R_ supplement provided by Johnson (2014) is used as a guide; however, the R-squared's here are for random-intercepts models only, same as Snijders and Bosker above.
+
 #### ICCs
 
 The base-model `ICC` is also returned. This value may differ from the value in the ICC segment. If the variables used in this model contain any missing values, cases with missing values are deleted prior to running the null and fitted model. At times, this may remove entire clusters from the model.
@@ -251,8 +258,10 @@ At times, the (fitted) models may fail to converge, and other times, the results
 - Algina, J., Keselman, H. J., & Penfield, R. D. (2005, apr). Effect Sizes and their Intervals: The Two-Level Repeated Measures Case. _Educational and Psychological Measurement, 65_(2), 241–258\. doi: 10.1177/0013164404268675
 - Carroll, R. M., & Nordholm, L. A. (1975). Sampling Characteristics of Kelley's ![equation](http://latex.codecogs.com/gif.latex?%5Cepsilon) and Hays' ![equation](http://latex.codecogs.com/gif.latex?%5Comega). _Educational and Psychological Measurement, 35_(3), 541–554\. <https://doi.org/10.1177/001316447503500304>
 - Cumming, G. (2012). _Understanding The New Statistics_. Routledge. Retrieved from <http://proquest.safaribooksonline.com/9780415879675>
+- Johnson, P. C. D. (2014). Extension of Nakagawa & Schielzeth's R^2 GLMM to random slopes models. _Methods in Ecology and Evolution, 5_(9), 944-946\. <http://doi.wiley.com/10.1111/2041-210X.12225>
 - Kelley, K. (2007). Methods for the Behavioral, Educational, and Social Sciences: An R package. _Behavior Research Methods, 39_(4), 979–984\. <https://doi.org/10.3758/BF03192993>
 - Lakens, D. (2013). Calculating and reporting effect sizes to facilitate cumulative science: a practical primer for t-tests and ANOVAs. _Frontiers in Psychology, 4_(863). <https://doi.org/10.3389/fpsyg.2013.00863>
+- Nakagawa, S., & Schielzeth, H. (2013). A general and simple method for obtaining R^2 from generalized linear mixed-effects models. _Methods in Ecology and Evolution, 4_(2), 133-142\. <http://doi.wiley.com/10.1111/j.2041-210x.2012.00261.x>
 - Nelder, J. A., & Mead, R. (1965). A Simplex Method for Function Minimization. _The Computer Journal, 7_(4), 308–313\. <https://doi.org/10.1093/comjnl/7.4.308>
 - Searle, S. R. (1971). _Linear Models_. New York: Wiley.
 - Smithson, M. (2003). Noncentral Confidence Intervals for Standardized Effect Sizes. In _Confidence Intervals_ (pp. 33–41). Thousand Oaks California: SAGE Publications, Inc. <https://doi.org/10.4135/9781412983761>
