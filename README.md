@@ -240,7 +240,13 @@ Subscripts ending in `b` signify values from the null/base model, while those en
 
 #### Nakagawa & Schielzeth R-squared
 
-Nakagawa & Schielzeth's marginal and conditional R-squared's for mixed-effects models (Nakagawa & Schielzeth, 2013) are also computed on the Python API. They are an attempt to resolve some of the problems associated with previous formulations of R-squared's in mixed-effects models including the formulation by Snijders and Bosker. The [_R_ supplement](http://onlinelibrary.wiley.com/store/10.1111/2041-210X.12225/asset/supinfo/mee312225-sup-0001-RScript.R?v=1&s=09ff71cf1ff0058eed83fc3c8bd694c649764767) provided by Johnson (2014) is used as a guide; however, the R-squared's here are for random-intercepts models only, same as Snijders and Bosker above.
+Nakagawa & Schielzeth's marginal and conditional R-squared's for mixed-effects models (Nakagawa & Schielzeth, 2013) are also computed on the Python API. They are an attempt to resolve some of the problems associated with previous formulations of R-squared's in mixed-effects models, including the formulations by Snijders and Bosker. The R-squared's here are for random-intercepts models only, same as Snijders and Bosker above.
+
+The marginal R-squared is variance explained by fixed factors, and the conditional R-squared is variance explained by both fixed and random factors.
+
+The random-intercepts model to obtain the marginal and conditional R-squared should, under ideal conditions, be fitted using REML, as REML provides the better estimates of random effects. However, since Snijders and Bosker (S&B) R-squared's require comparing the null to the fitted model - where fixed effects are nested, ML is used. It is only due to computational limitations that the random-intercepts model is not fitted twice, using ML for S&B R-squared's, and REML for the marginal and conditional R-squared's.
+
+[_R_ supplement](http://onlinelibrary.wiley.com/store/10.1111/2041-210X.12225/asset/supinfo/mee312225-sup-0001-RScript.R?v=1&s=09ff71cf1ff0058eed83fc3c8bd694c649764767) provided by Johnson (2014) was useful as a guide to my implementation
 
 #### ICCs
 
