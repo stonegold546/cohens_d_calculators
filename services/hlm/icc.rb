@@ -17,7 +17,12 @@ class Icc
       "#{which_method} for estimate and variance components, ANOVA for CI"
     icc_calc = calc_icc
     icc_calc[:inputs] = num_s
+    icc_calc[:des_eff] = design_effect(icc_calc[:icc_est], icc_calc[:k])
     Oj.dump icc_calc
+  end
+
+  def design_effect(icc, k)
+    icc * (k - 1) + 1
   end
 
   def obtain_data(variable)
