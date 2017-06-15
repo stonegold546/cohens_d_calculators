@@ -10,7 +10,7 @@ require 'classy_hash'
 CSV_DATA = 1..-1
 SCHEMA = {
   filename: String,
-  type: %r{text/csv},
+  # type: %r{text/csv},
   name: String,
   tempfile: Tempfile,
   head: String
