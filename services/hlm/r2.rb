@@ -37,7 +37,9 @@ class HlmR2
   end
 
   def form_response(response)
-    Oj.dump response_hash(response)
+    results = response_hash(response)
+    results[:results] = results[:results].gsub("\n", "\r\n")
+    Oj.dump results
   end
 
   def response_hash(response)
