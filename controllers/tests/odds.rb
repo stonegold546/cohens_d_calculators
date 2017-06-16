@@ -1,7 +1,8 @@
 require 'ap'
 
 URL_ODDS_CI = 'https://public.opencpu.org/ocpu/library/epitools/R/oddsratio.'.freeze
-URL_WITH = 'https://public.opencpu.org/ocpu/library/base/R/with/json?digits=11'.freeze
+URL_RISK_CI = 'https://public.opencpu.org/ocpu/library/epitools/R/riskratio.'.freeze
+URL_WITH = 'https://public.opencpu.org/ocpu/library/base/R/with/json?digits=7'.freeze
 
 # Class for Odds-Ratio calculators
 class CohenDCalc < Sinatra::Base

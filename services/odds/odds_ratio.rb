@@ -3,20 +3,36 @@ class OddsRatio
   def initialize(odds)
     @inputs = odds.attributes
     @odds_vector = odds.odds_vector
-    @method_url = odds.method_url
+    @odds_url = odds.method_url[0]
+    @risk_url = odds.method_url[1]
     @conf_int = odds.confidence_interval
   end
 
   def call
-    response = HTTParty.post @method_url, body: {
+    odds = odds_ratio
+    risk = risk_ratio
+    Oj.dump(
+      odds_ratio: odds[0], risk_ratio: risk[0], lower_limit_odds: odds[1],
+      upper_limit_odds: odds[2], lower_limit_risk: risk[1],
+      upper_limit_risk: risk[2], inputs: @inputs
+    )
+  end
+
+  def odds_ratio
+    response = HTTParty.post @odds_url, body: {
       'x' => @odds_vector, 'conf.level' => @conf_int
     }
-    response = HTTParty.post URL_WITH, body: {
+    HTTParty.post URL_WITH, body: {
       data: response.headers['x-ocpu-session'], expr: 'measure[2,]'
     }
-    Oj.dump(
-      odds_ratio: response[0], lower_limit_odds: response[1],
-      upper_limit_odds: response[2], inputs: @inputs
-    )
+  end
+
+  def risk_ratio
+    response = HTTParty.post @risk_url, body: {
+      'x' => @odds_vector, 'rev' => '"both"', 'conf.level' => @conf_int
+    }
+    HTTParty.post URL_WITH, body: {
+      data: response.headers['x-ocpu-session'], expr: 'measure[2,]'
+    }
   end
 end

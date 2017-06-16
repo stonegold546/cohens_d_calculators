@@ -12,8 +12,11 @@ function getOddsRatio () {
   var url = '/odds?'
   for (var i = 0; i < inputsOddsRatio.length; i++) {
     if (inputsOddsRatio[i].id === 'method-odds') {
-      var method = inputsOddsRatio[i]
-      url = url.concat('method=', method.options[method.selectedIndex].value, '&')
+      var oddsMethod = inputsOddsRatio[i]
+      url = url.concat('method_odds=', oddsMethod.options[oddsMethod.selectedIndex].value, '&')
+    } else if (inputsOddsRatio[i].id === 'method-risk') {
+      var riskMethod = inputsOddsRatio[i]
+      url = url.concat('method_risk=', riskMethod.options[riskMethod.selectedIndex].value, '&')
     } else if (inputsOddsRatio[i].value !== '') {
       url = url.concat(inputsOddsRatio[i].name, '=', inputsOddsRatio[i].value, '&')
     }

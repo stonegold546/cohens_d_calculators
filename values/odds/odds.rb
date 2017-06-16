@@ -13,13 +13,15 @@ class Odds
   attribute :control_1, Float
   attribute :control_0, Float
   attribute :conf_int, Float
-  attribute :method, String
+  attribute :method_odds, String
+  attribute :method_risk, String
 
   validates_numericality_of :treat_1, greater_than_or_equal_to: 1
   validates_numericality_of :treat_0, greater_than_or_equal_to: 1
   validates_numericality_of :control_1, greater_than_or_equal_to: 1
   validates_numericality_of :control_0, greater_than_or_equal_to: 1
-  validates_inclusion_of :method, in: %w(midp fisher wald small)
+  validates_inclusion_of :method_odds, in: %w(midp fisher wald small)
+  validates_inclusion_of :method_risk, in: %w(wald small)
   validates_numericality_of :conf_int, greater_than: 0, less_than: 100
 
   def confidence_interval
@@ -31,6 +33,9 @@ class Odds
   end
 
   def method_url
-    "#{URL_ODDS_CI}#{method}#{DIGITS}"
+    [
+      "#{URL_ODDS_CI}#{method_odds}#{DIGITS}",
+      "#{URL_RISK_CI}#{method_risk}#{DIGITS}"
+    ]
   end
 end
