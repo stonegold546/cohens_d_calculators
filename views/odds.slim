@@ -72,15 +72,22 @@ div id='odds-home'
         | Lower limit on odds-ratio: 
         input type='number' class='result-odds-ratio' name=':lower_limit_odds' readonly='true' tabindex=-1
       td
-        | Upper limit on odds-ratio: 
-        input type='number' class='result-odds-ratio' name=':upper_limit_odds' readonly='true' tabindex=-1
-    tr align='right'
-      td
         | Lower limit on risk-ratio: 
         input type='number' class='result-odds-ratio' name=':lower_limit_risk' readonly='true' tabindex=-1
+    tr align='right'
+      td
+        | Upper limit on odds-ratio: 
+        input type='number' class='result-odds-ratio' name=':upper_limit_odds' readonly='true' tabindex=-1
       td
         | Upper limit on risk-ratio: 
         input type='number' class='result-odds-ratio' name=':upper_limit_risk' readonly='true' tabindex=-1
+    tr align='right'
+      td
+        | Number needed to treat: 
+        input type='number' class='result-odds-ratio' name=':nnt' readonly='true' tabindex=-1
+      td
+        | Absolute risk: 
+        input type='number' class='result-odds-ratio' name=':arr' readonly='true' tabindex=-1
     tr
       td align='center' colspan=2
         button type='reset' tabindex=4 onClick="clearInputs('result-odds-ratio')" Clear
