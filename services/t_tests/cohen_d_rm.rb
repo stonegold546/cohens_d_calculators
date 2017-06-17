@@ -20,6 +20,7 @@ class CohenDrm
       lower_limit_d: npci[:lower], upper_limit_d: npci[:upper],
       hedges_grm: g_rm, inputs: @inputs
     )
+    result.map { |k, v| result[k] = v.is_a?(Numeric) ? v.round(7) : v }
     Oj.dump result
   end
 

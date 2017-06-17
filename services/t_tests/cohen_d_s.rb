@@ -18,7 +18,7 @@ class CohenDs
     @t = calc_t(d_s) # Calculate interval on d not g
     data = ConvertGsToR.new convert_data(g_s)
     npci = non_par_conf_int
-    result = warning(
+    result = warning_rounding(
       hedges_gs: g_s, lower_limit_d: npci[:lower], upper_limit_d: npci[:upper],
       r: GsToR.new(data).internal_call, inputs: @inputs
     )
@@ -58,9 +58,11 @@ class CohenDs
     { g_s: g_s, n1: @n1, n2: @n2 }
   end
 
-  def warning(result)
+  def warning_rounding(result)
     warning_message = @t > TNCP_MAX ? WARNING : EMPTY_MESSAGE
     result.merge(warning: warning_message)
+    result.map { |k, v| result[k] = v.is_a?(Numeric) ? v.round(7) : v }
+    result
   end
 
   # def se_d(d_s)

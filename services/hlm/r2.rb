@@ -39,6 +39,7 @@ class HlmR2
   def form_response(response)
     results = response_hash(response)
     results[:results] = results[:results].gsub("\n", "\r\n")
+    results.map { |k, v| results[k] = v.is_a?(Numeric) ? v.round(7) : v }
     Oj.dump results
   end
 

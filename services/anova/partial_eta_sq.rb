@@ -16,6 +16,7 @@ class PartialEtaSq
       lower_limit_eta: npci[:lower], upper_limit_eta: npci[:upper],
       inputs: @inputs
     }
+    result.map { |k, v| result[k] = v.is_a?(Numeric) ? v.round(7) : v }
     Oj.dump result
   end
 

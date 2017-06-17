@@ -18,7 +18,7 @@ class CohenDz
     npci = non_par_conf_int
     result = { cohen_dz: cohen_dz, lower_limit: npci[:lower],
                upper_limit: npci[:upper], inputs: @inputs }
-    result = warning(result)
+    result = warning_rounding(result)
     Oj.dump result
   end
 
@@ -38,8 +38,10 @@ class CohenDz
     mean_d / standard_error
   end
 
-  def warning(result)
+  def warning_rounding(result)
     warning_message = @t > TNCP_MAX ? WARNING : EMPTY_MESSAGE
     result.merge(warning: warning_message)
+    result.map { |k, v| result[k] = v.is_a?(Numeric) ? v.round(7) : v }
+    result
   end
 end

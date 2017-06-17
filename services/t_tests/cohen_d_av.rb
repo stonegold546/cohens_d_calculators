@@ -16,6 +16,7 @@ class CohenDav
     # return Oj.dump(result) if @n_pairs.zero?
     g_av = d_av * HedgesCorrection.new(@n_pairs, DF).call
     result = { hedges_gav: g_av, inputs: @inputs }
+    result.map { |k, v| result[k] = v.is_a?(Numeric) ? v.round(7) : v }
     Oj.dump result
   end
 

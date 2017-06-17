@@ -18,7 +18,13 @@ class Icc
     icc_calc = calc_icc
     icc_calc[:inputs] = num_s
     icc_calc[:des_eff] = design_effect(icc_calc[:icc_est], icc_calc[:k])
+    icc_calc[:deft] = Math.sqrt(icc_calc[:des_eff])
+    round_7(icc_calc)
     Oj.dump icc_calc
+  end
+
+  def round_7(icc)
+    icc.map { |k, v| icc[k] = v.is_a?(Numeric) ? v.round(7) : v }
   end
 
   def design_effect(icc, k)
