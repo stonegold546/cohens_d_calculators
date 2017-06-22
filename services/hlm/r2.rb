@@ -1,5 +1,16 @@
 require 'csv'
 
+# Safe transpose
+class Array
+  def safe_transpose
+    max_size = self.map(&:size).max
+    self.dup.map do |r|
+      r << nil while r.size < max_size
+      r
+    end.transpose
+  end
+end
+
 # Calculator for partial-eta-squared
 class HlmR2
   def initialize(hlm_r2)
@@ -80,14 +91,14 @@ class HlmR2
     @headers = @headers.map.with_index do |e, i|
       e if variables.include? i
     end.compact
-    @data = @data.transpose.map.with_index do |e, i|
+    @data = @data.safe_transpose.map.with_index do |e, i|
       e if variables.include? i
-    end.compact.transpose
+    end.compact.safe_transpose
   end
 
   def clusters
     cluster_id = @headers.find_index(@cluster_var)
-    @data.transpose[cluster_id].uniq
+    @data.safe_transpose[cluster_id].uniq
   end
 
   def delete_bad_clusters

@@ -1,5 +1,16 @@
 require 'csv'
 
+# Safe transpose
+class Array
+  def safe_transpose
+    max_size = self.map(&:size).max
+    self.dup.map do |r|
+      r << nil while r.size < max_size
+      r
+    end.transpose
+  end
+end
+
 # Calculator for partial-eta-squared
 class Icc
   def initialize(hlm_icc)
@@ -33,7 +44,7 @@ class Icc
 
   def obtain_data(variable)
     headers = @data[0].map { |e| remove_non_ascii(e) }
-    data = @data[CSV_DATA].transpose
+    data = @data[CSV_DATA].safe_transpose
     i = headers.find_index(remove_non_ascii(variable))
     data[i]
   end
