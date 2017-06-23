@@ -21,7 +21,7 @@ class Odds
   validates_numericality_of :control_1, greater_than_or_equal_to: 1
   validates_numericality_of :control_0, greater_than_or_equal_to: 1
   validates_inclusion_of :method_odds, in: %w(midp fisher wald small)
-  validates_inclusion_of :method_risk, in: %w(wald small)
+  validates_inclusion_of :method_risk, in: %w(wald small boot)
   validates_numericality_of :conf_int, greater_than: 0, less_than: 100
 
   def confidence_interval
