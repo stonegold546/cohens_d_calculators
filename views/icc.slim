@@ -8,7 +8,7 @@ div id='icc-home'
 
     ### Inputs
 
-    Export all your variables into a csv file. The first row has to be the variable names - without spaces. To minimize problems, files should be ASCII and should not contain missing values.
+    Export all your variables into a csv file. The first row has to be the variable names - without spaces within variable names. To minimize problems, files should be ASCII and should not contain missing values.
 
   input type='file' class='data-icc' id='icc_file' name='icc_file' onchange='getVariablesICC()' tabindex=6 required='true'
   | Method: 
@@ -26,6 +26,8 @@ div id='icc-home'
     p class='result-icc' id='icc_inputs' name=':inputs'
     p class='result-icc' id='icc_warning' name=':warning'
 
+  div id="form5"
+
   markdown:
 
     ### Results - CI are always calculated from One-Way ANOVA (95% CI)
@@ -33,7 +35,9 @@ div id='icc-home'
   table cellpadding='10' align='center'
     tr align='center'
       td colspan='2'
-        | Estimate of ICC: 
+        a href="#form5" onclick="toggler(5)" title="Click for formula"
+          | Estimate of ICC:
+        | &nbsp
         input type='number' class='result-icc' name=':icc_est' readonly='true' tabindex=-1
     tr align='right'
       td
@@ -54,18 +58,40 @@ div id='icc-home'
         | Clusters analyzed: 
         input type='number' class='result-icc' name=':n' readonly='true' tabindex=-1
       td
-        | Average per cluster: 
+        a href="#form5" onclick="toggler(5)" title="Click for formula"
+          | Average per cluster (k):
+        | &nbsp
         input type='number' class='result-icc' name=':k' readonly='true' tabindex=-1
     tr align='right'
       td
-        | Design effect (DEFF): 
+        a href="#form5" onclick="toggler(5)" title="Click for formula"
+          | Design effect (DEFF):
+        | &nbsp
         input type='number' class='result-icc' name=':des_eff' readonly='true' tabindex=-1
       td
-        | Root DEFF (DEFT): 
+        a href="#form5" onclick="toggler(5)" title="Click for formula"
+          | Root DEFF (DEFT):
+        | &nbsp
         input type='number' class='result-icc' name=':deft' readonly='true' tabindex=-1
     tr
       td align='center' colspan=2
         button type='reset' tabindex=4 onClick="clearInputs('result-icc')" Clear
+
+  div id='text-area-5' style='display:none'
+    markdown:
+      #### Formula
+
+      ![ICC](http://latex.codecogs.com/gif.latex?ICC=%5Cfrac%7B%5Ctau_%7B00%7D%7D%7B%5Ctau_%7B00%7D+%5Csigma%5E2%7D)
+
+      ![k](http://latex.codecogs.com/gif.latex?k=%5Cfrac%7B1%7D%7Ba-1%7D%20%5Ctimes%20%5CBigg(%20%5CSigma%20x%20%20-%20%20%5Cfrac%7B%5CSigma%20x%5E2%7D%7B%5CSigma%20x%7D%20%5CBigg))
+
+      ![DEFF](http://latex.codecogs.com/gif.latex?DEFF=ICC%5Ctimes%20(k%20-%201)%20+%201)
+
+      ![DEFT](http://latex.codecogs.com/gif.latex?DEFT=%5Csqrt%7BDEFF%7D)
+
+      where _tau_00_ is the variance between clusters, _sigma_squared_ is the variance within clusters, _a_ is the number of clusters, and _x_ is the number of cases in each cluster.
+
+      See [here](https://github.com/stonegold546/cohens_d_calculators/blob/master/README.md#hierarchical-linear-modeling--multilevel-modeling--mixed-effects-modeling){:target="_blank"} for additional details.
 
   markdown:
 
