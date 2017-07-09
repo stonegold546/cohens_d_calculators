@@ -10,7 +10,9 @@ div id='r2-home'
     Export all your variables into a csv file. The first row has to be the variable names - without spaces within variable names. To minimize problems, files should be ASCII and should not contain missing values.
     
   input type='file' class='data-hlm-r2' id='file_r2' name='file_r2' onchange='getVariables()' tabindex=7 required='true'
-  | Optimization Method: 
+  a href="#form6" onclick="toggler(6)" title="Click for formula"
+    | Optimization Method:
+  | &nbsp
   select id='method-r2' tabindex=7 required='true'
     option value=0 selected='selected' Nelder-Mead
     option value=1 Powell
@@ -73,17 +75,23 @@ div id='r2-home'
         input type='number' class='result-hlm-r2' name=':varw_f' readonly='true' tabindex=-1
     tr align='right'
       td
-        | Base model ICC: 
+        a href="#form6" onclick="toggler(6)" title="Click for formula"
+          | Base model ICC:
+        | &nbsp
         input type='number' class='result-hlm-r2' name=':icc_b' readonly='true' tabindex=-1
       td
-        | Residual ICC: 
+        a href="#form6" onclick="toggler(6)" title="Click for formula"
+          | Residual ICC:
+        | &nbsp
         input type='number' class='result-hlm-r2' name=':icc_f' readonly='true' tabindex=-1
     tr align='right'
       td
         | Clusters analyzed: 
         input type='number' class='result-hlm-r2' name=':n' readonly='true' tabindex=-1
       td
-        | Average per cluster: 
+        a href="#form6" onclick="toggler(6)" title="Click for formula"
+          | Average per cluster (k):
+        | &nbsp
         input type='number' class='result-hlm-r2' name=':k' readonly='true' tabindex=-1
     tr align='right'
       td
@@ -98,7 +106,33 @@ div id='r2-home'
 
   div id='text-area-6' style='display:none'
     markdown:
+      #### Brief background
+
+    p align='left'
+      | These are <em>pseudo-R-squared's</em> as they attempt to recreate the properties of R-squared from OLS. These measures achieve those properties to varying degrees.<br>
+      | The <em>level-one R-squared</em> attempts to capture the variance explained at case level, and the <em>level-two R-squared</em> attempts to capture the variance explained at the cluster level.<br>
+      | To calculate both level-one and level-two R-squared measures, a null/base model and a fitted model (random-intercept model) are run.<br>
+      | The <em>marginal R-squared</em> attempts to capture the variance explained by the fixed effects in the model, and the <em>conditional R-squared</em> attempts to capture the variance explained by both the fixed effects and random effects.<br>
+
+    markdown:
       #### Formula
+
+      ![Level-one R^2](https://camo.githubusercontent.com/eef7dd89c9fdb93b46c24e50749687efd14863e1/687474703a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f52253545325f313d312d253543667261632537422535437461755f2537423030662537442b2535437369676d615f25374266253744253545253742322537442537442537422535437461755f2537423030622537442b2535437369676d615f2537426225374425354525374232253744253744)
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      ![Level-two R^2](https://camo.githubusercontent.com/e3adde464c6dcaaec7fbbd4bae5038aac7cbb9f5/687474703a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f52253545325f323d312d253543667261632537422535437461755f2537423030662537442b253543667261632537422535437369676d615f25374266253744253545253742322537442537442537426b2537442537442537422535437461755f2537423030622537442b253543667261632537422535437369676d615f25374262253744253545253742322537442537442537426b253744253744)
+
+      ![Marginal R^2](https://camo.githubusercontent.com/44e9bdc59187c64b51d062f52208a7d29b45ce4c/687474703a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f52253545325f6d3d253543667261632537427661725f25374266697865642537442537442537427661725f25374266697865642537442b2535437461755f2537423030662537442b2535437369676d61253545325f66253744)
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      ![Conditional R^2](https://camo.githubusercontent.com/bfa67312dd1eab2db618ac69c3b0668260f9cc70/687474703a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f52253545325f633d253543667261632537427661725f25374266697865642537442b2535437461755f2537423030662537442537442537427661725f25374266697865642537442b2535437461755f2537423030662537442b2535437369676d61253545325f66253744)
+
+      ![Base ICC](https://latex.codecogs.com/gif.latex?ICC_b=%5Cfrac%7B%5Ctau_%7B00b%7D%7D%7B%5Ctau_%7B00b%7D+%5Csigma_b%5E2%7D)
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      ![Residual ICC](https://latex.codecogs.com/gif.latex?ICC_f=%5Cfrac%7B%5Ctau_%7B00f%7D%7D%7B%5Ctau_%7B00f%7D+%5Csigma_f%5E2%7D)
+
+      where _R^2_1, R^2_2, R^2_m, R^2_c_ are the level-one, level-two, marginal and conditional R-squared's respectively, 
+      subscript _b_ signifies a value obtained from the base model and subscript _f_ signifies a value obtained from the fitted model, 
+      _tau_00_ is the variance between clusters, _sigma_squared_ is the variance within clusters, _k_ is the harmonic mean cluster size, 
+      and _var_fixed_ is the variance explained by the fixed effects in the model.
 
       See [here](https://github.com/stonegold546/cohens_d_calculators/blob/master/README.md#hierarchical-linear-modeling--multilevel-modeling--mixed-effects-modeling){:target="_blank"} for additional details.
 
@@ -107,18 +141,8 @@ div id='r2-home'
 
   markdown:
 
-    **Note**: Average per cluster is harmonic mean. If the base-model ICC differs from the ICC in the ICC procedure, this is because cases with missing data on any variables used in the model are deleted prior to all analyses to ensure the base model is comparable with the fitted model.
+    **Note**: If the base-model ICC differs from the ICC in the ICC procedure, this is due to listwise deletion.
 
     ___
 
 script src='hlm_r2.js'
-
-/ ![ICC](https://latex.codecogs.com/gif.latex?ICC=%5Cfrac%7B%5Ctau_%7B00%7D%7D%7B%5Ctau_%7B00%7D+%5Csigma%5E2%7D)
-/ 
-/ ![k](https://latex.codecogs.com/gif.latex?k=%5Cfrac%7B1%7D%7Ba-1%7D%20%5Ctimes%20%5CBigg(%20%5CSigma%20x%20%20-%20%20%5Cfrac%7B%5CSigma%20x%5E2%7D%7B%5CSigma%20x%7D%20%5CBigg))
-/ 
-/ ![DEFF](https://latex.codecogs.com/gif.latex?DEFF=ICC%5Ctimes%20(k%20-%201)%20+%201)
-/ 
-/ ![DEFT](https://latex.codecogs.com/gif.latex?DEFT=%5Csqrt%7BDEFF%7D)
-/ 
-/ where _tau_00_ is the variance between clusters, _sigma_squared_ is the variance within clusters, _a_ is the number of clusters, and _x_ is the number of cases in each cluster.
