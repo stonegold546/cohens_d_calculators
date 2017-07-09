@@ -142,7 +142,7 @@ These formulae apply only when all your factors are manipulated not measured, an
 
 The formula for partial eta-squared is equation 13 from Lakens (2013), while that for its confidence intervals is equation 5.6 in chapter 5 of Smithson's Confidence Intervals (2003, pp. 42–66).
 
-![equation](http://latex.codecogs.com/gif.latex?n_%7Bp%7D%5E%7B2%7D%3D%5Cfrac%7B%7D%7BF*df_%7B1%7D%7D%7B%28F*df_%7B1%7D%29+df_%7B2%7D%7D)
+![equation](http://latex.codecogs.com/gif.latex?%5Ceta_%7Bp%7D%5E%7B2%7D%3D%5Cfrac%7B%7D%7BF*df_%7B1%7D%7D%7B%28F*df_%7B1%7D%29+df_%7B2%7D%7D)
 
 #### Confidence Intervals
 
@@ -150,11 +150,11 @@ This call to Open CPU returns the limits on _F_, as noncentrality parameters (![
 
 > <https://public.opencpu.org/ocpu/library/MBESS/R/conf.limits.ncf/json>, body: { 'F.value' => _F_, 'df.1' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D), 'df.2' => ![equation](http://latex.codecogs.com/gif.latex?df_%7B2%7D), 'conf.level' => confidence_interval }
 
-![equation](http://latex.codecogs.com/gif.latex?n_%7Bp%28LL%2CUL%29%7D%5E%7B2%7D%3D%5Cfrac%7B%5Clambda%7D%7B%5Clambda%20+%20df_%7B1%7D%20+%20df_%7B2%7D%20+%201%7D)
+![equation](http://latex.codecogs.com/gif.latex?%5Ceta_%7Bp%28LL%2CUL%29%7D%5E%7B2%7D%3D%5Cfrac%7B%5Clambda%7D%7B%5Clambda%20+%20df_%7B1%7D%20+%20df_%7B2%7D%20+%201%7D)
 
 #### Notation:
 
-![equation](http://latex.codecogs.com/gif.latex?n_%7Bp%7D%5E%7B2%7D) : partial eta-squared; _F_ : _F_-statistic; ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D) : effect degrees of freedom; ![equation](http://latex.codecogs.com/gif.latex?df_%7B2%7D) : error degrees of freedom; ![equation](http://latex.codecogs.com/gif.latex?%5Clambda) : noncentrality parameter
+![equation](http://latex.codecogs.com/gif.latex?%5Ceta_%7Bp%7D%5E%7B2%7D) : partial eta-squared; _F_ : _F_-statistic; ![equation](http://latex.codecogs.com/gif.latex?df_%7B1%7D) : effect degrees of freedom; ![equation](http://latex.codecogs.com/gif.latex?df_%7B2%7D) : error degrees of freedom; ![equation](http://latex.codecogs.com/gif.latex?%5Clambda) : noncentrality parameter
 
 ### Partial omega-squared
 

@@ -34,6 +34,8 @@ div id='anova-home'
     p class='result-fixed-effects' id='fixed_effects_inputs' name=':inputs'
     p class='result-fixed-effects' id='fixed_effects_warning' name=':warning'
 
+  div id="form4"
+
   markdown:
 
     ### Results (CI using noncentral _F_ distribution)
@@ -41,14 +43,18 @@ div id='anova-home'
   table cellpadding='10' align='center'
     tr align='right'
       td
-        | Partial eta-squared: 
+        a href="#form4" onclick="toggler(4)" title="Click for formula"
+          | Partial eta-squared:
+        | &nbsp
         input type='number' class='result-fixed-effects' name=':partial_eta_sq' readonly='true' tabindex=-1
       td
         | Lower limit on partial eta-squared: 
         input type='number' class='result-fixed-effects' name=':lower_limit_eta' readonly='true' tabindex=-1
     tr align='right'
       td
-        | Partial omega-squared: 
+        a href="#form4" onclick="toggler(4)" title="Click for formula"
+          | Partial omega-squared:
+        | &nbsp
         input type='number' class='result-fixed-effects' name=':partial_ome_sq' readonly='true' tabindex=-1
       td
         | Upper limit on partial eta-squared: 
@@ -57,6 +63,17 @@ div id='anova-home'
       td align='center' colspan=2
         button type='reset' tabindex=4 onClick="clearInputs('result-fixed-effects')" Clear
 
+  div id='text-area-4' style='display:none; vertical-align: middle'
+    markdown:
+      #### Formula
+
+      ![Partial eta-squared](https://camo.githubusercontent.com/2aee25138099848437de4ec1081b023329f9b861/687474703a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f6e5f253742702537442535452537423225374425334425354366726163253742253744253742462a64665f25374231253744253744253742253238462a64665f253742312537442532392b64665f25374232253744253744)
+      
+      ![Partial omega-squared](https://camo.githubusercontent.com/a2c6225a2b8d01ad1361ad6053348ba0cc6253b0/687474703a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f2535436f6d6567615f253742702537442535452537423225374425334425354366726163253742462d31253744253742462532302b2532302535436672616325374264665f253742322537442532302b2532303125374425374264665f25374231253744253744253744)
+
+      where _F_ is the _F_-statistic and _df_1_ and _df_2_ are the numerator and denominator degrees of freedom
+
+      See [here](https://github.com/stonegold546/cohens_d_calculators/blob/master/README.md#anova){:target="_blank"} for additional details.
 
   p name=':warning'
     | Partial eta-squared and omega-squared calculated here should only be interpreted if all your factors are manipulated not observed (such as gender), and you have no covariates.
