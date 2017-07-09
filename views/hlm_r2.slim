@@ -37,17 +37,25 @@ div id='r2-home'
   table cellpadding='10' align='center'
     tr align='right'
       td
-        | Level-one R-squared: 
+        a href="#form6" onclick="toggler(6)" title="Click for formula"
+          | Level-one R-squared:
+        | &nbsp
         input type='number' class='result-hlm-r2' name=':level_one_r_2' readonly='true' tabindex=-1
       td
-        | Level-two R-squared: 
+        a href="#form6" onclick="toggler(6)" title="Click for formula"
+          | Level-two R-squared:
+        | &nbsp
         input type='number' class='result-hlm-r2' name=':level_two_r_2' readonly='true' tabindex=-1
     tr align='right'
       td
-        | Marginal R-squared: 
+        a href="#form6" onclick="toggler(6)" title="Click for formula"
+          | Marginal R-squared:
+        | &nbsp
         input type='number' class='result-hlm-r2' name=':rsq_marg' readonly='true' tabindex=-1
       td
-        | Conditional R-squared: 
+        a href="#form6" onclick="toggler(6)" title="Click for formula"
+          | Conditional R-squared:
+        | &nbsp
         input type='number' class='result-hlm-r2' name=':rsq_cond' readonly='true' tabindex=-1
     tr align='right'
       td
@@ -92,16 +100,6 @@ div id='r2-home'
     markdown:
       #### Formula
 
-      ![ICC](http://latex.codecogs.com/gif.latex?ICC=%5Cfrac%7B%5Ctau_%7B00%7D%7D%7B%5Ctau_%7B00%7D+%5Csigma%5E2%7D)
-
-      ![k](http://latex.codecogs.com/gif.latex?k=%5Cfrac%7B1%7D%7Ba-1%7D%20%5Ctimes%20%5CBigg(%20%5CSigma%20x%20%20-%20%20%5Cfrac%7B%5CSigma%20x%5E2%7D%7B%5CSigma%20x%7D%20%5CBigg))
-
-      ![DEFF](http://latex.codecogs.com/gif.latex?DEFF=ICC%5Ctimes%20(k%20-%201)%20+%201)
-
-      ![DEFT](http://latex.codecogs.com/gif.latex?DEFT=%5Csqrt%7BDEFF%7D)
-
-      where _tau_00_ is the variance between clusters, _sigma_squared_ is the variance within clusters, _a_ is the number of clusters, and _x_ is the number of cases in each cluster.
-
       See [here](https://github.com/stonegold546/cohens_d_calculators/blob/master/README.md#hierarchical-linear-modeling--multilevel-modeling--mixed-effects-modeling){:target="_blank"} for additional details.
 
   p name=':warning'
@@ -114,3 +112,13 @@ div id='r2-home'
     ___
 
 script src='hlm_r2.js'
+
+/ ![ICC](https://latex.codecogs.com/gif.latex?ICC=%5Cfrac%7B%5Ctau_%7B00%7D%7D%7B%5Ctau_%7B00%7D+%5Csigma%5E2%7D)
+/ 
+/ ![k](https://latex.codecogs.com/gif.latex?k=%5Cfrac%7B1%7D%7Ba-1%7D%20%5Ctimes%20%5CBigg(%20%5CSigma%20x%20%20-%20%20%5Cfrac%7B%5CSigma%20x%5E2%7D%7B%5CSigma%20x%7D%20%5CBigg))
+/ 
+/ ![DEFF](https://latex.codecogs.com/gif.latex?DEFF=ICC%5Ctimes%20(k%20-%201)%20+%201)
+/ 
+/ ![DEFT](https://latex.codecogs.com/gif.latex?DEFT=%5Csqrt%7BDEFF%7D)
+/ 
+/ where _tau_00_ is the variance between clusters, _sigma_squared_ is the variance within clusters, _a_ is the number of clusters, and _x_ is the number of cases in each cluster.
