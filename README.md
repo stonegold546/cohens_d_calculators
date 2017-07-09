@@ -264,7 +264,7 @@ The `residual ICC` is calculated from the fitted random-intercepts model.
 
 #### Model convergence
 
-At times, the (fitted) models may fail to converge, and other times, the results time out. When either happens, try a different optimization method. It is possible your data are too large for the servers I am currently using if the results repeatedly timeout.
+At times, the (fitted) models may fail to converge, and other times, the results time out. When either happens, try a different optimization method. It is also possible your dataset is too large for the servers I am using if your computation repeatedly times out.
 
 ## References
 
