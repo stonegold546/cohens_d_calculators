@@ -56,6 +56,8 @@ div id='odds-home'
     p class='result-odds-ratio' id='odds_ratio_inputs' name=':inputs'
     p class='result-odds-ratio' id='odds_ratio_warning' name=':warning'
 
+  div id="formbi"
+
   markdown:
 
     ### Results
@@ -63,24 +65,34 @@ div id='odds-home'
   table cellpadding='10' align='center'
     tr align='right'
       td
-        | Odds ratio: 
+        a href="#formbi" onclick="toggler('bi')" title="Click for formula"
+          | Odds ratio:
+        | &nbsp
         input type='number' class='result-odds-ratio' name=':odds_ratio' readonly='true' tabindex=-1
       td
         | Risk ratio/Relative risk: 
         input type='number' class='result-odds-ratio' name=':risk_ratio' readonly='true' tabindex=-1
     tr align='right'
       td
-        | Lower limit on odds ratio: 
+        a href="#formbi" onclick="toggler('bi')" title="Click for formula"
+          | Lower limit on odds ratio:
+        | &nbsp
         input type='number' class='result-odds-ratio' name=':lower_limit_odds' readonly='true' tabindex=-1
       td
-        | Lower limit on risk ratio: 
+        a href="#formbi" onclick="toggler('bi')" title="Click for formula"
+          | Lower limit on risk ratio:
+        | &nbsp
         input type='number' class='result-odds-ratio' name=':lower_limit_risk' readonly='true' tabindex=-1
     tr align='right'
       td
-        | Upper limit on odds ratio: 
+        a href="#formbi" onclick="toggler('bi')" title="Click for formula"
+          | Upper limit on odds ratio:
+        | &nbsp
         input type='number' class='result-odds-ratio' name=':upper_limit_odds' readonly='true' tabindex=-1
       td
-        | Upper limit on risk ratio: 
+        a href="#formbi" onclick="toggler('bi')" title="Click for formula"
+          | Upper limit on risk ratio:
+        | &nbsp
         input type='number' class='result-odds-ratio' name=':upper_limit_risk' readonly='true' tabindex=-1
     tr align='right'
       td
@@ -92,6 +104,20 @@ div id='odds-home'
     tr
       td align='center' colspan=2
         button type='reset' tabindex=4 onClick="clearInputs('result-odds-ratio')" Clear
+
+  div id='text-area-bi' style='display:none'
+    markdown:
+      #### Recommendations for methods
+
+      I use the short name for the methods (contained in parenthesis in the dropdown menu) in these recommendations. Given a large sample size, the `Wald` method suffices (Jewell, 2004).
+
+      One can use the `small` method as a diagnostic. If it produces markedly different results in the point estimates and the CI from `Wald`, then the sample size is not large enough for `Wald` (Jewell, 2004, p. 85).
+
+      When this occurs for the odds ratio, you can use the `Fisher` method (Jewell, 2004, p. 85), although it may be highly conservative (Agresti, 2013, p. 93). A better alternative might be `mid-p`, the default option, which is recommended by Agresti (2013, p. 94).
+
+      Agresti, A. (2013). Inference for Contingency Tables. In _Categorical data analysis_ (pp. 70-114). Wiley-Interscience.
+
+      Jewell, N. P. (2004). Estimation and Inference for Measures of Association. In _Statistics for epidemiology_ (pp. 76-97). Chapman & Hall/CRC.
 
   markdown:
     
