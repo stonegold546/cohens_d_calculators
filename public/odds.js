@@ -17,6 +17,9 @@ function getOddsRatio () {
     } else if (inputsOddsRatio[i].id === 'method-risk') {
       var riskMethod = inputsOddsRatio[i]
       url = url.concat('method_risk=', riskMethod.options[riskMethod.selectedIndex].value, '&')
+    } else if (inputsOddsRatio[i].id === 'reduction') {
+      var reduction = inputsOddsRatio[i]
+      url = url.concat('reduction=', reduction.options[reduction.selectedIndex].value, '&')
     } else if (inputsOddsRatio[i].value !== '') {
       url = url.concat(inputsOddsRatio[i].name, '=', inputsOddsRatio[i].value, '&')
     }

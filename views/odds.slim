@@ -36,11 +36,19 @@ div id='odds-home'
           option value='small' Small sample adjustment (small)
     tr align='right'
       td colspan='3'
-        | Method (Risk-ratio): 
+        | Method (Relative-risk): 
         select id='method-risk' name='method-risk' class='data-odds-ratio' tabindex=4 required='true'
           option value='wald' selected='selected' Unconditional maximum likelihood estimation (Wald)
           option value='small' Small sample adjustment (small)
           option value='boot' Bootstrap estimation (boot)
+    tr align='right'
+      td colspan='3'
+        a href="#formbi" onclick="toggler('bi')" title="Click for formula"
+          | Compute relative risk reduction in place of relative risk?:
+        | &nbsp
+        select id='reduction' name='reduction' class='data-odds-ratio' tabindex=4 required='true'
+          option value='yes' Yes
+          option value='no' selected='selected' No
     tr align='right'
       td colspan='3'
         | Confidence Interval: 
@@ -70,7 +78,9 @@ div id='odds-home'
         | &nbsp
         input type='number' class='result-odds-ratio' name=':odds_ratio' readonly='true' tabindex=-1
       td
-        | Risk ratio/Relative risk: 
+        a href="#formbi" onclick="toggler('bi')" title="Click for formula"
+          | Risk ratio/Relative risk:
+        | &nbsp
         input type='number' class='result-odds-ratio' name=':risk_ratio' readonly='true' tabindex=-1
     tr align='right'
       td
@@ -96,10 +106,14 @@ div id='odds-home'
         input type='number' class='result-odds-ratio' name=':upper_limit_risk' readonly='true' tabindex=-1
     tr align='right'
       td
-        | Number needed to treat: 
+        a href="#formbi" onclick="toggler('bi')" title="Click for formula"
+          | Number needed to treat:
+        | &nbsp
         input type='number' class='result-odds-ratio' name=':nnt' readonly='true' tabindex=-1
       td
-        | Absolute risk: 
+        a href="#formbi" onclick="toggler('bi')" title="Click for formula"
+          | Absolute risk:
+        | &nbsp
         input type='number' class='result-odds-ratio' name=':arr' readonly='true' tabindex=-1
     tr
       td align='center' colspan=2
@@ -108,6 +122,8 @@ div id='odds-home'
   div id='text-area-bi' style='display:none'
     markdown:
       #### Recommendations for methods
+
+      If the outcome is negative, such that a reduction is desired, select `yes` to compute the _relative risk reduction_ (RRR) and the _absolute risk reduction_ (ARR).
 
       I use the short name for the methods (contained in parenthesis in the dropdown menu) in these recommendations. Given a large sample size, the `Wald` method suffices (Jewell, 2004).
 
