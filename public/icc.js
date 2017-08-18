@@ -122,6 +122,7 @@ function keySelectsICC (data, id) {
   reqSelect.name = id
   reqSelect.className = 'hlm_vars_icc'
   reqSelect.required = true
+  reqSelect.tabIndex = '6'
   var nullOption = document.createElement('option')
   nullOption.text = ''
   nullOption.value = null

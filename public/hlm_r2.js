@@ -189,6 +189,7 @@ function keySelects (data, id) {
   reqSelect.name = id
   reqSelect.className = 'hlm_vars'
   reqSelect.required = true
+  reqSelect.tabIndex = '7'
   var nullOption = document.createElement('option')
   nullOption.text = ''
   nullOption.value = null
@@ -207,6 +208,7 @@ function buttonClusterOutcome (data) {
   var clusOutButton = document.createElement('button')
   clusOutButton.id = 'clusOutButton'
   clusOutButton.innerText = 'Select cluster and outcome variables'
+  clusOutButton.tabIndex = '7'
   clusOutButton.onclick = changeClusOutButton
   return clusOutButton
 }
@@ -293,6 +295,7 @@ function variableType (name) {
   var varRole = document.createElement('SELECT')
   varRole.id = id
   varRole.className = 'hlm_table_select'
+  varRole.tabIndex = '7'
   var options = ['', 'Level-one predictor', 'Level-two predictor']
   for (var i = 0; i < options.length; i++) {
     var option = document.createElement('option')
@@ -309,6 +312,7 @@ function selectPredictors () {
   selectPredictorsButton.id = 'selectPredictorsButton'
   selectPredictorsButton.innerText = 'Select level-one and level-two predictors'
   selectPredictorsButton.onclick = aDifficultFunction
+  selectPredictorsButton.tabIndex = '7'
   return selectPredictorsButton
 }
 
@@ -379,6 +383,7 @@ function centering (name) {
   var varCentering = document.createElement('SELECT')
   varCentering.id = id
   varCentering.className = 'hlm_table_center'
+  varCentering.tabIndex = '7'
   var options = ['No-centering', 'Group-mean centering', 'Grand-mean centering']
   for (var i = 0; i < options.length; i++) {
     var option = document.createElement('option')
@@ -394,6 +399,7 @@ function centeringTwo (name, owner) {
   var varCentering = document.createElement('SELECT')
   varCentering.id = id
   varCentering.className = 'hlm_table_center_'.concat(owner)
+  varCentering.tabIndex = '7'
   var options = ['No-centering', 'Grand-mean-centering']
   var option = document.createElement('option')
   option.text = ''
