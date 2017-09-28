@@ -8,7 +8,7 @@
 /* eslint no-undef: */
 
 var inputsHLMData = document.getElementsByClassName('data-hlm-r2')
-var clientR2 = new Faye.Client('https://https://effect-size-calculator.herokuapp.com/faye')
+var clientR2 = new Faye.Client('https://effect-size-calculator.herokuapp.com/faye')
 // var clientR2 = new Faye.Client('http://localhost:9292/faye')
 var channelR2 = document.getElementById('channel-r2').value
 
