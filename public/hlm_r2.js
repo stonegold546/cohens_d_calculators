@@ -8,6 +8,37 @@
 /* eslint no-undef: */
 
 var inputsHLMData = document.getElementsByClassName('data-hlm-r2')
+var clientR2 = new Faye.Client('http://localhost:9292/faye')
+var channelR2 = document.getElementById('channel-r2').value
+
+clientR2.subscribe('/' + channelR2, function (message) {
+  'use strict'
+  var tasksToDo = message['tasks_to_do']
+  var tasksDone = message['tasks_done']
+  if (tasksToDo === tasksDone) {
+    var inputsRes = document.getElementsByClassName('result-hlm-r2')
+    var data = message['result']
+    var names = Object.keys(data)
+    inputsRes[':warning'].innerText = ''
+    for (var i = 0; i < names.length; i++) {
+      if (names[i] === 'results') {
+        var blob = new Blob([data[names[i]].replace('\n', '\r\n')], {type: 'text/plain'})
+        var elem = window.document.createElement('a')
+        elem.href = window.URL.createObjectURL(blob)
+        elem.download = 'model_results.txt'
+        document.body.appendChild(elem)
+        elem.click()
+        document.body.removeChild(elem)
+        window.URL.revokeObjectURL(elem.href)
+      } else if (names[i] === 'convergence_b' || names[i] === 'convergence_f') {
+        inputsRes[':' + names[i]].value = data[names[i]]
+      } else if (inputsRes[':' + names[i]] !== undefined) {
+        inputsRes[':' + names[i]].value = data[names[i]].toFixed(7)
+      }
+    }
+    stopTheWheel('r2-home')
+  }
+})
 
 function getHLMR2 () {
   'use strict'
@@ -48,10 +79,12 @@ function getHLMR2 () {
     levelOneHash[levelOneName] = [levelOnePreds, levelOneCenters[j].selectedIndex]
   }
   var variablesForServer = [method, clusterVar, outcomeVar, interceptPredictors, levelOneHash]
+  var channel = document.getElementById('channel-r2').value
   hlmR2FormData.append(hlmR2File.name, hlmR2File.files[0])
   hlmR2FormData.append('method', method)
   hlmR2FormData.append('clusterVar', clusterVar)
   hlmR2FormData.append('outcomeVar', outcomeVar)
+  hlmR2FormData.append('channelVar', channel)
   hlmR2FormData.append('interceptPredictors', JSON.stringify(interceptPredictors))
   hlmR2FormData.append('levelOneHash', JSON.stringify(levelOneHash))
   hlmR2FormData.append('data', JSON.stringify(data))
@@ -60,40 +93,19 @@ function getHLMR2 () {
   myResult.send(hlmR2FormData)
   myResult.onreadystatechange = function () {
     var result = document.getElementsByClassName('result-hlm-r2')
-    if (myResult.readyState === 4 && myResult.status === 200) {
-      result[':warning'].innerText = ''
-      var data = JSON.parse(myResult.responseText)
-      var names = Object.keys(data)
-      for (var i = 0; i < names.length; i++) {
-        if (names[i] === ':inputs') {
-          result[names[i]].innerText = 'Entered values: '.concat(JSON.stringify(data[names[i]], null, 1))
-        } else if (names[i] === ':warning') {
-          result[names[i]].innerText = data[names[i]]
-        } else if (names[i] === ':results') {
-          var blob = new Blob([data[names[i]]], {type: 'text/plain'})
-          var elem = window.document.createElement('a')
-          elem.href = window.URL.createObjectURL(blob)
-          elem.download = 'model_results.txt'
-          document.body.appendChild(elem)
-          elem.click()
-          document.body.removeChild(elem)
-          window.URL.revokeObjectURL(elem.href)
-        } else {
-          result[names[i]].value = data[names[i]]
-        }
-      }
-    } else if (myResult.readyState === 4 && myResult.status === 400) {
+    if (myResult.readyState === 4 && myResult.status === 400) {
       clearInputs('result-hlm-r2')
       var error = myResult.responseText
       result[':warning'].innerText = 'Data entry error: ' + error
+      stopTheWheel('r2-home')
     } else if (myResult.readyState === 4 && myResult.status === 503) {
-      clearInputs('result-hlm-r2')
-      result[':warning'].innerText = 'Solving the model took too long. You could try another optimizer.'
-    } else {
+      // clearInputs('result-hlm-r2')
+      // result[':warning'].innerText = 'Solving the model took too long. You could try another optimizer.'
+    } else if (myResult.status === 500) {
       clearInputs('result-hlm-r2')
       result[':warning'].innerText = 'Something went wrong, please ensure your file is valid.'
+      stopTheWheel('r2-home')
     }
-    stopTheWheel('r2-home')
   }
 }
 

@@ -14,6 +14,7 @@ gem 'oj'
 gem 'httparty'
 gem 'awesome_print'
 gem 'classy_hash'
+gem 'faye'
 
 group :test do
   gem 'minitest'

@@ -6,10 +6,14 @@ require 'rack-ssl-enforcer'
 require 'config_env'
 require 'oj'
 require 'httparty'
+require 'securerandom'
 
 configure :development, :test do
   ConfigEnv.path_to_config('config/config_env.rb')
 end
+# configure :development, :test, :production do
+#   ConfigEnv.path_to_config('config/config_env.rb')
+# end
 
 # Base app
 class CohenDCalc < Sinatra::Base

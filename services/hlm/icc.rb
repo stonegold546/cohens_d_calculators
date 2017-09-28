@@ -20,27 +20,23 @@ class Icc
       e.nil? ? 'NA' : e.to_f
     end
     @method = hlm_icc.method
+    @channel = hlm_icc.channelVar
   end
 
   def call
-    num_s = "Clusters: #{@clusters.uniq.count}; "\
-      "Cases: #{@values.count} (including missing) units; Method: "\
-      "#{which_method} for estimate and variance components, ANOVA for CI"
-    icc_calc = calc_icc
-    icc_calc[:inputs] = num_s
-    icc_calc[:des_eff] = design_effect(icc_calc[:icc_est], icc_calc[:k])
-    icc_calc[:deft] = Math.sqrt(icc_calc[:des_eff])
-    round_7(icc_calc)
-    Oj.dump icc_calc
+    calc_icc
+    "Clusters: #{@clusters.uniq.count}; "\
+    "Cases: #{@values.count} (including missing) units; Method: "\
+    "#{which_method} for estimate and variance components, ANOVA for CI"
   end
 
   def round_7(icc)
     icc.map { |k, v| icc[k] = v.is_a?(Numeric) ? v.round(7) : v }
   end
 
-  def design_effect(icc, k)
-    icc * (k - 1) + 1
-  end
+  # def design_effect(icc, k)
+  #   icc * (k - 1) + 1
+  # end
 
   def obtain_data(variable)
     headers = @data[0].map { |e| remove_non_ascii(e) }
@@ -60,15 +56,18 @@ class Icc
   end
 
   def calc_icc
-    response = HTTParty.post "#{ENV['PYTHON_URL']}/icc", body: {
-      x: @clusters, y: @values, method: which_method
+    # response =
+    puts(@channel)
+    HTTParty.post "#{ENV['PYTHON_URL']}/icc", body: {
+      x: @clusters, y: @values, method: which_method,
+      channel: @channel, url: ENV['FAYE_URL']
     }.to_json, headers: {
       'Content-Type' => 'application/json'
     }
-    response = Oj.load response.body
-    { icc_est: response['ICC'], lower: response['LowerCI'],
-      upper: response['UpperCI'], n: response['N'], k: response['k'],
-      varw: response['varw'], vara: response['vara'] }
+    # response = Oj.load response.body
+    # { icc_est: response['ICC'], lower: response['LowerCI'],
+    #   upper: response['UpperCI'], n: response['N'], k: response['k'],
+    #   varw: response['varw'], vara: response['vara'] }
   end
 
   def which_method

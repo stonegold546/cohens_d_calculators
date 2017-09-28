@@ -26,6 +26,7 @@ class HlmRsquared
   attribute :method, Integer
   attribute :clusterVar, String
   attribute :outcomeVar, String
+  attribute :channelVar, String
   attribute :interceptPredictors, StringArray
   attribute :levelOneHash, StringHash
   attribute :data, StringArray

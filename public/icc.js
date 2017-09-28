@@ -5,6 +5,25 @@
 /* eslint no-undef: */
 
 var inputsICC = document.getElementsByClassName('data-icc')
+var clientIcc = new Faye.Client('http://localhost:9292/faye')
+var channelIcc = document.getElementById('channel-icc').value
+
+clientIcc.subscribe('/' + channelIcc, function (message) {
+  'use strict'
+  var tasksToDo = message['tasks_to_do']
+  var tasksDone = message['tasks_done']
+  if (tasksToDo === tasksDone) {
+    var inputsRes = document.getElementsByClassName('result-icc')
+    var data = message['result']
+    var names = Object.keys(data)
+    for (var i = 0; i < names.length; i++) {
+      if (inputsRes[':' + names[i]] !== undefined) {
+        inputsRes[':' + names[i]].value = data[names[i]].toFixed(7)
+      }
+    }
+    stopTheWheel('icc-home')
+  }
+})
 
 function getIcc () {
   'use strict'
@@ -23,10 +42,12 @@ function getIcc () {
   var url = '/icc'
   var iccFile = document.getElementById('icc_file')
   var method = document.getElementById('method-icc')
+  var channel = document.getElementById('channel-icc').value
   iccFormData.append(iccFile.name, iccFile.files[0])
   iccFormData.append('method', method.options[method.selectedIndex].value)
   iccFormData.append('clusterVar', clusterVal)
   iccFormData.append('outcomeVar', outcomeVal)
+  iccFormData.append('channelVar', channel)
   var data = []
   for (var i = 0; i < keyVars[0].length; i++) {
     data.push(keyVars[0].options[i].text)
@@ -38,27 +59,20 @@ function getIcc () {
   myResult.onreadystatechange = function () {
     var result = document.getElementsByClassName('result-icc')
     if (myResult.readyState === 4 && myResult.status === 200) {
+      result[':inputs'].innerText = 'Entered values: '.concat(myResult.responseText)
       result[':warning'].innerText = ''
-      var data = JSON.parse(myResult.responseText)
-      var names = Object.keys(data)
-      for (var i = 0; i < names.length; i++) {
-        if (names[i] === ':inputs') {
-          result[names[i]].innerText = 'Entered values: '.concat(JSON.stringify(data[names[i]], null, 1))
-        } else if (names[i] === ':warning') {
-          result[names[i]].innerText = data[names[i]]
-        } else {
-          result[names[i]].value = data[names[i]]
-        }
-      }
     } else if (myResult.readyState === 4 && myResult.status === 400) {
       clearInputs('result-icc')
       var error = myResult.responseText
       result[':warning'].innerText = 'Data entry error: ' + error
-    } else {
+      stopTheWheel('icc-home')
+    } else if (myResult.status === 500) {
       clearInputs('result-icc')
+      // console.log(myResult.responseText)
+      // result[':warning'].innerText = myResult.responseText
+      stopTheWheel('icc-home')
       result[':warning'].innerText = 'Something went wrong, please ensure your file is valid.'
     }
-    stopTheWheel('icc-home')
   }
 }
 

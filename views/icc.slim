@@ -17,6 +17,7 @@ div id='icc-home'
     option value='TRUE' REML
     option value='FALSE' FEML
   br
+  input id='channel-icc' class='data-icc' hidden='true' value="#{SecureRandom.hex}"
   br
   div id='outcome-table-ICC'
   br
@@ -99,4 +100,6 @@ div id='icc-home'
 
     ___
 
+script src='https://https://effect-size-calculator.herokuapp.com/faye.js'
+/ script src='http://localhost:9292/faye.js'
 script src='icc.js'

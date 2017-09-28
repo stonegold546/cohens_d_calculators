@@ -21,16 +21,18 @@ class HlmR2
     @outcome_var = remove_non_ascii(hlm_r2.outcomeVar)
     @intercept_predictors = hlm_r2.interceptPredictors
     @method = hlm_r2.method
+    @channel = hlm_r2.channelVar
     @level_one_hash = hlm_r2.levelOneHash
     @deleted_clusters
   end
 
   def call
-    response = HTTParty.post "#{ENV['PYTHON_URL']}/r2", body:
+    # response =
+    HTTParty.post "#{ENV['PYTHON_URL']}/r2", body:
       send_to_server, headers: { 'Content-Type' => 'application/json' }
-    return 503 if response.code == 503
-    response = Oj.load response.body
-    form_response(response)
+    # return 503 if response.code == 503
+    # response = Oj.load response.body
+    # form_response(response)
   rescue Net::ReadTimeout
     503
   end
@@ -43,6 +45,7 @@ class HlmR2
       data: @data, headers: @headers, cluster_var: @cluster_var,
       outcome_var: @outcome_var, int_preds: @intercept_predictors,
       optim: @method, null_equation: null_equation,
+      channel: @channel, url: ENV['FAYE_URL'],
       l_one_preds: @level_one_hash
     }.to_json
   end

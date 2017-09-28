@@ -19,6 +19,7 @@ class HlmIcc
   attribute :data, StringArray
   attribute :clusterVar, String
   attribute :outcomeVar, String
+  attribute :channelVar, String
 
   validates :icc_file, presence: true
   validates_inclusion_of :method, in: %w(ANOVA TRUE FALSE)
