@@ -5,7 +5,8 @@
 /* eslint no-undef: */
 
 var inputsICC = document.getElementsByClassName('data-icc')
-var clientIcc = new Faye.Client('http://localhost:9292/faye')
+var clientIcc = new Faye.Client('https://https://effect-size-calculator.herokuapp.com/faye')
+// var clientIcc = new Faye.Client('http://localhost:9292/faye')
 var channelIcc = document.getElementById('channel-icc').value
 
 clientIcc.subscribe('/' + channelIcc, function (message) {
