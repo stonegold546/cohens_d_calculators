@@ -2,13 +2,13 @@
 
 div id='r2-home'
   markdown:
-    
-    ## HLM Pseudo R-squared
+
+    ## HLM / multilevel Pseudo R-squared
 
     ### Inputs
 
     Export all your variables into a csv file. The first row has to be the variable names - without spaces within variable names. To minimize problems, files should be ASCII and should not contain missing values.
-    
+
   input type='file' class='data-hlm-r2' id='file_r2' name='file_r2' onchange='getVariables()' tabindex=7 required='true'
   a href="#form6" onclick="toggler(6)" title="Click for formula"
     | Optimization Method:
@@ -62,17 +62,17 @@ div id='r2-home'
         input type='number' class='result-hlm-r2' name=':rsq_cond' readonly='true' tabindex=-1
     tr align='right'
       td
-        | Variance between (base model): 
+        | Variance between (base model):
         input type='number' class='result-hlm-r2' name=':vara_b' readonly='true' tabindex=-1
       td
-        | Variance between (fitted model): 
+        | Variance between (fitted model):
         input type='number' class='result-hlm-r2' name=':vara_f' readonly='true' tabindex=-1
     tr align='right'
       td
-        | Variance within (base model): 
+        | Variance within (base model):
         input type='number' class='result-hlm-r2' name=':varw_b' readonly='true' tabindex=-1
       td
-        | Variance within (fitted model): 
+        | Variance within (fitted model):
         input type='number' class='result-hlm-r2' name=':varw_f' readonly='true' tabindex=-1
     tr align='right'
       td
@@ -87,7 +87,7 @@ div id='r2-home'
         input type='number' class='result-hlm-r2' name=':icc_f' readonly='true' tabindex=-1
     tr align='right'
       td
-        | Clusters analyzed: 
+        | Clusters analyzed:
         input type='number' class='result-hlm-r2' name=':n' readonly='true' tabindex=-1
       td
         a href="#form6" onclick="toggler(6)" title="Click for formula"
@@ -96,10 +96,10 @@ div id='r2-home'
         input type='number' class='result-hlm-r2' name=':k' readonly='true' tabindex=-1
     tr align='right'
       td
-        | Base model converged?: 
+        | Base model converged?:
         input type='text' class='result-hlm-r2' name=':convergence_b' readonly='true' tabindex=-1
       td
-        | Fitted model converged?: 
+        | Fitted model converged?:
         input type='text' class='result-hlm-r2' name=':convergence_f' readonly='true' tabindex=-1
     tr
       td align='center' colspan=2
@@ -130,9 +130,9 @@ div id='r2-home'
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       ![Residual ICC](https://latex.codecogs.com/gif.latex?ICC_f=%5Cfrac%7B%5Ctau_%7B00f%7D%7D%7B%5Ctau_%7B00f%7D+%5Csigma_f%5E2%7D)
 
-      where _R^2_1, R^2_2, R^2_m, R^2_c_ are the level-one, level-two, marginal and conditional R-squared's respectively, 
-      subscript _b_ signifies a value obtained from the base model and subscript _f_ signifies a value obtained from the fitted model, 
-      _tau_00_ is the variance between clusters, _sigma_squared_ is the variance within clusters, _k_ is the harmonic mean cluster size, 
+      where _R^2_1, R^2_2, R^2_m, R^2_c_ are the level-one, level-two, marginal and conditional R-squared's respectively,
+      subscript _b_ signifies a value obtained from the base model and subscript _f_ signifies a value obtained from the fitted model,
+      _tau_00_ is the variance between clusters, _sigma_squared_ is the variance within clusters, _k_ is the harmonic mean cluster size,
       and _var_fixed_ is the variance explained by the fixed effects in the model.
 
       See [here](https://github.com/stonegold546/cohens_d_calculators/blob/master/README.md#hierarchical-linear-modeling--multilevel-modeling--mixed-effects-modeling){:target="_blank"} for additional details.
