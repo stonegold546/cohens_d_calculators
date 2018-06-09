@@ -34,7 +34,6 @@ You can contact me at [uanhoro.1@osu.edu](mailto:uanhoro.1@osu.edu).
   - [Intracluster/Intraclass correlation coefficient (ICC)](#intraclusterintraclass-correlation-coefficient-icc)
   - [Pseudo R-squared](#pseudo-r-squared)
 
-    - [Snijders & Bosker R-squared](#level-1-and-level-2-r-squared)
     - [Nakagawa & Schielzeth R-squared](#nakagawa--schielzeth-r-squared)
 
 ## Cohen's _d_ family
@@ -224,9 +223,9 @@ Nakagawa & Schielzeth's marginal and conditional R-squared's for mixed-effects m
 
 The marginal R-squared (![equation](http://latex.codecogs.com/gif.latex?R%5E2_m)) is variance explained by fixed factors, and the conditional R-squared (![equation](http://latex.codecogs.com/gif.latex?R%5E2_c)) is variance explained by both fixed and random factors. The formulae below differ from the standard expressions for (![equation](http://latex.codecogs.com/gif.latex?R%5E2_m)) & (![equation](http://latex.codecogs.com/gif.latex?R%5E2_c)) because for a linear mixed-effects model, there is no distribution-specific variance.
 
-![equation](http://latex.codecogs.com/gif.latex?R%5E2_m=%5Cfrac%7Bvar_%7Bfixed%7D%7D%7Bvar_%7Bfixed%7D+%5Cvar_%7Bre%7D+%5Csigma%5E2%7D)
+![equation](http://latex.codecogs.com/gif.latex?R%5E2_m=%5Cfrac%7Bvar_%7Bfixed%7D%7D%7Bvar_%7Bfixed%7D+var_%7Bre%7D+%5Csigma%5E2%7D)
 
-![equation](http://latex.codecogs.com/gif.latex?R%5E2_c=%5Cfrac%7Bvar_%7Bfixed%7D+%5Cvar_%7Bre%7D%7D%7Bvar_%7Bfixed%7D+%5Cvar_%7Bre%7D+%5Csigma%5E2%7D)
+![equation](http://latex.codecogs.com/gif.latex?R%5E2_c=%5Cfrac%7Bvar_%7Bfixed%7D+var_%7Bre%7D%7D%7Bvar_%7Bfixed%7D+var_%7Bre%7D+%5Csigma%5E2%7D)
 
 ##### Notation:
 
@@ -236,7 +235,7 @@ The marginal R-squared (![equation](http://latex.codecogs.com/gif.latex?R%5E2_m)
 
 The `residual ICC` is calculated from the fitted model. It is:
 
-![Residual ICC](https://latex.codecogs.com/gif.latex?ICC=%5Cfrac%7B%5Cvar_%7Bre%7D%7D%7B%5Cvar_%7Bre%7D+%5Csigma_f%5E2%7D)
+![Residual ICC](https://latex.codecogs.com/gif.latex?ICC=%5Cfrac%7Bvar_%7Bre%7D%7D%7Bvar_%7Bre%7D+%5Csigma_f%5E2%7D)
 
 #### Model convergence
 
