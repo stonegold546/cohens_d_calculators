@@ -202,65 +202,41 @@ The level-2 variance around the intercept, ![equation](http://latex.codecogs.com
 
 ### Pseudo R-Squared
 
-The models are run using Maximum Likelihood.
-
-#### Optimization method
-
-The default optimization method is Nelder-Mead (Nelder & Mead, 1965). With the very limited test data I had, it produced models that converged unlike the default `bfgs` optimization method in `StatsModels`, which I listed as the last option.
+The model is run using REML.
 
 #### Model equations
 
-The Python API constructs the null and the fitted model equations. It also centers the variables based on user-specifications.
+The Python API constructs the model equations. It also centers the variables based on user-specifications.
 
 For example, consider a model with outcome `math_achievement`; the level-1 predictors are `student_ses` and `gender`, and level-2 predictor is `school_type` as a predictor of the `intercept` and `student_ses`.
 
-The null model equation is: `math_achievement ~ 1`.
-
-The fitted model equation is: `math_achievement ~ student_ses + gender + school_type + student_ses:school_type`. Without specifying additional options, this is a random-intercepts model.
+The model equation is: `math_achievement ~ student_ses + gender + school_type + student_ses:school_type`. Without specifying additional options, this is a random-intercepts model.
 
 Assuming the cluster variable is represented by `school`, the model (null or fitted) is saved into a variable called `model_equation`, and the data are stored in a `Pandas` dataframe called `data`, the StatsModels code is:
 
 > model = sm.MixedLM.from_formula(model_equation, data, groups=data['school'])
 
-> res = model.fit(reml=False, method='nm') # The method changes depending on the optimization method selected.
-
-#### Level-1 and Level-2 R-squared
-
-The level-2 variance around the intercept, ![equation](http://latex.codecogs.com/gif.latex?%5Ctau_%7B00%7D), is obtained using `res.cov_re.groups[0]`, the within group variance is obtained using `res.scale`.
-
-The level-1 R-squared is based on equation 11 in Snijders & Bosker (1994):
-
-![equation](http://latex.codecogs.com/gif.latex?R%5E2_1=1-%5Cfrac%7B%5Ctau_%7B00f%7D+%5Csigma_%7Bf%7D%5E%7B2%7D%7D%7B%5Ctau_%7B00b%7D+%5Csigma_%7Bb%7D%5E%7B2%7D%7D).
-
-The level-2 R-squared is based on equation 13 in Snijders & Bosker (1994):
-
-![equation](http://latex.codecogs.com/gif.latex?R%5E2_2=1-%5Cfrac%7B%5Ctau_%7B00f%7D+%5Cfrac%7B%5Csigma_%7Bf%7D%5E%7B2%7D%7D%7Bk%7D%7D%7B%5Ctau_%7B00b%7D+%5Cfrac%7B%5Csigma_%7Bb%7D%5E%7B2%7D%7D%7Bk%7D%7D).
-
-Subscripts ending in `b` signify values from the null/base model, while those ending in `f` are values from the fitted model. `k` is the harmonic mean of cluster size, as recommended by Snijders & Bosker (1994, p. 13) for unbalanced data.
+> res = model.fit(reml=True, method='nm') # The method changes depending on the optimization method selected.
 
 #### Nakagawa & Schielzeth R-squared
 
-Nakagawa & Schielzeth's marginal and conditional R-squared's for mixed-effects models (Nakagawa & Schielzeth, 2013) are also computed on the Python API. They are an attempt to resolve some of the problems associated with previous formulations of R-squared's in mixed-effects models, including the formulations by Snijders and Bosker. The R-squared's here are for random-intercepts models only, same as Snijders and Bosker above.
+Nakagawa & Schielzeth's marginal and conditional R-squared's for mixed-effects models (Nakagawa & Schielzeth, 2013) are also computed on the Python API. They are an attempt to resolve some of the problems associated with previous formulations of R-squared's in mixed-effects models, including the formulations by Snijders and Bosker (1994). The R-squared's here are for random-intercepts models and random-slopes models based on Johnson's (2014) extension to the work of Nakagwa & Schielzeth (2013).
 
 The marginal R-squared (![equation](http://latex.codecogs.com/gif.latex?R%5E2_m)) is variance explained by fixed factors, and the conditional R-squared (![equation](http://latex.codecogs.com/gif.latex?R%5E2_c)) is variance explained by both fixed and random factors. The formulae below differ from the standard expressions for (![equation](http://latex.codecogs.com/gif.latex?R%5E2_m)) & (![equation](http://latex.codecogs.com/gif.latex?R%5E2_c)) because for a linear mixed-effects model, there is no distribution-specific variance.
 
-![equation](http://latex.codecogs.com/gif.latex?R%5E2_m=%5Cfrac%7Bvar_%7Bfixed%7D%7D%7Bvar_%7Bfixed%7D+%5Ctau_%7B00f%7D+%5Csigma%5E2_f%7D)
+![equation](http://latex.codecogs.com/gif.latex?R%5E2_m=%5Cfrac%7Bvar_%7Bfixed%7D%7D%7Bvar_%7Bfixed%7D+%5Cvar_%7Bre%7D+%5Csigma%5E2%7D)
 
-![equation](http://latex.codecogs.com/gif.latex?R%5E2_c=%5Cfrac%7Bvar_%7Bfixed%7D+%5Ctau_%7B00f%7D%7D%7Bvar_%7Bfixed%7D+%5Ctau_%7B00f%7D+%5Csigma%5E2_f%7D)
+![equation](http://latex.codecogs.com/gif.latex?R%5E2_c=%5Cfrac%7Bvar_%7Bfixed%7D+%5Cvar_%7Bre%7D%7D%7Bvar_%7Bfixed%7D+%5Cvar_%7Bre%7D+%5Csigma%5E2%7D)
 
 ##### Notation:
 
-![equation](http://latex.codecogs.com/gif.latex?var_%7Bfixed%7D) : variance explained by fixed effects
-
-The random-intercepts model to obtain the marginal and conditional R-squared should, under ideal conditions, be fitted using REML, as REML provides the better estimates of random effects. However, since Snijders and Bosker (S&B) R-squared's require comparing the null to the fitted model - where fixed effects are nested, ML is used. It is only due to computational limitations that the random-intercepts model is not fitted twice, using ML for S&B R-squared's, and REML for the marginal and conditional R-squared's.
-
-The [_R_ supplement](http://onlinelibrary.wiley.com/store/10.1111/2041-210X.12225/asset/supinfo/mee312225-sup-0001-RScript.R?v=1&s=09ff71cf1ff0058eed83fc3c8bd694c649764767) provided by Johnson (2014) is a useful guide to calculating marginal and conditional R-squared's.
+![equation](http://latex.codecogs.com/gif.latex?var_%7Bfixed%7D) is the variance explained by the fixed effects in the model and ![equation](http://latex.codecogs.com/gif.latex?var_%7Bre%7D) is the average of the random effects variance. In model where the intercept is the only random effect, this resolves to the variance of the random intercept. See Johnson (2014) for rationale.
 
 #### ICCs
 
-The base-model `ICC` is also returned. This value may differ from the value in the ICC segment. If the variables used in this model contain any missing values, cases with missing values are deleted prior to running the null and fitted model. At times, this may remove entire clusters from the model.
+The `residual ICC` is calculated from the fitted model. It is:
 
-The `residual ICC` is calculated from the fitted random-intercepts model.
+![Residual ICC](https://latex.codecogs.com/gif.latex?ICC=%5Cfrac%7B%5Cvar_%7Bre%7D%7D%7B%5Cvar_%7Bre%7D+%5Csigma_f%5E2%7D)
 
 #### Model convergence
 

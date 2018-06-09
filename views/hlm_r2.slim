@@ -14,10 +14,10 @@ div id='r2-home'
     | Optimization Method:
   | &nbsp
   select id='method-r2' tabindex=7 required='true'
-    option value=0 selected='selected' Nelder-Mead
+    option value=0 Nelder-Mead
     option value=1 Powell
     option value=2 cg
-    option value=3 bfgs
+    option value=3 selected='selected' bfgs
   br
   input id='channel-r2' class='data-hlm-r2' hidden='true' value="#{SecureRandom.hex}"
   br
@@ -41,17 +41,6 @@ div id='r2-home'
     tr align='right'
       td
         a href="#form6" onclick="toggler(6)" title="Click for formula"
-          | Level-one R-squared:
-        | &nbsp
-        input type='number' class='result-hlm-r2' name=':level_one_r_2' readonly='true' tabindex=-1
-      td
-        a href="#form6" onclick="toggler(6)" title="Click for formula"
-          | Level-two R-squared:
-        | &nbsp
-        input type='number' class='result-hlm-r2' name=':level_two_r_2' readonly='true' tabindex=-1
-    tr align='right'
-      td
-        a href="#form6" onclick="toggler(6)" title="Click for formula"
           | Marginal R-squared:
         | &nbsp
         input type='number' class='result-hlm-r2' name=':rsq_marg' readonly='true' tabindex=-1
@@ -62,24 +51,17 @@ div id='r2-home'
         input type='number' class='result-hlm-r2' name=':rsq_cond' readonly='true' tabindex=-1
     tr align='right'
       td
-        | Variance between (base model):
-        input type='number' class='result-hlm-r2' name=':vara_b' readonly='true' tabindex=-1
-      td
-        | Variance between (fitted model):
+        | Variance between:
         input type='number' class='result-hlm-r2' name=':vara_f' readonly='true' tabindex=-1
-    tr align='right'
       td
-        | Variance within (base model):
-        input type='number' class='result-hlm-r2' name=':varw_b' readonly='true' tabindex=-1
-      td
-        | Variance within (fitted model):
+        | Variance within:
         input type='number' class='result-hlm-r2' name=':varw_f' readonly='true' tabindex=-1
     tr align='right'
       td
         a href="#form6" onclick="toggler(6)" title="Click for formula"
-          | Base model ICC:
+          | Average random effect:
         | &nbsp
-        input type='number' class='result-hlm-r2' name=':icc_b' readonly='true' tabindex=-1
+        input type='number' class='result-hlm-r2' name=':k' readonly='true' tabindex=-1
       td
         a href="#form6" onclick="toggler(6)" title="Click for formula"
           | Residual ICC:
@@ -90,16 +72,7 @@ div id='r2-home'
         | Clusters analyzed:
         input type='number' class='result-hlm-r2' name=':n' readonly='true' tabindex=-1
       td
-        a href="#form6" onclick="toggler(6)" title="Click for formula"
-          | Average per cluster (k):
-        | &nbsp
-        input type='number' class='result-hlm-r2' name=':k' readonly='true' tabindex=-1
-    tr align='right'
-      td
-        | Base model converged?:
-        input type='text' class='result-hlm-r2' name=':convergence_b' readonly='true' tabindex=-1
-      td
-        | Fitted model converged?:
+        | Model converged?:
         input type='text' class='result-hlm-r2' name=':convergence_f' readonly='true' tabindex=-1
     tr
       td align='center' colspan=2
@@ -111,28 +84,19 @@ div id='r2-home'
 
     p align='left'
       | These are <em>pseudo-R-squared's</em> as they attempt to recreate the properties of R-squared from OLS. These measures achieve those properties to varying degrees.<br>
-      | The <em>level-one R-squared</em> attempts to capture the variance explained at case level, and the <em>level-two R-squared</em> attempts to capture the variance explained at the cluster level.<br>
-      | To calculate both level-one and level-two R-squared measures, a null/base model and a fitted model (random-intercept model) are run.<br>
       | The <em>marginal R-squared</em> attempts to capture the variance explained by the fixed effects in the model, and the <em>conditional R-squared</em> attempts to capture the variance explained by both the fixed effects and random effects.<br>
 
     markdown:
       #### Formula
 
-      ![Level-one R^2](https://camo.githubusercontent.com/eef7dd89c9fdb93b46c24e50749687efd14863e1/687474703a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f52253545325f313d312d253543667261632537422535437461755f2537423030662537442b2535437369676d615f25374266253744253545253742322537442537442537422535437461755f2537423030622537442b2535437369676d615f2537426225374425354525374232253744253744)
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      ![Level-two R^2](https://camo.githubusercontent.com/e3adde464c6dcaaec7fbbd4bae5038aac7cbb9f5/687474703a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f52253545325f323d312d253543667261632537422535437461755f2537423030662537442b253543667261632537422535437369676d615f25374266253744253545253742322537442537442537426b2537442537442537422535437461755f2537423030622537442b253543667261632537422535437369676d615f25374262253744253545253742322537442537442537426b253744253744)
-
       ![Marginal R^2](https://camo.githubusercontent.com/44e9bdc59187c64b51d062f52208a7d29b45ce4c/687474703a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f52253545325f6d3d253543667261632537427661725f25374266697865642537442537442537427661725f25374266697865642537442b2535437461755f2537423030662537442b2535437369676d61253545325f66253744)
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       ![Conditional R^2](https://camo.githubusercontent.com/bfa67312dd1eab2db618ac69c3b0668260f9cc70/687474703a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f52253545325f633d253543667261632537427661725f25374266697865642537442b2535437461755f2537423030662537442537442537427661725f25374266697865642537442b2535437461755f2537423030662537442b2535437369676d61253545325f66253744)
 
-      ![Base ICC](https://latex.codecogs.com/gif.latex?ICC_b=%5Cfrac%7B%5Ctau_%7B00b%7D%7D%7B%5Ctau_%7B00b%7D+%5Csigma_b%5E2%7D)
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      ![Residual ICC](https://latex.codecogs.com/gif.latex?ICC_f=%5Cfrac%7B%5Ctau_%7B00f%7D%7D%7B%5Ctau_%7B00f%7D+%5Csigma_f%5E2%7D)
+      ![Residual ICC](https://latex.codecogs.com/gif.latex?ICC=%5Cfrac%7B%5Cvar_%7Bre%7D%7D%7B%5Cvar_%7Bre%7D+%5Csigma_f%5E2%7D)
 
-      where _R^2_1, R^2_2, R^2_m, R^2_c_ are the level-one, level-two, marginal and conditional R-squared's respectively,
-      subscript _b_ signifies a value obtained from the base model and subscript _f_ signifies a value obtained from the fitted model,
-      _tau_00_ is the variance between clusters, _sigma_squared_ is the variance within clusters, _k_ is the harmonic mean cluster size,
+      where R^2_m, R^2_c_ are the marginal and conditional R-squared's respectively,
+      _var_re_ is the average of the random effects variance, _sigma_squared_ is the variance within clusters,
       and _var_fixed_ is the variance explained by the fixed effects in the model.
 
       See [here](https://github.com/stonegold546/cohens_d_calculators/blob/master/README.md#hierarchical-linear-modeling--multilevel-modeling--mixed-effects-modeling){:target="_blank"} for additional details.
@@ -141,9 +105,6 @@ div id='r2-home'
     | Check the results for convergence. If they do not converge, try another optimization method from the drop down menu above.
 
   markdown:
-
-    **Note**: If the base-model ICC differs from the ICC in the ICC procedure, this is due to listwise deletion.
-
     ___
 
 script src='hlm_r2.js'

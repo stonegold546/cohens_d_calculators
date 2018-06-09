@@ -77,7 +77,9 @@ function getHLMR2 () {
         levelOnePreds[1].push(parseInt(slopeCenters[k].options[slopeCenters[k].selectedIndex].value))
       }
     }
-    levelOneHash[levelOneName] = [levelOnePreds, levelOneCenters[j].selectedIndex]
+    levelOneHash[levelOneName] = [
+      levelOnePreds, levelOneCenters[j].selectedIndex,
+      document.getElementById('hlm_table_select_ranSlope_'.concat(levelOneName)).selectedIndex]
   }
   var variablesForServer = [method, clusterVar, outcomeVar, interceptPredictors, levelOneHash]
   var channel = document.getElementById('channel-r2').value
@@ -364,10 +366,11 @@ function specTable (predictors) {
   specTable.setAttribute('border', '1')
   var header = specTable.createTHead()
   var row = header.insertRow(0)
-  for (var i = 0; i < 2; i++) {
+  for (var i = 0; i < 3; i++) {
     var cell = row.insertCell(i)
     if (i === 0) { cell.innerText = 'Intercepts, level-one slopes & centering of level-one predictor' }
     if (i === 1) { cell.innerText = 'Level-two predictors' }
+    if (i === 2) { cell.innerText = 'Random effect?' }
   }
   var tr = specTable.insertRow()
   var tdZero = tr.insertCell(0)
@@ -377,6 +380,9 @@ function specTable (predictors) {
   for (var j = 0; j < levelTwo.length; j++) {
     tdOne.appendChild(centeringTwo(levelTwo[j], 'intercept'))
   }
+  var tdTwo = tr.insertCell(2)
+  tdTwo.style.textAlign = 'left'
+  tdTwo.appendChild(document.createTextNode('Always TRUE'))
   for (var variable in levelOne) {
     tr = specTable.insertRow()
     tdZero = tr.insertCell(0)
@@ -387,8 +393,26 @@ function specTable (predictors) {
     for (var k = 0; k < levelTwo.length; k++) {
       tdOne.appendChild(centeringTwo(levelTwo[k], levelOne[variable]))
     }
+    tdTwo = tr.insertCell(2)
+    tdTwo.appendChild(randomSlope(levelOne[variable]))
   }
   return specTable
+}
+
+function randomSlope (name) {
+  var id = 'hlm_table_select_ranSlope_'.concat(name)
+  var varRanSlope = document.createElement('SELECT')
+  varRanSlope.id = id
+  varRanSlope.className = 'hlm_table_ranSlope'
+  varRanSlope.tabIndex = '7'
+  var options = ['No random slope', 'Random slope']
+  for (var i = 0; i < options.length; i++) {
+    var option = document.createElement('option')
+    option.text = options[i]
+    option.value = i
+    varRanSlope.add(option, i)
+  }
+  return varRanSlope
 }
 
 function centering (name) {
