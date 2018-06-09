@@ -235,7 +235,7 @@ The marginal R-squared (![equation](http://latex.codecogs.com/gif.latex?R%5E2_m)
 
 The `residual ICC` is calculated from the fitted model. It is:
 
-![Residual ICC](https://latex.codecogs.com/gif.latex?ICC=%5Cfrac%7Bvar_%7Bre%7D%7D%7Bvar_%7Bre%7D+%5Csigma_f%5E2%7D)
+![Residual ICC](https://latex.codecogs.com/gif.latex?ICC=%5Cfrac%7Bvar_%7Bre%7D%7D%7Bvar_%7Bre%7D+%5Csigma%5E2%7D)
 
 #### Model convergence
 
