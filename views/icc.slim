@@ -3,15 +3,15 @@
 div id='icc-home'
   markdown:
     ---
-    
+
     ## Intraclass Correlation Coefficient
 
     ### Inputs
 
     Export all your variables into a csv file. The first row has to be the variable names - without spaces within variable names. To minimize problems, files should be ASCII and should not contain missing values.
 
-  input type='file' class='data-icc' id='icc_file' name='icc_file' onchange='getVariablesICC()' tabindex=6 required='true'
-  | Method: 
+  input type='file' class='data-icc' id='icc_file' name='icc_file' onchange='getVariablesICC()' tabindex=6 required='true' disabled='true'
+  | Method:
   select id='method-icc' tabindex=6 required='true'
     option value='ANOVA' selected='selected' ANOVA
     option value='TRUE' REML
@@ -42,21 +42,21 @@ div id='icc-home'
         input type='number' class='result-icc' name=':icc_est' readonly='true' tabindex=-1
     tr align='right'
       td
-        | Variance between: 
+        | Variance between:
         input type='number' class='result-icc' name=':vara' readonly='true' tabindex=-1
       td
-        | Variance within: 
+        | Variance within:
         input type='number' class='result-icc' name=':varw' readonly='true' tabindex=-1
     tr align='right'
       td
-        | Lower limit on ICC: 
+        | Lower limit on ICC:
         input type='number' class='result-icc' name=':lower' readonly='true' tabindex=-1
       td
-        | Upper limit on ICC: 
+        | Upper limit on ICC:
         input type='number' class='result-icc' name=':upper' readonly='true' tabindex=-1
     tr align='right'
       td
-        | Clusters analyzed: 
+        | Clusters analyzed:
         input type='number' class='result-icc' name=':n' readonly='true' tabindex=-1
       td
         a href="#form5" onclick="toggler(5)" title="Click for formula"
