@@ -23,6 +23,7 @@ class PartialEtaSq
   end
 
   def partial_ome_sq
+    # Left censor partial omega-sq at zero
     num = @f >= 1 ? @f - 1 : 0
     denum = @f + ((@df_error + 1) / @df_effect)
     num / denum
