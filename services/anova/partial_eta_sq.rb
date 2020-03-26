@@ -16,15 +16,14 @@ class PartialEtaSq
       lower_limit_eta: npci[:lower], upper_limit_eta: npci[:upper],
       inputs: @inputs
     }
-    cohens_f_res = cohens_f(result[:partial_ome_sq], result[:lower_limit_eta],
-                            result[:upper_limit_eta])
-    result.merge! cohens_f_res
+    result.merge! cohens_f(result[:partial_ome_sq], result[:lower_limit_eta],
+                           result[:upper_limit_eta])
     result.map { |k, v| result[k] = v.is_a?(Numeric) ? v.round(7) : v }
     Oj.dump result
   end
 
   def partial_ome_sq
-    num = @f - 1
+    num = @f >= 1 ? @f - 1 : 0
     denum = @f + ((@df_error + 1) / @df_effect)
     num / denum
   end
