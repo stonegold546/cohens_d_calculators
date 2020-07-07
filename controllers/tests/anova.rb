@@ -1,4 +1,4 @@
-URL_F = 'https://stonegold546.ocpu.io/MBESS_ES_CALC/R/conf.limits.ncf/json'.freeze
+URL_F = 'http://stonegold546.ocpu.io/MBESS_ES_CALC/R/conf.limits.ncf/json'.freeze
 LL_F = 'Lower.Limit'.freeze
 UL_F = 'Upper.Limit'.freeze
 DF_F = 1

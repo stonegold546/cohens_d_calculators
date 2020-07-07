@@ -1,7 +1,7 @@
 require 'ap'
 
-URL_ODDS_CI = 'https://stonegold546.ocpu.io/epitools/R/oddsratio.'.freeze
-URL_RISK_CI = 'https://stonegold546.ocpu.io/epitools/R/riskratio.'.freeze
+URL_ODDS_CI = 'http://stonegold546.ocpu.io/epitools/R/oddsratio.'.freeze
+URL_RISK_CI = 'http://stonegold546.ocpu.io/epitools/R/riskratio.'.freeze
 URL_WITH = 'https://public.opencpu.org/ocpu/library/base/R/with/json?digits=7'.freeze
 
 # Class for Odds-Ratio calculators
