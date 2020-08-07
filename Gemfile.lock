@@ -50,7 +50,8 @@ GEM
     i18n (1.8.3)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
-    kramdown (1.17.0)
+    kramdown (2.3.0)
+      rexml
     minitest (5.11.3)
     minitest-rg (5.2.0)
       minitest (~> 5.0)
@@ -67,6 +68,7 @@ GEM
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rake (12.3.3)
+    rexml (3.2.4)
     sinatra (2.0.3)
       mustermann (~> 1.0)
       rack (~> 2.0)
