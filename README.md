@@ -141,7 +141,9 @@ These formulae apply only when all your factors are manipulated not measured, an
 
 The formula for partial eta-squared is equation 13 from Lakens (2013), while that for its confidence intervals is equation 5.6 in chapter 5 of Smithson's Confidence Intervals (2003, pp. 42–66).
 
-![equation](http://latex.codecogs.com/gif.latex?%5Ceta_%7Bp%7D%5E%7B2%7D%3D%5Cfrac%7B%7D%7BF*df_%7B1%7D%7D%7B%28F*df_%7B1%7D%29+df_%7B2%7D%7D)
+![equation](public/equations/anova_eta2.png)
+
+<!-- ![equation](http://latex.codecogs.com/gif.latex?%5Ceta_%7Bp%7D%5E%7B2%7D%3D%5Cfrac%7B%7D%7BF*df_%7B1%7D%7D%7B%28F*df_%7B1%7D%29+df_%7B2%7D%7D) -->
 
 #### Confidence Intervals
 
