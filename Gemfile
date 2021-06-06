@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.1'
+ruby '2.7.0'
 
 gem 'activemodel', '=5.2.4.3'
 gem 'activesupport', '>= 5.2.4.3'

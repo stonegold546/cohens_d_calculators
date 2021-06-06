@@ -117,7 +117,7 @@ DEPENDENCIES
   virtus
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.7.0p0
 
 BUNDLED WITH
-   1.16.2
+   2.1.4
