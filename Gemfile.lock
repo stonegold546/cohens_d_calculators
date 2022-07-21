@@ -82,7 +82,7 @@ GEM
     temple (0.8.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    tzinfo (1.2.7)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     virtus (1.0.5)
       axiom-types (~> 0.1)
