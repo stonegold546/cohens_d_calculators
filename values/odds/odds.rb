@@ -1,4 +1,4 @@
-DIGITS = '/?digits=7'.freeze
+JSON_CLOSE = '/json'.freeze
 
 require 'virtus'
 require 'active_model'
@@ -36,8 +36,8 @@ class Odds
 
   def method_url
     [
-      "#{URL_ODDS_CI}#{method_odds}#{DIGITS}",
-      "#{URL_RISK_CI}#{method_risk}#{DIGITS}"
+      "#{URL_ODDS_CI}#{method_odds}#{JSON_CLOSE}",
+      "#{URL_RISK_CI}#{method_risk}#{JSON_CLOSE}"
     ]
   end
 end

@@ -34,18 +34,18 @@ class OddsRatio
     response = HTTParty.post @odds_url, body: {
       'x' => @odds_vector, 'conf.level' => @conf_int
     }
-    HTTParty.post URL_WITH, body: {
-      data: response.headers['x-ocpu-session'], expr: 'measure[2,]'
-    }
+    response = Oj.load response.body
+    response = response[MEASURE_EXTRACT][1]
+    response
   end
 
   def risk_ratio
     response = HTTParty.post @risk_url, body: {
       'x' => @odds_vector, 'rev' => '"both"', 'conf.level' => @conf_int
     }
-    HTTParty.post URL_WITH, body: {
-      data: response.headers['x-ocpu-session'], expr: 'measure[2,]'
-    }
+    response = Oj.load response.body
+    response = response[MEASURE_EXTRACT][1]
+    response
   end
 
   def arr_calc
