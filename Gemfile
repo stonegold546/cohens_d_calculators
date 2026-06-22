@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '3.1.0'
 
-gem 'activemodel', '=5.2.4.3'
+gem 'activemodel', '7.0.4.3'
 gem 'activesupport', '>= 5.2.4.3'
 gem 'awesome_print'
 gem 'classy_hash'
